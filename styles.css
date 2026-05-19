@@ -597,6 +597,7 @@ ul.notion-list li::before {
 .dock-btn svg {
   width: 16px;
   height: 16px;
+  fill: currentColor;
 }
 
 .dock-indicator {
