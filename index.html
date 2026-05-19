@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentação: Teste de usabilidade - Portal IFMG</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Decorative (Hidden in CSS but kept for DOM compatibility) -->
+  <div class="aurora-bg">
+    <div class="aurora-blob blob-1"></div>
+    <div class="aurora-blob blob-2"></div>
+  </div>
+
+  <!-- Progress Bar at top window border -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <!-- Slides Viewport Container -->
+  <main class="presentation-viewport" id="workspace-container">
+
+    <!-- SLIDE 1: CAPA -->
+    <section class="slide-card slide-cover active" data-slide="1">
+      <div class="slide-inner-content">
+        <div class="cover-badge">TESTE DE USABILIDADE</div>
+        <h1 class="cover-title">NOVO PORTAL DO IFMG</h1>
+        
+        <div style="margin-bottom: 10px;">
+          <button class="btn btn-primary" id="start-btn">Iniciar apresentação</button>
+        </div>
+
+        <div class="cover-meta">
+          <div class="cover-meta-item">MAIO DE 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: POR QUE ESTAMOS FAZENDO ISSO? (MOTIVAÇÃO E DADOS DE BUSCA) -->
+    <section class="slide-card" data-slide="2">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">01 / Motivação e dados de busca</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Por que estamos fazendo isso?</h2>
+          <p class="slide-subtitle">Os dados analíticos que sinalizam a necessidade urgente de teste e redesenho.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <p class="lead">O portal atual apresenta gargalos de usabilidade que dificultam a localização de serviços operacionais básicos pelos servidores:</p>
+          
+          <!-- Swiss-style typographic layout for key metrics (huge text numbers) -->
+          <div class="chart-container">
+            <div class="chart-bar-row">
+              <span class="chart-label">Rejeição em buscas (/@@search)</span>
+              <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="width: 95%;"></div>
+              </div>
+              <span class="chart-value">95.0%</span>
+            </div>
+
+            <div class="chart-bar-row">
+              <span class="chart-label">Tráfego de busca interna</span>
+              <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="width: 10.7%;"></div>
+              </div>
+              <span class="chart-value">10.7%</span>
+            </div>
+
+            <div class="chart-bar-row">
+              <span class="chart-label">Share de notícias (poluição da home)</span>
+              <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="width: 29.6%;"></div>
+              </div>
+              <span class="chart-value">29.6%</span>
+            </div>
+          </div>
+
+          <div class="notion-callout theme-blue">
+            <div class="callout-text">
+              <strong>Indicadores críticos:</strong> O alto tráfego de busca interna (<span class="highlight-blue">10,7%</span>) revela que o menu falha em guiar o usuário. A rejeição drástica nos resultados (<span class="highlight-green">95,0%</span>) aponta que a pesquisa interna não resolve o problema, obrigando servidores a <span class="highlight-green">sobrecarregar o suporte</span> telefônico e e-mail da DGP e DTI por links básicos.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: DEMANDAS REAIS DE ACESSO -->
+    <section class="slide-card" data-slide="3">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">02 / Demandas dos servidores</div>
+        <div class="slide-header">
+          <h2 class="slide-title">O que os servidores mais buscam?</h2>
+          <p class="slide-subtitle">Os dados reais de tráfego que justificam as tarefas priorizadas no teste de usabilidade.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <div class="slide-grid-3">
+            <!-- Col 1: Lead details -->
+            <div class="grid-col-lead">
+              <h3 class="lead-section-title">Demanda Operacional</h3>
+              <p class="lead-text">
+                O tráfego de servidores no portal atual é concentrado em pautas burocráticas e rotinas de trabalho. O teste foca em encurtar esses caminhos.
+              </p>
+            </div>
+            
+            <!-- Col 2: PROGEP Metric -->
+            <div class="notion-card theme-blue">
+              <span class="card-metric">56k</span>
+              <h3 class="card-title">2.1 / Editais e remoções (PROGEP)</h3>
+              <p class="card-desc">
+                Editais de remoção e comunicados de concurso público lideram com folga as visualizações de páginas de interesse do servidor no portal atual (~56 mil acessos combinados).
+              </p>
+            </div>
+
+            <!-- Col 3: Systems Metric -->
+            <div class="notion-card theme-green">
+              <span class="card-metric">23k</span>
+              <h3 class="card-title">2.2 / Sistemas e Benefícios (SEI / DTI)</h3>
+              <p class="card-desc">
+                Volume expressivo de acessos diretos para links externos de trabalho como o SEI (~20 mil acessos), suporte DTI e benefícios como o Wellhub/Gympass (~3,5 mil acessos).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: FUNDAMENTOS CONCEITUAIS E METODOLOGIA -->
+    <section class="slide-card" data-slide="4">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">03 / Fundamentos metodológicos</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Fundamentos conceituais e segmentação</h2>
+          <p class="slide-subtitle">Como os dados guiam a estratégia metodológica adotada no novo portal.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <div class="slide-grid">
+            <div>
+              <ul class="notion-list">
+                <li>
+                  <strong>Foco no uso desktop (<span class="highlight-blue">59,7%</span>):</strong> Ao contrário dos alunos, os servidores acessam o portal prioritariamente por computadores desktop (<span class="highlight-blue">59,7%</span>), o que justifica o teste concentrado neste layout.
+                </li>
+                <li>
+                  <strong>Segmentação no início da jornada:</strong> Para eliminar o ruído visual gerado pelo feed cronológico de notícias (que polui a home), a nova arquitetura propõe <span class="highlight-green">segmentar o perfil do usuário</span> logo na tela inicial, filtrando os menus.
+                </li>
+                <li>
+                  <strong>Técnica de pensar em voz alta:</strong> Coleta qualitativa baseada na verbalização em tempo real das expectativas do participante ao interagir com o menu do protótipo (<span class="highlight-blue">think aloud</span>).
+                </li>
+              </ul>
+            </div>
+            
+            <!-- Swiss-style typographic column comparison chart -->
+            <div class="segmentation-chart">
+              <div class="segment-group">
+                <h4>Acesso servidores</h4>
+                <div class="segment-bars">
+                  <div class="segment-bar-col">
+                    <div class="segment-fill"></div>
+                    <span class="segment-percent">59.7%</span>
+                    <span class="segment-label">Desktop</span>
+                  </div>
+                  <div class="segment-bar-col">
+                    <div class="segment-fill"></div>
+                    <span class="segment-percent">39.6%</span>
+                    <span class="segment-label">Mobile</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="segment-group">
+                <h4>Acesso estudantes</h4>
+                <div class="segment-bars">
+                  <div class="segment-bar-col">
+                    <div class="segment-fill"></div>
+                    <span class="segment-percent">43.3%</span>
+                    <span class="segment-label">Desktop</span>
+                  </div>
+                  <div class="segment-bar-col">
+                    <div class="segment-fill"></div>
+                    <span class="segment-percent">55.8%</span>
+                    <span class="segment-label">Mobile</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: ENVOLVIDOS E PERFIS DOS PARTICIPANTES -->
+    <section class="slide-card" data-slide="5">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">04 / Parceria e perfis de teste</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Envolvidos e perfis dos participantes</h2>
+          <p class="slide-subtitle">Parceria institucional e a definição de quem valida a proposta de interface.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <div class="slide-grid-3">
+            <!-- Col 1: Lead details -->
+            <div class="grid-col-lead">
+              <h3 class="lead-section-title">Amostra de Teste</h3>
+              <p class="lead-text">
+                Definição qualitativa baseada nas rotinas operacionais dos servidores do IFMG, assegurando a validação de tarefas críticas.
+              </p>
+            </div>
+            
+            <!-- Col 2: DTI + Comunicação partnership -->
+            <div class="notion-card theme-blue">
+              <h3 class="card-title">4.1 / Parceria: Comunicação e DTI</h3>
+              <p class="card-desc">
+                O projeto une a Diretoria de Comunicação (design de arquitetura, tom de voz e curadoria de conteúdo) e a Diretoria de Tecnologia da Informação (segurança, backend e integrações), garantindo viabilidade e inteligibilidade.
+              </p>
+              <span class="card-role-badge">Cooperação</span>
+            </div>
+
+            <!-- Col 3: Servers profiles -->
+            <div class="notion-card theme-green">
+              <h3 class="card-title">4.2 / Tarefas críticas avaliadas</h3>
+              <p class="card-desc">
+                Amostra de 5 a 8 servidores (docentes e TAEs) testando fluxos essenciais: consulta de contracheques e informe anual de rendimentos (DGP), editais de remoção, diários de classe no SUAP e chamados de infraestrutura da DTI.
+              </p>
+              <span class="card-role-badge">Perfil avaliado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: LIMITAÇÕES DO TESTE E PLATAFORMA -->
+    <section class="slide-card" data-slide="6">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">05 / Limitações e escopo técnico</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Limitações do teste e plataforma</h2>
+          <p class="slide-subtitle">Alinhamento técnico sobre as restrições da implantação do novo portal.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <div class="slide-grid-3">
+            <!-- Col 1: Lead details -->
+            <div class="grid-col-lead">
+              <h3 class="lead-section-title">Escopo Qualitativo</h3>
+              <p class="lead-text">
+                A amostra de 5 a 8 participantes foca em detectar atritos de uso estruturais no menu. Ela não busca relevância estatística, e o público estudantil ou externo será testado em rodadas separadas.
+              </p>
+            </div>
+            
+            <!-- Col 2: IFRN limitation -->
+            <div class="notion-card theme-blue">
+              <h3 class="card-title">5.1 / Alinhamento ao sistema IFRN</h3>
+              <p class="card-desc">
+                O novo site utiliza a base de layout desenvolvida pelo IFRN (mesmo time do SUAP). Como premissa técnica, devemos manter o alinhamento com as atualizações deles, o que restringe a criação livre de componentes personalizados.
+              </p>
+            </div>
+
+            <!-- Col 3: Third party integration -->
+            <div class="notion-card theme-green">
+              <h3 class="card-title">5.2 / Integrações (SUAP e SEI)</h3>
+              <p class="card-desc">
+                Não temos gerência para alterar o design ou fluxos de trabalho do SUAP ou do SEI. O teste limita-se a validar a clareza e rapidez do portal em direcionar o usuário a esses sistemas externos de trabalho.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: ESTRATÉGIA DE LANÇAMENTO E TRANSIÇÃO -->
+    <section class="slide-card" data-slide="7">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">06 / Planejamento e lançamento</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Perspectiva de lançamento e transição</h2>
+          <p class="slide-subtitle">A estratégia estruturada de testes sucessivos e gestão de conteúdo para o portal.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <div class="slide-grid-3">
+            <!-- Col 1: Lead details -->
+            <div class="grid-col-lead">
+              <h3 class="lead-section-title">Transição Segura</h3>
+              <p class="lead-text">
+                O foco reside na qualidade da estrutura de informação. Garantiremos que a nova arquitetura esteja robusta antes da publicação oficial.
+              </p>
+            </div>
+            
+            <!-- Col 2: January launch & content population -->
+            <div class="notion-card theme-blue">
+              <h3 class="card-title">6.1 / Previsão: Janeiro do próximo ano</h3>
+              <p class="card-desc">
+                Prevemos o lançamento oficial do novo portal para janeiro do próximo ano. Até lá, daremos tempo necessário para que cada setor e área da instituição alimente suas próprias páginas no CMS, garantindo a gestão de mudança.
+              </p>
+            </div>
+
+            <!-- Col 3: Other target audiences -->
+            <div class="notion-card theme-green">
+              <h3 class="card-title">6.2 / Próximas rodadas de teste</h3>
+              <p class="card-desc">
+                A etapa com servidores é apenas a primeira. Realizaremos testes de usabilidade adicionais com outros perfis críticos de usuários, incluindo estudantes, candidatos buscando entrar no IFMG (ingressantes) e a comunidade externa.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: VAMOS COMEÇAR? -->
+    <section class="slide-card" data-slide="8">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">07 / Início do teste</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Vamos começar?</h2>
+          <p class="slide-subtitle">Espaço aberto para esclarecer dúvidas antes de iniciarmos as tarefas no protótipo.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <div class="slide-grid-3">
+            <!-- Col 1: Lead details -->
+            <div class="grid-col-lead">
+              <h3 class="lead-section-title">Preparação Final</h3>
+              <p class="lead-text">
+                Com o alinhamento metodológico concluído, estamos prontos para transicionar da teoria para a simulação prática com o novo site.
+              </p>
+            </div>
+            
+            <!-- Col 2: Open for questions -->
+            <div class="notion-card theme-blue">
+              <h3 class="card-title">7.1 / Alguma dúvida?</h3>
+              <p class="card-desc">
+                Antes de abrirmos a tela e darmos início ao roteiro de uso, há alguma pergunta sobre a dinâmica do teste, o protótipo, a gravação da sessão ou os objetivos do projeto?
+              </p>
+            </div>
+
+            <!-- Col 3: Final reminders -->
+            <div class="notion-card theme-green">
+              <h3 class="card-title">7.2 / Lembretes importantes</h3>
+              <p class="card-desc">
+                Lembre-se de pensar em voz alta durante as tarefas. Qualquer obstáculo que você encontrar reflete um aspecto a ser melhorado na interface do portal, nunca uma falha sua.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating macOS-style Control Dock -->
+  <div class="floating-dock">
+    <button class="dock-btn" id="dock-prev-btn" disabled>
+      <!-- Left Chevron Icon SVG -->
+      <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    
+    <div class="dock-indicator">
+      <button class="dock-trigger" id="dock-trigger-btn">
+        <span class="current-num" id="dock-current-num">01</span>
+        <span class="total-num" id="dock-total-num">/ 08</span>
+        <span class="arrow-indicator">▲</span>
+      </button>
+    </div>
+    
+    <button class="dock-btn" id="dock-next-btn">
+      <!-- Right Chevron Icon SVG -->
+      <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </button>
+
+    <!-- Slide selection drawer inside the dock -->
+    <div class="slides-dropdown" id="dock-dropdown-menu">
+      <div class="dropdown-item active" data-target="0">
+        <span class="item-title">Capa</span>
+        <span class="item-num">01</span>
+      </div>
+      <div class="dropdown-item" data-target="1">
+        <span class="item-title">Motivação e dados</span>
+        <span class="item-num">02</span>
+      </div>
+      <div class="dropdown-item" data-target="2">
+        <span class="item-title">Demandas dos servidores</span>
+        <span class="item-num">03</span>
+      </div>
+      <div class="dropdown-item" data-target="3">
+        <span class="item-title">Fundamentos conceituais</span>
+        <span class="item-num">04</span>
+      </div>
+      <div class="dropdown-item" data-target="4">
+        <span class="item-title">Envolvidos no projeto</span>
+        <span class="item-num">05</span>
+      </div>
+      <div class="dropdown-item" data-target="5">
+        <span class="item-title">Limitações do teste</span>
+        <span class="item-num">06</span>
+      </div>
+      <div class="dropdown-item" data-target="6">
+        <span class="item-title">Lançamento e transição</span>
+        <span class="item-num">07</span>
+      </div>
+      <div class="dropdown-item" data-target="7">
+        <span class="item-title">Dúvidas e início</span>
+        <span class="item-num">08</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
