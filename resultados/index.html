@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados: Teste de usabilidade - Portal IFMG</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <!-- Progress Bar at top window border -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <!-- Slides Viewport Container -->
+  <main class="presentation-viewport" id="workspace-container">
+
+    <!-- SLIDE 1: CAPA -->
+    <section class="slide-card slide-cover active" data-slide="1">
+      <div class="slide-inner-content">
+        <div class="cover-badge">RELATÓRIO DE USABILIDADE</div>
+        <h1 class="cover-title">Resultados do Teste:<br>Perfil Servidor</h1>
+        
+        <div style="margin-bottom: 10px;">
+          <button class="btn btn-primary" id="start-btn">Iniciar apresentação</button>
+        </div>
+
+        <div class="cover-meta">
+          <div class="cover-meta-item">MAIO / JUNHO DE 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: METODOLOGIA E DESEMPENHO GERAL (CONSOLIDADO) -->
+    <section class="slide-card" data-slide="2">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">01 / Metodologia e Desempenho</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Metodologia e Resultados Gerais</h2>
+          <p class="slide-subtitle">Resumo das sessões de teste e taxa de sucesso comparativa por tarefa.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <div class="slide-grid">
+            <!-- Coluna 1: Amostra e Método -->
+            <div>
+              <ul class="notion-list">
+                <li>
+                  <strong>Amostra qualitativa:</strong> 8 sessões moderadas conduzidas com servidores do IFMG (docentes e TAEs) sob a técnica de <em>think aloud</em>.
+                </li>
+                <li>
+                  <strong>Período dos testes:</strong> 21 de maio de 2026 a 03 de junho de 2026.
+                </li>
+                <li>
+                  <strong>Mapeamento:</strong> Análise de conformidade de caminhos, taxas de conclusão (sucesso total, parcial com ajuda ou falha) e escala de dificuldade percebida (1 a 7).
+                </li>
+              </ul>
+              
+              <div class="notion-callout theme-blue" style="margin-top: 24px; padding: 12px 0;">
+                <div class="callout-text">
+                  <strong>Nota metodológica:</strong> Para facilitar a leitura, normalizamos a escala de dificuldade percebida (SEQ), onde <span class="highlight-blue">1 é muito fácil</span> e <span class="highlight-green">7 é muito difícil</span>.
+                </div>
+              </div>
+            </div>
+            
+            <!-- Coluna 2: Gráfico de Barras de Resultados -->
+            <div class="results-chart-container">
+              <h3 style="font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;">Conclusão e Dificuldade por Tarefa</h3>
+              
+              <!-- T1 Remoção -->
+              <div class="results-bar-row">
+                <span class="results-bar-label">T1 Remoção</span>
+                <div class="results-bar-wrapper">
+                  <div class="results-bar bar-green" style="width: 87.5%;"></div>
+                </div>
+                <div class="results-bar-metrics">
+                  <span>87,5% Sucesso</span>
+                  <span class="results-bar-difficulty">Dif.: 3.6 / 7 (Média)</span>
+                </div>
+              </div>
+              
+              <!-- T2 Wellhub -->
+              <div class="results-bar-row">
+                <span class="results-bar-label">T2 Benefícios (Wellhub)</span>
+                <div class="results-bar-wrapper">
+                  <div class="results-bar bar-green" style="width: 100%;"></div>
+                </div>
+                <div class="results-bar-metrics">
+                  <span>100,0% Sucesso</span>
+                  <span class="results-bar-difficulty">Dif.: 1.6 / 7 (Fácil)</span>
+                </div>
+              </div>
+              
+              <!-- T3 Setorial -->
+              <div class="results-bar-row">
+                <span class="results-bar-label">T3 Página Setorial</span>
+                <div class="results-bar-wrapper">
+                  <div class="results-bar bar-green" style="width: 78.6%;"></div>
+                </div>
+                <div class="results-bar-metrics">
+                  <span>78,6% Sucesso</span>
+                  <span class="results-bar-difficulty">Dif.: 3.4 / 7 (Média)</span>
+                </div>
+              </div>
+              
+              <!-- T4 Suporte de TI -->
+              <div class="results-bar-row">
+                <span class="results-bar-label">T4 Suporte de TI</span>
+                <div class="results-bar-wrapper">
+                  <div class="results-bar bar-red" style="width: 6.3%;"></div>
+                </div>
+                <div class="results-bar-metrics" style="color: #ef4444;">
+                  <span>6,3% Sucesso</span>
+                  <span class="results-bar-difficulty" style="color: #ef4444;">Dif.: 6.9 / 7 (Crítico)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: O GARGALO DO SUPORTE DE TI -->
+    <section class="slide-card" data-slide="3">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">02 / Achado Crítico</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Suporte de TI e chamados ocultos</h2>
+          <p class="slide-subtitle">Por que a T4 falhou de forma sistemática para quase 100% dos usuários.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <div class="slide-grid">
+            <div>
+              <p class="lead">Com apenas <strong>6,3% de sucesso</strong>, a busca por abertura de chamados revelou o maior gargalo conceitual do protótipo:</p>
+              <ul class="notion-list">
+                <li>
+                  <strong>Erro de premissa:</strong> O protótipo assume que o usuário associa chamados ao sistema SUAP e que saberá encontrá-lo dentro do catálogo geral.
+                </li>
+                <li>
+                  <strong>Modelo mental do usuário:</strong> Suporte de TI é visto como um <strong>serviço direto</strong> e deve estar exposto na navegação primária.
+                </li>
+                <li>
+                  <strong>Descoberta:</strong> Sem rotas visuais, os participantes buscaram em "Serviços", "Institucional" e "Tecnologia da Informação" sem sucesso.
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <div class="notion-callout theme-blue" style="margin-top: 0;">
+                <div class="callout-text">
+                  <strong>Verbatim em destaque (Servidor 02):</strong><br>
+                  <em>"Abrir chamado? Eu iria em Serviços [...] confesso que nessa eu tomei pau. Não sei onde procurar."</em>
+                </div>
+              </div>
+              
+              <div class="notion-callout theme-green" style="margin-top: 20px;">
+                <div class="callout-text">
+                  <strong>Ação imediata:</strong><br>
+                  Expor atalhos redundantes e verbais de ação (ex: <strong>"Abertura de Chamados / Suporte"</strong>) na página de Tecnologia da Informação, aba de "Serviços" e na home de servidores.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: TRADE-OFF 1 - SETOR VS TAREFA -->
+    <section class="slide-card" data-slide="4">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">03 / Compromissos de Design (Trade-off 1)</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Organograma vs. Rota por Tarefa</h2>
+          <p class="slide-subtitle">Como equilibrar o modelo tradicional de setores com a nova arquitetura focada em tarefas.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <p class="lead">A busca por páginas setoriais (T3 - 78,6% de sucesso) expôs a tensão entre a transição dos modelos mentais dos servidores:</p>
+          
+          <div class="tradeoff-balance">
+            <!-- Lado A: Modelo por Setores -->
+            <div class="tradeoff-side side-pro">
+              <h4>Modelo Setorial (Organograma)</h4>
+              <p>Usuários experientes do IFMG buscam páginas institucionais baseados nas estruturas que já conhecem (DGP, Ensino, NIT).</p>
+              <ul>
+                <li>Facilita a governança de conteúdo (quem atualiza o quê).</li>
+                <li>Familiar para a rotina interna tradicional.</li>
+                <li>Gera barreiras para novos servidores e usuários externos.</li>
+              </ul>
+            </div>
+            
+            <div class="tradeoff-vs">VS</div>
+            
+            <!-- Lado B: Modelo por Tarefas -->
+            <div class="tradeoff-side side-con">
+              <h4>Modelo de Jornadas (Tarefas)</h4>
+              <p>A arquitetura oculta o organograma e agrupa os links de acordo com a finalidade final ("Remoção", "Benefícios").</p>
+              <ul>
+                <li>Acesso rápido a rotinas prioritárias em poucos cliques.</li>
+                <li>Independente da estrutura física da reitoria.</li>
+                <li>Traz atrito para localizar portarias, contatos e setores de origem.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="notion-callout theme-blue" style="margin-top: 24px; padding: 12px 0;">
+            <div class="callout-text">
+              <strong>Decisão consensual (Hibridismo):</strong> Manter páginas institucionais de setores como pontos de governança estáveis, mas equipá-las com links cruzados diretos para as tarefas relacionadas (e vice-versa).
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: TRADE-OFF 2 - RÓTULOS E CLAREZA -->
+    <section class="slide-card" data-slide="5">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">04 / Compromissos de Design (Trade-off 2)</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Ambiguidade de Rótulos vs. Carga de Menu</h2>
+          <p class="slide-subtitle">Resolvendo a sobrecarga cognitiva gerada pelos termos "Serviços" e "Guia do Servidor".</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <div class="slide-grid">
+            <div>
+              <p class="lead">Os testes mostraram que rótulos minimalistas geram "cliques exploratórios" desnecessários devido à colisão semântica:</p>
+              <ul class="notion-list">
+                <li>
+                  <strong>"Serviços" sobrecarregado:</strong> Entendido por uns como ferramentas internas (SEI, chamados) e por outros como catálogo público externo.
+                </li>
+                <li>
+                  <strong>"Guia do Servidor" abstrato:</strong> Interpretação inicial como manual de posse ou regulamento, e não como central de links úteis.
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <div class="tradeoff-side side-con" style="gap: 8px;">
+                <h4 style="color: var(--color-blue-tint-text);">Proposta de Direcionamento</h4>
+                <p style="font-size: 13.5px; color: var(--notion-charcoal);">
+                  Em vez de insistir em rotular como catálogos normativos, propomos o agrupamento em uma aba explícita e acolhedora:
+                </p>
+                <div style="font-size: 18px; font-weight: 800; text-align: center; margin: 12px 0; color: var(--notion-ink); padding: 8px; border: 1px dashed var(--notion-hairline-strong);">
+                  "Mais informações para servidores"
+                </div>
+                <p style="font-size: 12px;">
+                  Esta abordagem reduz a ambiguidade frente aos "serviços públicos" e sinaliza claramente o destino do fluxo operacional e de carreira.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: RECOMENDAÇÕES E PLANO DE AÇÃO -->
+    <section class="slide-card" data-slide="6">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">05 / Recomendações</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Plano de Recomendações Priorizadas</h2>
+          <p class="slide-subtitle">Ações imediatas e estruturais ordenadas por impacto na experiência de uso.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <div class="slide-grid">
+            <!-- Lado Esquerdo: Ajustes Imediatos -->
+            <div class="notion-card theme-blue">
+              <h3 class="card-title">Ajustes Imediatos</h3>
+              <ul class="notion-list" style="gap: 12px;">
+                <li><strong>TI em evidência:</strong> Atalhos visuais para "Abertura de Chamados" em 3 posições-chave.</li>
+                <li><strong>Carreira acessível:</strong> Expor "Remoção e Redistribuição" no menu de segundo nível de servidores.</li>
+                <li><strong>Rotular a ação:</strong> Utilizar verbos de ação ("Abrir chamado", "Consultar SouGov") em vez de apenas siglas dos sistemas.</li>
+              </ul>
+            </div>
+            
+            <!-- Lado Direito: Ajustes Estruturais -->
+            <div class="notion-card theme-green">
+              <h3 class="card-title">Ajustes Estruturais</h3>
+              <ul class="notion-list" style="gap: 12px;">
+                <li><strong>Catálogo no Guia:</strong> Estruturar o guia como um índice alfabético/busca de intenções rápidas.</li>
+                <li><strong>Arquivos históricos:</strong> Separar editais antigos e encerrados para despoluir a ferramenta de busca interna.</li>
+                <li><strong>Home limpa:</strong> Limitar atalhos na página pública principal (demandas de servidores somam apenas 4,54% do tráfego anual).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: PRÓXIMOS PASSOS -->
+    <section class="slide-card" data-slide="7">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">06 / Próximos Passos</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Validação e Cronograma</h2>
+          <p class="slide-subtitle">Como daremos andamento às correções identificadas neste ciclo de pesquisa.</p>
+        </div>
+        
+        <div class="slide-content-body">
+          <div class="slide-grid-3">
+            <div class="grid-col-lead">
+              <h3 class="lead-section-title">Garantia de Qualidade</h3>
+              <p class="lead-text">
+                O ciclo de usabilidade segue iterativo. As mudanças serão revalidadas antes do desenvolvimento final do portal.
+              </p>
+            </div>
+            
+            <div class="notion-card theme-blue">
+              <h3 class="card-title">1. Ajustar e Revalidar</h3>
+              <p class="card-desc">
+                Aplicar as correções de atalhos e rótulos de navegação propostos e rodar testes rápidos (3 a 5 servidores) para checar a taxa de sucesso da T4.
+              </p>
+            </div>
+            
+            <div class="notion-card theme-green">
+              <h3 class="card-title">2. Sites dos Campi</h3>
+              <p class="card-desc">
+                Estruturar e criar os sites dos campi e, após pelo menos um site de campus estar pronto, realizar os testes de validação com estudantes, ingressantes e comunidade externa.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating macOS-style Control Dock -->
+  <div class="floating-dock">
+    <button class="dock-btn" id="dock-prev-btn" disabled>
+      <!-- Left Chevron Icon SVG -->
+      <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    
+    <div class="dock-indicator">
+      <button class="dock-trigger" id="dock-trigger-btn">
+        <span class="current-num" id="dock-current-num">01</span>
+        <span class="total-num" id="dock-total-num">/ 07</span>
+        <span class="arrow-indicator">▲</span>
+      </button>
+    </div>
+    
+    <button class="dock-btn" id="dock-next-btn">
+      <!-- Right Chevron Icon SVG -->
+      <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </button>
+
+    <!-- Slide selection drawer inside the dock -->
+    <div class="slides-dropdown" id="dock-dropdown-menu">
+      <div class="dropdown-item active" data-target="0">
+        <span class="item-title">Capa</span>
+        <span class="item-num">01</span>
+      </div>
+      <div class="dropdown-item" data-target="1">
+        <span class="item-title">Metodologia e Resultados</span>
+        <span class="item-num">02</span>
+      </div>
+      <div class="dropdown-item" data-target="2">
+        <span class="item-title">Gargalo do Suporte</span>
+        <span class="item-num">03</span>
+      </div>
+      <div class="dropdown-item" data-target="3">
+        <span class="item-title">Trade-off: Setores vs. Tarefas</span>
+        <span class="item-num">04</span>
+      </div>
+      <div class="dropdown-item" data-target="4">
+        <span class="item-title">Trade-off: Rótulos</span>
+        <span class="item-num">05</span>
+      </div>
+      <div class="dropdown-item" data-target="5">
+        <span class="item-title">Plano de Recomendações</span>
+        <span class="item-num">06</span>
+      </div>
+      <div class="dropdown-item" data-target="6">
+        <span class="item-title">Próximos Passos</span>
+        <span class="item-num">07</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

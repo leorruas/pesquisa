@@ -720,3 +720,184 @@ ul.notion-list li::before {
     gap: 20px;
   }
 }
+
+/* Custom results bar charts */
+.results-chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.results-bar-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 140px;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid var(--notion-hairline);
+  padding-bottom: 12px;
+}
+
+.results-bar-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--notion-charcoal);
+}
+
+.results-bar-wrapper {
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  position: relative;
+  width: 100%;
+}
+
+.results-bar {
+  height: 100%;
+  width: 0%; /* Will animate or stay static style width */
+  transition: width 1s ease-in-out;
+}
+
+.results-bar.bar-green {
+  background-color: var(--color-green);
+}
+
+.results-bar.bar-yellow {
+  background-color: #eab308; /* yellow-500 */
+}
+
+.results-bar.bar-red {
+  background-color: #ef4444; /* red-500 */
+}
+
+.results-bar-metrics {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: right;
+  color: var(--notion-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.results-bar-difficulty {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--notion-slate);
+}
+
+/* Trade-off balance layout */
+.tradeoff-balance {
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+  align-items: stretch;
+  gap: 24px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.tradeoff-side {
+  border: 1px solid var(--notion-hairline);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+.tradeoff-side.side-pro {
+  border-top: 4px solid var(--color-green);
+}
+
+.tradeoff-side.side-con {
+  border-top: 4px solid var(--color-blue);
+}
+
+.tradeoff-side h4 {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--notion-ink);
+}
+
+.tradeoff-side p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--notion-slate);
+}
+
+.tradeoff-side ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tradeoff-side ul li {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--notion-charcoal);
+  position: relative;
+  padding-left: 16px;
+}
+
+.tradeoff-side ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--notion-slate);
+}
+
+.tradeoff-side.side-pro ul li::before {
+  color: var(--color-green);
+}
+
+.tradeoff-side.side-con ul li::before {
+  color: var(--color-blue-tint-text);
+}
+
+.tradeoff-vs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--notion-steel);
+  letter-spacing: 2px;
+}
+
+.tradeoff-vs::before, .tradeoff-vs::after {
+  content: "";
+  display: block;
+  width: 1px;
+  flex-grow: 1;
+  background-color: var(--notion-hairline-strong);
+  margin: 12px 0;
+}
+
+@media (max-width: 768px) {
+  .results-bar-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .results-bar-metrics {
+    text-align: left;
+  }
+  .tradeoff-balance {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .tradeoff-vs {
+    height: 40px;
+    flex-direction: row;
+  }
+  .tradeoff-vs::before, .tradeoff-vs::after {
+    width: 40px;
+    height: 1px;
+    margin: 0 12px;
+  }
+}
