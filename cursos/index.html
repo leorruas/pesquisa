@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentação: Estrutura de Apresentação - Páginas de Cursos</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* Estilos Customizados e Animações para a Apresentação de Cursos */
+    .intro-term {
+      text-transform: lowercase;
+      font-variant: all-small-caps;
+      color: #60a5fa;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
+
+    /* Limita o comprimento das linhas para ~10-12 palavras no máximo */
+    .slide-card p, .slide-card .callout-text, .slide-card li {
+      max-width: 55ch;
+    }
+
+    /* 1. Funil de Passos (Slide 2) */
+    .funnel-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .funnel-step {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--notion-hairline);
+      padding: 16px;
+      text-align: center;
+      flex: 1;
+      border-radius: 4px;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    }
+
+    .funnel-step .step-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .funnel-step .step-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--notion-ink);
+      margin-bottom: 4px;
+    }
+
+    .funnel-step .step-desc {
+      font-size: 10px;
+      color: var(--notion-slate);
+      line-height: 1.3;
+    }
+
+    .slide-card.active .funnel-step {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .slide-card.active .funnel-step.step-1 {
+      transition-delay: 0.1s;
+    }
+
+    .slide-card.active .funnel-step.step-2 {
+      transition-delay: 0.2s;
+    }
+
+    .slide-card.active .funnel-step.step-3 {
+      transition-delay: 0.3s;
+    }
+
+    .slide-card.active .funnel-step.step-4 {
+      transition-delay: 0.4s;
+    }
+
+    .slide-card.active .funnel-step.step-5 {
+      transition-delay: 0.5s;
+    }
+
+    .funnel-arrow {
+      color: var(--color-blue-hover);
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+      user-select: none;
+    }
+
+    .slide-card.active .funnel-arrow {
+      opacity: 0.5;
+      transition-delay: 0.3s;
+    }
+
+    /* 2. Barras Empilhadas (Slide 4) */
+    .custom-chart-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    .custom-chart-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .row-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--notion-slate);
+      letter-spacing: 0.5px;
+    }
+
+    .stacked-bar-container {
+      display: flex;
+      height: 26px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 2px;
+      overflow: hidden;
+      border: 1px solid var(--notion-hairline);
+    }
+
+    .stacked-segment {
+      height: 100%;
+      width: 0%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      color: #fff;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .slide-card.active .stacked-segment {
+      width: var(--target-width);
+    }
+
+    .segment-ifmg {
+      background-color: var(--color-blue);
+    }
+
+    .segment-ext {
+      background-color: var(--color-green);
+    }
+
+    /* 3. Donut Chart (Slide 5) */
+    .donut-chart-panel {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-top: 15px;
+    }
+
+    .donut-visual {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-90deg) scale(0.8);
+      opacity: 0;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease-out;
+      flex-shrink: 0;
+    }
+
+    .slide-card.active .donut-visual {
+      transform: rotate(-90deg) scale(1);
+      opacity: 1;
+    }
+
+    .donut-center {
+      width: 80px;
+      height: 80px;
+      background: var(--notion-canvas);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(90deg);
+    }
+
+    .donut-main {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--notion-ink);
+      line-height: 1;
+    }
+
+    .donut-sub {
+      font-size: 9px;
+      color: var(--notion-slate);
+      text-transform: uppercase;
+      margin-top: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .donut-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      color: var(--notion-charcoal);
+    }
+
+    .legend-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .legend-dot.color-blue {
+      background-color: var(--color-blue);
+    }
+
+    .legend-dot.color-green {
+      background-color: var(--color-green);
+    }
+
+    /* 4. Animação de Barras Horizontais Gerais (Slide 6) */
+    .animate-bar {
+      width: 0% !important;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .slide-card.active .animate-bar {
+      width: var(--target-width) !important;
+    }
+
+    /* 5. Heatmap de Lacunas (Slide 8) */
+    .heatmap-container {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .heatmap-header-row,
+    .heatmap-row {
+      display: grid;
+      grid-template-columns: 1.2fr repeat(5, 1fr);
+      gap: 6px;
+    }
+
+    .heatmap-header {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--notion-steel);
+      padding: 6px;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .heatmap-header:first-child {
+      text-align: left;
+    }
+
+    .heatmap-cell {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--notion-hairline);
+      padding: 10px;
+      font-size: 11px;
+      text-align: center;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .heatmap-cell.label-cell {
+      justify-content: flex-start;
+      font-weight: 700;
+      color: var(--notion-ink);
+      background: transparent;
+      border: none;
+    }
+
+    .heatmap-cell.status-red {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      font-weight: 700;
+    }
+
+    .heatmap-cell.status-yellow {
+      background: rgba(234, 179, 8, 0.08);
+      border-color: rgba(234, 179, 8, 0.15);
+      color: #facc15;
+      font-weight: 700;
+    }
+
+    .heatmap-row {
+      transform: translateX(-10px);
+      opacity: 0;
+      transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    }
+
+    .slide-card.active .heatmap-row {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .slide-card.active .heatmap-row:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .slide-card.active .heatmap-row:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+
+    .slide-card.active .heatmap-row:nth-child(4) {
+      transition-delay: 0.3s;
+    }
+
+    /* 6. Mockup de Tela (Slide 10) */
+    .mockup-frame {
+      border: 1px solid var(--notion-hairline-strong);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.01);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      transform: scale(0.97);
+      opacity: 0;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease-out;
+      margin-top: 10px;
+    }
+
+    .slide-card.active .mockup-frame {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .mockup-header-strip {
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--notion-hairline);
+      padding: 10px 14px;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--color-blue-tint-text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mockup-body {
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr;
+      padding: 16px;
+      gap: 16px;
+    }
+
+    .mockup-main-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mockup-block {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--notion-hairline);
+      padding: 12px;
+      border-radius: 2px;
+      font-size: 11px;
+      color: var(--notion-slate);
+    }
+
+    .mockup-block strong {
+      color: var(--notion-ink);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .mockup-block.callout-style {
+      background: rgba(37, 99, 235, 0.03);
+      border-color: rgba(37, 99, 235, 0.15);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .mockup-block.callout-style h4 {
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: var(--color-blue-tint-text);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .mockup-block.callout-style ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-left: 0;
+    }
+
+    .mockup-block.callout-style ul li {
+      font-size: 11px;
+      color: var(--notion-charcoal);
+      display: flex;
+      gap: 6px;
+    }
+
+    /* 7. Fluxo do Wireframe (Slide 11) */
+    .wireframe-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .wireframe-step {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--notion-hairline);
+      padding: 10px 16px;
+      border-radius: 2px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transform: translateX(15px);
+      opacity: 0;
+      transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    }
+
+    .slide-card.active .wireframe-step {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .slide-card.active .wireframe-step:nth-child(1) {
+      transition-delay: 0.05s;
+    }
+
+    .slide-card.active .wireframe-step:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .slide-card.active .wireframe-step:nth-child(3) {
+      transition-delay: 0.15s;
+    }
+
+    .slide-card.active .wireframe-step:nth-child(4) {
+      transition-delay: 0.2s;
+    }
+
+    .slide-card.active .wireframe-step:nth-child(5) {
+      transition-delay: 0.25s;
+    }
+
+    .slide-card.active .wireframe-step:nth-child(6) {
+      transition-delay: 0.3s;
+    }
+
+    .badge-tag {
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 1px;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-tag.blue {
+      background: rgba(37, 99, 235, 0.15);
+      color: var(--color-blue-tint-text);
+    }
+
+    .badge-tag.green {
+      background: rgba(5, 150, 105, 0.15);
+      color: var(--color-green-tint-text);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Decorative -->
+  <div class="aurora-bg">
+    <div class="aurora-blob blob-1"></div>
+    <div class="aurora-blob blob-2"></div>
+  </div>
+
+  <!-- Progress Bar at top window border -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <!-- Slides Viewport Container -->
+  <main class="presentation-viewport" id="workspace-container">
+
+    <!-- SLIDE 1: CAPA -->
+    <section class="slide-card slide-cover active" data-slide="1">
+      <div class="slide-inner-content">
+        <div class="cover-badge">BENCHMARK & REDESENHO</div>
+        <h1 class="cover-title">Páginas de Cursos do IFMG</h1>
+
+        <div style="margin-bottom: 10px;">
+          <button class="btn btn-primary" id="start-btn">Iniciar apresentação</button>
+        </div>
+
+        <div class="cover-meta">
+          <div class="cover-meta-item">Estrutura de apresentação orientada à decisão do estudante</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: PERGUNTAS QUE QUEREMOS RESPONDER -->
+    <section class="slide-card" data-slide="2">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">01 / Perguntas centrais</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Perguntas que queremos responder</h2>
+          <p class="slide-subtitle">Como a página do curso pode ajudar o estudante a comparar melhor a oferta do IFMG
+            antes de decidir?</p>
+        </div>
+
+        <div class="slide-content-body">
+          <p class="lead">A apresentação parte de uma pergunta prática: de que forma a página serve como uma ferramenta
+            de tomada de decisão para o candidato?</p>
+
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--color-blue); text-align: left;">
+                  <th
+                    style="padding: 12px; font-weight: 700; color: var(--notion-ink); text-transform: uppercase; letter-spacing: 1px; width: 40%;">
+                    Pergunta Central</th>
+                  <th
+                    style="padding: 12px; font-weight: 700; color: var(--notion-ink); text-transform: uppercase; letter-spacing: 1px;">
+                    Por que importa para a página</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--notion-hairline);">
+                  <td style="padding: 12px; color: var(--color-blue-tint-text); font-weight: 600;">Com quem o IFMG
+                    compete em cada modalidade?</td>
+                  <td style="padding: 12px; color: var(--notion-slate);">A comparação muda significativamente entre
+                    integrado, subsequente, concomitante, EaD e semipresencial.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--notion-hairline);">
+                  <td style="padding: 12px; color: var(--color-blue-tint-text); font-weight: 600;">O que o estudante
+                    precisa saber para escolher?</td>
+                  <td style="padding: 12px; color: var(--notion-slate);">A página do curso deve responder a critérios de
+                    decisão, rotina, custo, estrutura, experiência e trajetória.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--notion-hairline);">
+                  <td style="padding: 12px; color: var(--color-blue-tint-text); font-weight: 600;">Onde o IFMG se
+                    diferencia de concorrentes?</td>
+                  <td style="padding: 12px; color: var(--notion-slate);">Os diferenciais (infraestrutura, bolsas,
+                    verticalização) precisam aparecer como evidência, não afirmações genéricas.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--notion-hairline);">
+                  <td style="padding: 12px; color: var(--color-blue-tint-text); font-weight: 600;">Quais lacunas das
+                    páginas atuais atrapalham?</td>
+                  <td style="padding: 12px; color: var(--notion-slate);">As ausências de informação indicam o que
+                    precisa ser ativamente apurado ou destacado pelo campus.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--notion-hairline);">
+                  <td style="padding: 12px; color: var(--color-blue-tint-text); font-weight: 600;">Como transformar
+                    esses achados em uma página melhor?</td>
+                  <td style="padding: 12px; color: var(--notion-slate);">A análise chega a uma estrutura editorial
+                    replicável e um modelo prático de conteúdo.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: DECISÃO PRINCIPAL -->
+    <section class="slide-card" data-slide="3">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">02 / Decisão Principal</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Páginas orientadas à decisão</h2>
+          <p class="slide-subtitle">A página do curso precisa deixar de ser apenas informativa para apoiar a escolha do
+            estudante.</p>
+        </div>
+
+        <div class="slide-content-body">
+          <p class="lead">Mapeamos a concorrência e as lacunas informacionais para estruturar respostas robustas:</p>
+
+          <div class="chart-container">
+            <div class="chart-bar-row">
+              <span class="chart-label">Ofertas mapeadas na matriz</span>
+              <span class="chart-value">171</span>
+            </div>
+            <div class="chart-bar-row">
+              <span class="chart-label">Ofertas IFMG avaliadas</span>
+              <span class="chart-value">67</span>
+            </div>
+            <div class="chart-bar-row">
+              <span class="chart-label">Ofertas EaD/semipresenciais</span>
+              <span class="chart-value">67</span>
+            </div>
+          </div>
+
+          <div class="notion-callout theme-blue" style="margin-top: 10px;">
+            <div class="callout-text">
+              <strong>Posicionamento estratégico:</strong> A página do curso deve destacar as forças da oferta
+              presencial e pública do IFMG para se posicionar claramente frente às alternativas de mercado.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: O MAPA COMPETITIVO MUDA POR MODALIDADE -->
+    <section class="slide-card" data-slide="4">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">03 / Cenário competitivo</div>
+        <div class="slide-header">
+          <h2 class="slide-title">O mapa competitivo muda por modalidade</h2>
+          <p class="slide-subtitle">A comparação direta externa é restrita no presencial, mas se torna massiva na
+            modalidade EaD.</p>
+        </div>
+
+        <div class="slide-content-body">
+          <p class="lead"><span style="font-variant: small-caps; color: #60a5fa; font-weight: 700; letter-spacing: 0.5px;">Distribuição de concorrência:</span> ofertas do IFMG em azul e concorrentes externos em verde:</p>
+
+          <!-- Gráfico Sugerido: Barras empilhadas com animação -->
+          <div class="custom-chart-wrapper">
+            <div class="custom-chart-row">
+              <div class="row-label">Integrado (45 ofertas)</div>
+              <div class="stacked-bar-container">
+                <div class="stacked-segment segment-ifmg" style="--target-width: 91.1%;"><span>IFMG (41)</span></div>
+                <div class="stacked-segment segment-ext" style="--target-width: 8.9%;"><span>Externos (4)</span></div>
+              </div>
+            </div>
+            <div class="custom-chart-row">
+              <div class="row-label">Subsequente (20 ofertas)</div>
+              <div class="stacked-bar-container">
+                <div class="stacked-segment segment-ifmg" style="--target-width: 90%;"><span>IFMG (18)</span></div>
+                <div class="stacked-segment segment-ext" style="--target-width: 10%;"><span>Externos (2)</span></div>
+              </div>
+            </div>
+            <div class="custom-chart-row">
+              <div class="row-label">Concomitante (6 ofertas)</div>
+              <div class="stacked-bar-container">
+                <div class="stacked-segment segment-ifmg" style="--target-width: 83.3%;"><span>IFMG (5)</span></div>
+                <div class="stacked-segment segment-ext" style="--target-width: 16.7%;"><span>Externos (1)</span></div>
+              </div>
+            </div>
+            <div class="custom-chart-row">
+              <div class="row-label">EaD / Semipresencial (67 ofertas)</div>
+              <div class="stacked-bar-container">
+                <div class="stacked-segment segment-ifmg" style="--target-width: 3%;"><span>IFMG (2)</span></div>
+                <div class="stacked-segment segment-ext" style="--target-width: 97%;"><span>Externos (65)</span></div>
+              </div>
+            </div>
+          </div>
+            <div class="notion-callout theme-blue" style="margin-top: 20px;">
+            <div class="callout-text">
+              <strong>⚠️ Nota de Concorrência Funcional:</strong> Cursos nas modalidades <strong>EaD e
+                Semipresencial</strong> concorrem diretamente com as ofertas presenciais de <strong>Concomitante e
+                Subsequente</strong> (e não com o Integrado). Ambos atraem candidatos que necessitam de flexibilidade ou
+              já completaram o ensino médio em outras escolas.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: INTEGRADO: COMPARAÇÃO É INSTITUCIONAL E TERRITORIAL -->
+    <section class="slide-card" data-slide="5">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">04 / Integrado</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Integrado: comparação institucional e territorial</h2>
+          <p class="slide-subtitle">Para o integrado, a página deve vender a confiança, a trajetória de sucesso e o
+            campus, não apenas o curso.</p>
+        </div>
+
+        <div class="slide-content-body">
+          <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; width: 100%; align-items: center;">
+            <!-- Left: Table -->
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--color-blue); text-align: left;">
+                    <th
+                      style="padding: 8px; font-weight: 700; color: var(--notion-ink); text-transform: uppercase; letter-spacing: 1px;">
+                      Curso</th>
+                    <th
+                      style="padding: 8px; font-weight: 700; color: var(--notion-ink); text-transform: uppercase; letter-spacing: 1px;">
+                      Oferta IFMG de referência</th>
+                    <th
+                      style="padding: 8px; font-weight: 700; color: var(--notion-ink); text-transform: uppercase; letter-spacing: 1px;">
+                      Concorrente Externo</th>
+                    <th
+                      style="padding: 8px; font-weight: 700; color: var(--notion-ink); text-transform: uppercase; letter-spacing: 1px;">
+                      Força</th>
+                    <th
+                      style="padding: 8px; font-weight: 700; color: var(--notion-ink); text-transform: uppercase; letter-spacing: 1px; text-align: right;">
+                      Distância</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--notion-hairline);">
+                    <td style="padding: 8px; font-weight: 600;">Eletroeletrônica</td>
+                    <td style="padding: 8px; color: var(--color-blue-tint-text);">IFMG Ribeirão das Neves</td>
+                    <td style="padding: 8px;">CEFET-MG Contagem</td>
+                    <td style="padding: 8px; color: var(--color-green-tint-text); font-weight: 700;">Forte</td>
+                    <td style="padding: 8px; text-align: right; color: var(--notion-slate);">24 km</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--notion-hairline);">
+                    <td style="padding: 8px; font-weight: 600;">Administração</td>
+                    <td style="padding: 8px; color: var(--color-blue-tint-text);">IFMG Sabará</td>
+                    <td style="padding: 8px;">Escola do Sebrae Belo Horizonte</td>
+                    <td style="padding: 8px; color: var(--notion-steel);">Fraca</td>
+                    <td style="padding: 8px; text-align: right; color: var(--notion-slate);">18 km</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--notion-hairline);">
+                    <td style="padding: 8px; font-weight: 600;">Administração</td>
+                    <td style="padding: 8px; color: var(--color-blue-tint-text);">IFMG Ribeirão das Neves</td>
+                    <td style="padding: 8px;">Escola do Sebrae Belo Horizonte</td>
+                    <td style="padding: 8px; color: var(--notion-steel);">Fraca</td>
+                    <td style="padding: 8px; text-align: right; color: var(--notion-slate);">30 km</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--notion-hairline);">
+                    <td style="padding: 8px; font-weight: 600;">Administração</td>
+                    <td style="padding: 8px; color: var(--color-blue-tint-text);">IFMG Ouro Preto</td>
+                    <td style="padding: 8px;">Escola do Sebrae Belo Horizonte</td>
+                    <td style="padding: 8px; color: var(--notion-steel);">Fraca</td>
+                    <td style="padding: 8px; text-align: right; color: var(--notion-slate);">96 km</td>
+                  </tr>
+              </table>
+              <div class="notion-callout theme-blue" style="margin-top: 15px; padding: 12px 0;">
+                <div class="callout-text" style="font-size: 12px;">
+                  <strong>Hipótese de Posicionamento (ENEM/Ensino Superior):</strong> O integrado não compete
+                  diretamente como um curso puramente profissionalizante de inserção no mercado. O seu grande
+                  diferencial de venda é atuar como uma <strong>trajetória de alta performance para ingresso no ensino
+                    superior público/federal</strong>. A página do curso deve destacar intensamente essa formação
+                  integral acadêmica e o sucesso na verticalização dos egressos.
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Chart (Larger Donut) -->
+            <div
+              style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
+              <h3 class="card-title" style="margin-bottom: 0px; text-align: center;">Share de Ofertas</h3>
+
+              <div class="donut-chart-panel" style="margin-top: 0px;">
+                <div class="donut-visual"
+                  style="width: 160px; height: 160px; background: conic-gradient(var(--color-blue) 0% 91.1%, var(--color-green) 91.1% 100%);">
+                  <div class="donut-center" style="width: 115px; height: 115px;">
+                    <span class="donut-main" style="font-size: 28px;">91%</span>
+                    <span class="donut-sub" style="font-size: 11px;">IFMG</span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="text-align: left; font-size: 12px; color: var(--notion-slate); display: flex; flex-direction: column; gap: 8px;">
+                <div><span class="legend-dot color-blue"></span> <strong>IFMG:</strong> 41 ofertas (91.1%)</div>
+                <div><span class="legend-dot color-green"></span> <strong>Externos:</strong> 4 ofertas (8.9%)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: INTEGRADO: CONCORRÊNCIA INTERNA PREDOMINA -->
+    <section class="slide-card" data-slide="6">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">05 / Concorrência Interna</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Integrado: a concorrência é mais interna do que externa</h2>
+          <p class="slide-subtitle">Com 91% das ofertas integradas dentro do IFMG (41 de 45), o grande desafio
+            comparativo é entre campi próximos.</p>
+        </div>
+
+        <div class="slide-content-body">
+          <div class="slide-grid" style="grid-template-columns: 1fr 1.2fr; gap: 30px;">
+            <div>
+              <p class="lead" style="margin-bottom: 12px;">Para cursos integrados, a escolha envolve ensino médio,
+                deslocamento e socialização presencial. A comparação ocorre entre campi a <strong>menos de 100
+                  km</strong>:</p>
+              <ul class="notion-list" style="font-size: 13px;">
+                <li><strong>Decisão Territorial:</strong> A proximidade do campus determina a viabilidade diária para o
+                  jovem estudante.</li>
+                <li><strong>Diferenciação Crítica:</strong> A página do curso deve realçar diferenciais de
+                  infraestrutura, projetos locais, bolsas e parcerias locais do respectivo campus.</li>
+              </ul>
+            </div>
+
+            <div class="notion-card theme-blue" style="padding: 15px;">
+              <h3 class="card-title" style="margin-bottom: 10px;">Casos Críticos de Concorrência Interna (&lt; 100 km)
+              </h3>
+              <div style="font-size: 11.5px; display: flex; flex-direction: column; gap: 10px;">
+                <div style="border-bottom: 1px solid var(--notion-hairline); padding-bottom: 6px;">
+                  <strong>Administração:</strong> Arcos-Formiga (30 km), Arcos-Bambuí (62 km), Ouro Branco-Ouro Preto
+                  (31 km) e Ouro Preto-Ponte Nova (79 km).
+                </div>
+                <div style="border-bottom: 1px solid var(--notion-hairline); padding-bottom: 6px;">
+                  <strong>Automação Industrial:</strong> Itabirito-Ouro Preto (48 km) e Betim-Itabirito (85 km).
+                </div>
+                <div style="border-bottom: 1px solid var(--notion-hairline); padding-bottom: 6px;">
+                  <strong>Metalurgia:</strong> Ouro Branco-Ouro Preto (31 km) - concorrência forte por proximidade.
+                </div>
+                <div>
+                  <strong>Informática:</strong> Ibirité-Ouro Branco (85 km).
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: SUBSEQUENTE: EaD E SEMIPRESENCIAL ENTRAN NA COMPARAÇÃO DIRETA -->
+    <section class="slide-card" data-slide="7">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">06 / Subsequente</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Subsequente: EaD e Semipresencial concorrem diretamente</h2>
+          <p class="slide-subtitle">Estudantes buscam certificação prática, encaixe na rotina de trabalho e rápida
+            inserção no mercado.</p>
+        </div>
+
+        <div class="slide-content-body">
+          <div class="slide-grid">
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+              <p class="lead" style="margin-bottom: 5px;">O candidato subsequente trabalha ou busca recolocação rápida,
+                comparando propostas muito distintas:</p>
+
+              <div class="notion-callout theme-blue" style="margin: 0; padding: 10px 12px; font-size: 11.5px;">
+                <strong style="flex: 0 0 35%;">O que os concorrentes privados EaD oferecem para atrair:</strong>
+                <ul style="margin: 0 0 0 15px; padding: 0; line-height: 1.4; flex: 1;">
+                  <li><strong>Modo 100% Virtual:</strong> Eliminação de barreiras geográficas e flexibilidade de
+                    horários.</li>
+                  <li><strong>Certificações Intermediárias:</strong> Conquista de diplomas rápidos antes da conclusão
+                    (ex: Assistente).</li>
+                  <li><strong>Carga Horária Reduzida:</strong> Cursos modulares de menor duração para inserção rápida.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="notion-callout theme-green" style="margin: 0; padding: 10px 12px; font-size: 11.5px;">
+                <strong style="flex: 0 0 35%;">Destaques Editoriais de Defesa do IFMG:</strong>
+                <ul style="margin: 0 0 0 15px; padding: 0; line-height: 1.4; flex: 1;">
+                  <li><strong>Gratuidade e Federal:</strong> Ensino de alta qualidade com custo zero (sem mensalidades
+                    ocultas).</li>
+                  <li><strong>Prática Real em Laboratórios:</strong> Infraestrutura presencial física que o EaD virtual
+                    privado não possui.</li>
+                  <li><strong>Credibilidade do Diploma:</strong> Corpo docente especialista/mestre e chancela de uma
+                    rede federal de peso.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="notion-card theme-blue">
+              <h3 class="card-title">Volume de Ofertas EaD/Semipresenciais Externas</h3>
+
+              <!-- Animação progressiva das barras horizontais -->
+              <div class="results-chart-container">
+                <div class="results-bar-row">
+                  <span class="results-bar-label">CPET</span>
+                  <div class="results-bar-wrapper">
+                    <div class="results-bar bar-green animate-bar" style="--target-width: 100%;"></div>
+                  </div>
+                  <span class="results-bar-metrics">30 ofertas</span>
+                </div>
+                <div class="results-bar-row">
+                  <span class="results-bar-label">Cruzeiro do Sul</span>
+                  <div class="results-bar-wrapper">
+                    <div class="results-bar bar-green animate-bar" style="--target-width: 36%;"></div>
+                  </div>
+                  <span class="results-bar-metrics">11 ofertas</span>
+                </div>
+                <div class="results-bar-row">
+                  <span class="results-bar-label">IFSULDEMINAS</span>
+                  <div class="results-bar-wrapper">
+                    <div class="results-bar bar-green animate-bar" style="--target-width: 23%;"></div>
+                  </div>
+                  <span class="results-bar-metrics">7 ofertas</span>
+                </div>
+                <div class="results-bar-row">
+                  <span class="results-bar-label">CejaPRO</span>
+                  <div class="results-bar-wrapper">
+                    <div class="results-bar bar-green animate-bar" style="--target-width: 20%;"></div>
+                  </div>
+                  <span class="results-bar-metrics">6 ofertas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: CONCOMITANTE: A DÚVIDA É CABER NA VIDA DO ALUNO -->
+    <section class="slide-card" data-slide="8">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">07 / Concomitante</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Concomitante: a dúvida é caber na vida do aluno</h2>
+          <p class="slide-subtitle">A comunicação do curso concomitante deve focar na viabilidade de conciliar duas
+            rotinas escolares.</p>
+        </div>
+
+        <div class="slide-content-body">
+          <div class="slide-grid-3">
+            <div class="grid-col-lead">
+              <h3 class="lead-section-title">Deslocamento ao Campus</h3>
+              <p class="lead-text">
+                O candidato cursa o ensino médio regular em outra instituição e o técnico no IFMG. O deslocamento
+                diário e a conciliação de turnos são os fatores decisivos.
+              </p>
+            </div>
+
+            <div class="notion-card theme-blue">
+              <span class="card-metric">6</span>
+              <h3 class="card-title">Ofertas Concomitantes Mapeadas</h3>
+              <p class="card-desc">
+                Sendo 5 ofertas de campi internos do IFMG e apenas 1 oferta externa mapeada explicitamente na base.
+              </p>
+            </div>
+
+            <div class="notion-card theme-green">
+              <h3 class="card-title">Foco de Solução</h3>
+              <p class="card-desc">
+                A página precisa deixar cristalino: Quem pode fazer? Quais são os turnos e a carga horária presencial? E
+                quais são as alternativas de conciliação?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: O PROBLEMA DAS PÁGINAS: FALTAM RESPOSTAS DE DECISÃO -->
+    <section class="slide-card" data-slide="9">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">08 / Auditoria de Lacunas</div>
+        <div class="slide-header">
+          <h2 class="slide-title">O problema das páginas: faltam respostas de decisão</h2>
+          <p class="slide-subtitle">As páginas atuais falham em responder aos critérios cruciais que os estudantes usam
+            para comparar.</p>
+        </div>
+
+        <div class="slide-content-body">
+          <p class="lead">Heatmap de dados ausentes ou parciais nas páginas oficiais mapeadas:</p>
+
+          <!-- Gráfico Sugerido: Heatmap animado de status -->
+          <div class="heatmap-container">
+            <div class="heatmap-header-row">
+              <div class="heatmap-header">Modalidade</div>
+              <div class="heatmap-header">Bolsas</div>
+              <div class="heatmap-header">Laboratórios</div>
+              <div class="heatmap-header">Pesquisa/Extensão</div>
+              <div class="heatmap-header">Verticalização</div>
+              <div class="heatmap-header">Diferenciais</div>
+            </div>
+            <div class="heatmap-row">
+              <div class="heatmap-cell label-cell">Integrado</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+              <div class="heatmap-cell status-yellow">Parcial</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+            </div>
+            <div class="heatmap-row">
+              <div class="heatmap-cell label-cell">Subsequente</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+              <div class="heatmap-cell status-yellow">Parcial</div>
+            </div>
+            <div class="heatmap-row">
+              <div class="heatmap-cell label-cell">Concomitante</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+              <div class="heatmap-cell status-yellow">Parcial</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+              <div class="heatmap-cell status-red">Ausente</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: METODOLOGIA -->
+    <section class="slide-card" data-slide="10">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">09 / Metodologia</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Metodologia: por que agir com dados parciais</h2>
+          <p class="slide-subtitle">O foco metodológico reside em mapear as dúvidas reais do estudante para nortear o
+            conteúdo editorial.</p>
+        </div>
+
+        <div class="slide-content-body">
+          <p class="lead">Mesmo sem dados operacionais de captação e preço, o roteiro resolve o problema editorial
+            imediato:</p>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 10px;">
+            <div style="border-top: 2px solid var(--color-blue); padding-top: 12px;">
+              <span style="font-size: 11px; font-weight: 700; color: var(--color-blue-hover);">PASSO 01</span>
+              <h4 style="margin: 8px 0; font-size: 14px; color: var(--notion-ink);">Mapear Ofertas</h4>
+              <p style="font-size: 12px; color: var(--notion-slate);">Mapear ofertas e modalidades di interesse na
+                matriz.</p>
+            </div>
+            <div style="border-top: 2px solid var(--color-blue); padding-top: 12px;">
+              <span style="font-size: 11px; font-weight: 700; color: var(--color-blue-hover);">PASSO 02</span>
+              <h4 style="margin: 8px 0; font-size: 14px; color: var(--notion-ink);">Separar Lógicas</h4>
+              <p style="font-size: 12px; color: var(--notion-slate);">Separar a lógica competitiva de acordo com a
+                modalidade.</p>
+            </div>
+            <div style="border-top: 2px solid var(--color-blue); padding-top: 12px;">
+              <span style="font-size: 11px; font-weight: 700; color: var(--color-blue-hover);">PASSO 03</span>
+              <h4 style="margin: 8px 0; font-size: 14px; color: var(--notion-ink);">Concorrência</h4>
+              <p style="font-size: 12px; color: var(--notion-slate);">Identificar concorrência territorial direta,
+                interna e digital.</p>
+            </div>
+            <div style="border-top: 2px solid var(--color-green); padding-top: 12px;">
+              <span style="font-size: 11px; font-weight: 700; color: var(--color-green-hover);">PASSO 04</span>
+              <h4 style="margin: 8px 0; font-size: 14px; color: var(--notion-ink);">Auditar Conteúdo</h4>
+              <p style="font-size: 12px; color: var(--notion-slate);">Avaliar páginas do IFMG com base no roteiro de
+                perguntas.</p>
+            </div>
+            <div style="border-top: 2px solid var(--color-green); padding-top: 12px;">
+              <span style="font-size: 11px; font-weight: 700; color: var(--color-green-hover);">PASSO 05</span>
+              <h4 style="margin: 8px 0; font-size: 14px; color: var(--notion-ink);">Identificar Lacunas</h4>
+              <p style="font-size: 12px; color: var(--notion-slate);">Classificar informações como sustentadas, parciais
+                ou ausentes.</p>
+            </div>
+            <div style="border-top: 2px solid var(--color-green); padding-top: 12px;">
+              <span style="font-size: 11px; font-weight: 700; color: var(--color-green-hover);">PASSO 06</span>
+              <h4 style="margin: 8px 0; font-size: 14px; color: var(--notion-ink);">Página-Modelo</h4>
+              <p style="font-size: 12px; color: var(--notion-slate);">Transformar os requisitos estruturais em novos
+                modelos editoriais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: COMO A PÁGINA FICARIA NA PRÁTICA -->
+    <section class="slide-card" data-slide="11">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">10 / Página na prática</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Como a página ficaria na prática</h2>
+          <p class="slide-subtitle">Exemplo real: Técnico em Edificações Integrado ao Ensino Médio — IFMG Governador
+            Valadares.</p>
+        </div>
+
+        <div class="slide-content-body">
+          <div class="slide-grid">
+            <div>
+              <p class="lead" style="margin-bottom: 10px;">Estrutura do conteúdo modelado e sua disposição na tela:</p>
+
+              <!-- Mockup de wireframe visual do layout -->
+              <div class="mockup-frame">
+                <div class="mockup-header-strip">IFMG Governador Valadares • Edificações Presencial Integrado</div>
+                <div class="mockup-body">
+                  <div class="mockup-main-col">
+                    <div class="mockup-block"><strong>O que é o curso</strong>Ensino médio + técnico integrado
+                      presencial.</div>
+                    <div class="mockup-block"><strong>Estrutura de prática</strong>Laboratórios de Química, Desenho e
+                      Maker Spaces.</div>
+                    <div class="mockup-block"><strong>Projetos e Experiência</strong>Grupos de pesquisa acadêmica,
+                      visitas técnicas e bolsas.</div>
+                  </div>
+                  <div class="mockup-side-col">
+                    <div class="mockup-block callout-style">
+                      <h4>Diferenciais</h4>
+                      <ul>
+                        <li>✔ Gratuito e Federal</li>
+                        <li>✔ Aulas Práticas</li>
+                        <li>✔ Vivência Campus</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="notion-card theme-green" style="font-size: 12.5px;">
+              <h3 class="card-title">O que torna a oferta diferente (Diferenciais)</h3>
+              <ul
+                style="list-style: none; display: flex; flex-direction: column; gap: 14px; padding: 0; margin-top: 10px;">
+                <li style="line-height: 1.5; color: var(--notion-charcoal);">
+                  <strong>• Integração Curricular Única:</strong> Percurso integrado presencial contra ofertas EaD
+                  isoladas (CPET, Cruzeiro do Sul, etc.).
+                </li>
+                <li style="line-height: 1.5; color: var(--notion-charcoal);">
+                  <strong>• Infraestrutura e Laboratórios:</strong> Espaços físicos de prática, em contraste com a
+                  conveniência exclusivamente virtual.
+                </li>
+                <li style="line-height: 1.5; color: var(--notion-charcoal);">
+                  <strong>• Gratuito e Federal:</strong> Selo de qualidade e credibilidade de instituição pública sem
+                  mensalidades.
+                </li>
+                <li style="line-height: 1.5; color: var(--notion-charcoal);">
+                  <strong>• Projetos e Vivência de Campus:</strong> Pesquisa acadêmica, extensão e bolsas que inexistem
+                  em ofertas privadas.
+                </li>
+                <li style="line-height: 1.5; color: var(--notion-charcoal);">
+                  <strong>• Experiência além da Sala:</strong> Projetos, pesquisa, extensão e visitas técnicas como
+                  evidência de vivência prática.
+                </li>
+                <li style="line-height: 1.5; color: var(--notion-charcoal);">
+                  <strong>• Campus e Território:</strong> Diferencial competitivo relevante quando a comparação for com
+                  outros integrados públicos (ex: IF Sudeste MG).
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12: PROPOSTA DE ESTRUTURA MÍNIMA DA PÁGINA DE CURSO -->
+    <section class="slide-card" data-slide="12">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">11 / Estrutura Mínima</div>
+        <div class="slide-header">
+          <h2 class="slide-title">Proposta de estrutura mínima da página de curso</h2>
+          <p class="slide-subtitle">Toda página de curso no portal do IFMG deve responder a este fluxo básico de
+            decisão.</p>
+        </div>
+
+        <div class="slide-content-body">
+          <div class="slide-grid">
+            <!-- Fluxo do wireframe editorial do curso -->
+            <div class="wireframe-flow">
+              <div class="wireframe-step">1. O que é o curso <span class="badge-tag blue">Decisão</span></div>
+              <div class="wireframe-step">2. Para quem é <span class="badge-tag green">Rotina</span></div>
+              <div class="wireframe-step">3. Onde trabalha <span class="badge-tag blue">Carreira</span></div>
+              <div class="wireframe-step">4. Como funciona <span class="badge-tag green">Como Chegar</span></div>
+              <div class="wireframe-step">5. Estrutura e Prática <span class="badge-tag blue">Laboratórios</span></div>
+              <div class="wireframe-step">6. Diferenciais do Campus <span class="badge-tag green">Território</span>
+              </div>
+            </div>
+
+            <div class="notion-card theme-blue" style="margin-top: 0; font-size: 12.5px;">
+              <h3 class="card-title" style="margin-top: 0; font-size: 14px; font-weight: 700; color: var(--color-blue-tint-text); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Perguntas que a Página deve Responder</h3>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 0; margin: 0;">
+                <li style="line-height: 1.4; color: var(--notion-charcoal);">
+                  <strong>1. O que é o curso:</strong> O que faz o profissional e quais os diferenciais da formação?
+                </li>
+                <li style="line-height: 1.4; color: var(--notion-charcoal);">
+                  <strong>2. Para quem é:</strong> Qual é o perfil do aluno ideal e a sua rotina escolar?
+                </li>
+                <li style="line-height: 1.4; color: var(--notion-charcoal);">
+                  <strong>3. Onde trabalha:</strong> Quais são os setores de atuação e empresas que contratam?
+                </li>
+                <li style="line-height: 1.4; color: var(--notion-charcoal);">
+                  <strong>4. Como funciona:</strong> Qual a duração, turnos, como chegar no campus e se há opção concomitante/subsequente?
+                </li>
+                <li style="line-height: 1.4; color: var(--notion-charcoal);">
+                  <strong>5. Estrutura e Prática:</strong> Tem laboratórios, FabLab, bolsas, empresa júnior ou verticalização?
+                  <ul style="margin: 4px 0 4px 15px; padding: 0; list-style: circle; font-size: 11.5px; color: var(--notion-slate); display: flex; flex-direction: column; gap: 4px;">
+                    <li><strong>Projetos de Ensino:</strong> Existem monitorias, nivelamento ou projetos didáticos?</li>
+                    <li><strong>Projetos de Pesquisa:</strong> Há bolsas de iniciação científica e laboratórios de investigação?</li>
+                    <li><strong>Projetos de Extensão:</strong> Existem parcerias externas, visitas e projetos com a comunidade?</li>
+                  </ul>
+                </li>
+                <li style="line-height: 1.4; color: var(--notion-charcoal);">
+                  <strong>6. Diferenciais do Campus:</strong> Como o campus se destaca da concorrência local/EaD ou por prêmios?
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 13: FECHAMENTO -->
+    <section class="slide-card slide-cover" data-slide="13">
+      <div class="slide-inner-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <div class="cover-badge"
+          style="background: rgba(5,150,105,0.15); color: var(--color-green-tint-text); margin-bottom: 25px;">Conclusão
+        </div>
+        <p
+          style="font-size: 18px; line-height: 1.6; color: var(--notion-charcoal); margin-bottom: 30px; font-weight: 500;">
+          Uma estrutura comum reduz o esforço do candidato, realça o posicionamento público federal e apoia a atração de
+          alunos baseando-se em diferenciais reais de infraestrutura e vivência de campus.
+        </p>
+
+        <div style="margin: 35px 0; display: flex; flex-direction: column; gap: 12px; align-items: center;">
+          <span
+            style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--notion-slate); margin-bottom: 5px;">Download
+            das Análises Completas (PDF)</span>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;">
+            <a href="05 Analise dos cursos tecnicos integrados.pdf" download
+              style="font-size: 12px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 10px 18px; font-weight: 600; border-radius: 6px; background: rgba(5, 150, 105, 0.2); color: #34d399; border: 1px solid rgba(5, 150, 105, 0.4); transition: all 0.2s ease;">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+              </svg>
+              Técnicos Integrados
+            </a>
+            <a href="06 Analise dos cursos tecnicos subsequentes.pdf" download
+              style="font-size: 12px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 10px 18px; font-weight: 600; border-radius: 6px; background: rgba(37, 99, 235, 0.2); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.4); transition: all 0.2s ease;">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+              </svg>
+              Técnicos Subsequentes
+            </a>
+            <a href="07 Analise dos cursos tecnicos concomitantes.pdf" download
+              style="font-size: 12px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 10px 18px; font-weight: 600; border-radius: 6px; background: rgba(217, 119, 6, 0.2); color: #fbbf24; border: 1px solid rgba(217, 119, 6, 0.4); transition: all 0.2s ease;">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+              </svg>
+              Técnicos Concomitantes
+            </a>
+          </div>
+        </div>
+
+        <div style="font-size: 12px; color: var(--notion-slate); margin-top: 15px;">
+          Obrigado! • Benchmark & Redesenho de Páginas de Cursos
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating macOS-style Control Dock -->
+  <div class="floating-dock">
+    <button class="dock-btn" id="dock-prev-btn" disabled>
+      <!-- Left Chevron Icon SVG -->
+      <svg viewBox="0 0 24 24">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+      </svg>
+    </button>
+
+    <div class="dock-indicator">
+      <button class="dock-trigger" id="dock-trigger-btn">
+        <span class="current-num" id="dock-current-num">00</span>
+        <span class="total-num" id="dock-total-num">/ 12</span>
+        <span class="arrow-indicator">▲</span>
+      </button>
+    </div>
+
+    <button class="dock-btn" id="dock-next-btn">
+      <!-- Right Chevron Icon SVG -->
+      <svg viewBox="0 0 24 24">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+      </svg>
+    </button>
+
+    <!-- Slide selection drawer inside the dock -->
+    <div class="slides-dropdown" id="dock-dropdown-menu">
+      <div class="dropdown-item active" data-target="0">
+        <span class="item-title">Capa</span>
+        <span class="item-num">00</span>
+      </div>
+      <div class="dropdown-item" data-target="1">
+        <span class="item-title">Perguntas centrais</span>
+        <span class="item-num">01</span>
+      </div>
+      <div class="dropdown-item" data-target="2">
+        <span class="item-title">Páginas orientadas</span>
+        <span class="item-num">02</span>
+      </div>
+      <div class="dropdown-item" data-target="3">
+        <span class="item-title">Cenário competitivo</span>
+        <span class="item-num">03</span>
+      </div>
+      <div class="dropdown-item" data-target="4">
+        <span class="item-title">Recorte Integrado</span>
+        <span class="item-num">04</span>
+      </div>
+      <div class="dropdown-item" data-target="5">
+        <span class="item-title">Concorrência Interna</span>
+        <span class="item-num">05</span>
+      </div>
+      <div class="dropdown-item" data-target="6">
+        <span class="item-title">Recorte Subsequente</span>
+        <span class="item-num">06</span>
+      </div>
+      <div class="dropdown-item" data-target="7">
+        <span class="item-title">Recorte Concomitante</span>
+        <span class="item-num">07</span>
+      </div>
+      <div class="dropdown-item" data-target="8">
+        <span class="item-title">Lacunas críticas</span>
+        <span class="item-num">08</span>
+      </div>
+      <div class="dropdown-item" data-target="9">
+        <span class="item-title">Metodologia</span>
+        <span class="item-num">09</span>
+      </div>
+      <div class="dropdown-item" data-target="10">
+        <span class="item-title">Página na prática</span>
+        <span class="item-num">10</span>
+      </div>
+      <div class="dropdown-item" data-target="11">
+        <span class="item-title">Estrutura mínima</span>
+        <span class="item-num">11</span>
+      </div>
+      <div class="dropdown-item" data-target="12">
+        <span class="item-title">Fechamento</span>
+        <span class="item-num">12</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Find all strong tags ending with a colon and apply styling
+      document.querySelectorAll('strong').forEach(el => {
+        const text = el.textContent.trim();
+        if (text.endsWith(':')) {
+          el.classList.add('intro-term');
+        }
+      });
+
+      const dockCurrentNum = document.getElementById('dock-current-num');
+      if (dockCurrentNum) {
+        // Prevent infinite observer loop by pausing/resuming
+        const observer = new MutationObserver((mutations) => {
+          observer.disconnect();
+          const currentNum = parseInt(dockCurrentNum.textContent, 10);
+          if (currentNum === 1) {
+            dockCurrentNum.textContent = '00';
+          } else {
+            dockCurrentNum.textContent = String(currentNum - 1).padStart(2, '0');
+          }
+          observer.observe(dockCurrentNum, { childList: true, characterData: true, subtree: true });
+        });
+        observer.observe(dockCurrentNum, { childList: true, characterData: true, subtree: true });
+        // Initial setup trigger
+        if (dockCurrentNum.textContent === '01') {
+          dockCurrentNum.textContent = '00';
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
