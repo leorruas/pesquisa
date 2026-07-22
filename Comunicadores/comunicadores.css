@@ -1,0 +1,31 @@
+.cover-lead { max-width: 640px; color: var(--notion-slate); font-size: 18px; line-height: 1.5; margin: -12px 0 34px; }
+.statement { max-width: 860px; color: var(--notion-ink); font-size: 34px; font-weight: 500; letter-spacing: -1px; line-height: 1.25; }
+.split-statement { display: grid; gap: 28px; }
+.progress-numbers { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.progress-numbers .chart-value { font-size: 64px; }
+.signal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.menu-columns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.signal-grid > div { border-top: 2px solid var(--notion-hairline-strong); padding-top: 16px; }
+.signal-number { color: var(--color-blue-hover); display: block; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 16px; }
+.signal-grid h3, .menu-columns h3 { color: var(--notion-ink); font-size: 18px; line-height: 1.25; margin-bottom: 10px; }
+.signal-grid p, .menu-columns p { color: var(--notion-slate); font-size: 13px; line-height: 1.6; }
+.menu-map { border-top: 2px solid var(--color-blue); padding-top: 18px; }
+.menu-root { color: var(--color-blue-hover); font-size: 12px; font-weight: 800; letter-spacing: 1.6px; margin-bottom: 24px; }
+.menu-columns > div { border-left: 1px solid var(--notion-hairline-strong); padding-left: 18px; }
+.validation-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+.validation-list > div { align-items: baseline; border-top: 1px solid var(--notion-hairline); display: grid; gap: 16px; grid-template-columns: 32px 1fr; padding: 18px 0; }
+.validation-list span { color: var(--color-green-hover); font-size: 12px; font-weight: 800; letter-spacing: 1px; }
+.validation-list p { color: var(--notion-charcoal); font-size: 17px; line-height: 1.35; }
+.roadmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.roadmap > div { border-top: 2px solid var(--notion-hairline-strong); display: grid; gap: 12px; padding-top: 14px; }
+.roadmap span { color: var(--color-blue-hover); font-size: 11px; font-weight: 800; letter-spacing: 1.4px; }
+.roadmap strong { color: var(--notion-charcoal); font-size: 16px; line-height: 1.35; }
+.course-flow { align-items: center; display: grid; gap: 16px; grid-template-columns: 1fr auto 1fr auto 1.5fr; }
+.course-entry { border-top: 2px solid var(--color-blue); display: grid; gap: 12px; padding-top: 14px; }
+.course-entry span, .course-detail span { color: var(--color-blue-hover); font-size: 11px; font-weight: 800; letter-spacing: 1.2px; }
+.course-entry strong { color: var(--notion-ink); font-size: 20px; line-height: 1.25; }
+.course-arrow { color: var(--notion-slate); font-size: 30px; }
+.course-detail { display: flex; flex-wrap: wrap; gap: 8px; }
+.course-detail span { border: 1px solid var(--notion-hairline-strong); color: var(--notion-charcoal); padding: 7px 9px; }
+.portal-link { color: var(--color-green-tint-text); font-weight: 700; }
+@media (max-width: 768px) { .statement { font-size: 26px; } .signal-grid, .menu-columns, .roadmap, .progress-numbers { grid-template-columns: 1fr 1fr; } .validation-list { grid-template-columns: 1fr; } .course-flow { align-items: start; grid-template-columns: 1fr; } .course-arrow { display: none; } }
