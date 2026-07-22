@@ -28,5 +28,9 @@
 .course-detail { display: flex; flex-wrap: wrap; gap: 8px; }
 .course-detail span { border: 1px solid var(--notion-hairline-strong); color: var(--notion-charcoal); padding: 7px 9px; }
 .portal-link { color: var(--color-green-tint-text); font-weight: 700; }
-.slide-card[data-slide="9"] .notion-callout { margin-top: 14px; }
-@media (max-width: 768px) { .statement { font-size: 26px; } .signal-grid, .menu-columns, .roadmap, .progress-numbers { grid-template-columns: 1fr 1fr; } .validation-list { grid-template-columns: 1fr; } .course-flow { align-items: start; grid-template-columns: 1fr; } .course-arrow { display: none; } }
+.slide-card[data-slide="10"] .notion-callout { margin-top: 14px; }
+.criteria-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.criteria-grid > div { border-top: 2px solid var(--notion-hairline-strong); display: grid; gap: 14px; padding-top: 16px; }
+.criteria-grid span { color: var(--color-blue-hover); font-size: 12px; font-weight: 800; letter-spacing: 1.2px; }
+.criteria-grid strong { color: var(--notion-ink); font-size: 20px; line-height: 1.25; }
+@media (max-width: 768px) { .statement { font-size: 26px; } .signal-grid, .menu-columns, .roadmap, .progress-numbers, .criteria-grid { grid-template-columns: 1fr 1fr; } .validation-list { grid-template-columns: 1fr; } .course-flow { align-items: start; grid-template-columns: 1fr; } .course-arrow { display: none; } }
