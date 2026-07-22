@@ -28,4 +28,5 @@
 .course-detail { display: flex; flex-wrap: wrap; gap: 8px; }
 .course-detail span { border: 1px solid var(--notion-hairline-strong); color: var(--notion-charcoal); padding: 7px 9px; }
 .portal-link { color: var(--color-green-tint-text); font-weight: 700; }
+.slide-card[data-slide="9"] .notion-callout { margin-top: 14px; }
 @media (max-width: 768px) { .statement { font-size: 26px; } .signal-grid, .menu-columns, .roadmap, .progress-numbers { grid-template-columns: 1fr 1fr; } .validation-list { grid-template-columns: 1fr; } .course-flow { align-items: start; grid-template-columns: 1fr; } .course-arrow { display: none; } }
