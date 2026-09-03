@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ouro Branco — pontos para a reunião</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="ourobranco.css">
+</head>
+<body>
+  <div class="progress-container"><div class="progress-bar" id="progress-bar"></div></div>
+  <main class="presentation-viewport" id="workspace-container">
+    <section class="slide-card slide-cover active" data-slide="1">
+      <div class="slide-inner-content">
+        <div class="cover-badge">CAMPUS OURO BRANCO · REUNIÃO DE REFINAMENTO</div>
+        <h1 class="cover-title">O QUE AJUSTAR<br>ANTES DO PRÓXIMO CICLO</h1>
+        <p class="cover-lead">Uma conversa para transformar os testes em decisões de arquitetura, conteúdo e manutenção.</p>
+        <div><button class="btn btn-primary" id="start-btn">Começar</button></div>
+        <div class="cover-meta"><div class="cover-meta-item">SETEMBRO DE 2026</div><div class="cover-meta-item">VERSÃO PARA DISCUSSÃO</div></div>
+      </div>
+    </section>
+    <section class="slide-card" data-slide="2">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">01 / ponto de partida</div>
+        <div class="slide-header"><h2 class="slide-title">A estrutura geral foi entendida. Os caminhos internos precisam ficar mais evidentes.</h2></div>
+        <div class="slide-content-body split-statement">
+          <p class="statement">Estudantes reconheceram <strong>Vida acadêmica</strong> como a área da rotina estudantil. O esforço aparece quando procuram uma ação específica.</p>
+          <div class="notion-callout theme-blue"><div class="callout-text"><strong>O foco da reunião:</strong> escolher quais acessos devem ser separados, quais precisam de links cruzados e quem mantém cada informação.</div></div>
+        </div>
+      </div>
+    </section>
+    <section class="slide-card" data-slide="3">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">02 / evidência da rodada</div>
+        <div class="slide-header"><h2 class="slide-title">Calendário e monitoria são os dois primeiros ajustes de encontrabilidade.</h2></div>
+        <div class="slide-content-body">
+          <div class="evidence-grid">
+            <div class="evidence-item critical"><span class="metric">3/5</span><strong>concluíram calendário</strong><p>Dificuldade média: 4,2/7</p></div>
+            <div class="evidence-item critical"><span class="metric">2/5</span><strong>concluíram monitoria</strong><p>Dificuldade média: 4,2/7</p></div>
+            <div class="evidence-item positive"><span class="metric">4/4</span><strong>concluíram secretaria</strong><p>Quando a tarefa foi aplicada</p></div>
+          </div>
+          <div class="notion-callout theme-green"><div class="callout-text">A rodada com cinco estudantes é adequada para revelar fricções recorrentes e iterar. Ela não mede uma taxa para toda a população estudantil.</div></div>
+        </div>
+      </div>
+    </section>
+    <section class="slide-card" data-slide="4">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">03 / decisão de arquitetura</div>
+        <div class="slide-header"><h2 class="slide-title">Não tratar “horários e calendário” como uma única porta.</h2><p class="slide-subtitle">São três tarefas diferentes, hoje agrupadas de um jeito que esconde parte delas.</p></div>
+        <div class="slide-content-body">
+          <div class="three-paths">
+            <div><span>01</span><h3>Calendário acadêmico</h3><p>Datas de início, término, matrícula, avaliações e prazos.</p></div>
+            <div><span>02</span><h3>Horários de aula</h3><p>Turmas, turnos, salas e atualizações de rotina.</p></div>
+            <div><span>03</span><h3>Monitoria</h3><p>Apoio em disciplinas, horários e como participar.</p></div>
+          </div>
+          <div class="notion-callout theme-blue"><div class="callout-text"><strong>Proposta:</strong> três entradas reconhecíveis, mesmo que conduzam a uma mesma página com seções e âncoras próprias.</div></div>
+        </div>
+      </div>
+    </section>
+    <section class="slide-card" data-slide="5">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">04 / pontes entre caminhos</div>
+        <div class="slide-header"><h2 class="slide-title">Curso e Vida acadêmica precisam se complementar, não competir.</h2></div>
+        <div class="slide-content-body">
+          <div class="bridge-flow">
+            <div class="flow-stage"><span>CURSOS</span><strong>Descoberta da formação</strong><p>Oferta, experiências, diferenciais e contexto.</p></div><div class="flow-arrow">→</div>
+            <div class="flow-stage"><span>VIDA ACADÊMICA</span><strong>Rotina de quem já estuda</strong><p>Secretaria, documentos, estágio e serviços.</p></div>
+          </div>
+          <div class="question-list">
+            <p><span>?</span>Em que ponto da página do curso a pessoa deve encontrar documentos e estágio?</p>
+            <p><span>?</span>Quais links evitam que secretaria e documentos sejam procurados em áreas concorrentes?</p>
+            <p><span>?</span>O que deve ter página própria e o que deve apenas direcionar ao SUAP?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slide-card" data-slide="6">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">05 / servidores e sistemas</div>
+        <div class="slide-header"><h2 class="slide-title">Suporte de TI precisa ser apresentado como tarefa, não como sigla.</h2></div>
+        <div class="slide-content-body split-statement">
+          <p class="statement">O caminho pelo SUAP funcionou para <code>S-OB-01</code>, mas <code>S-OB-02</code> não associou troca de senha a abrir chamado.</p>
+          <div class="action-words"><span>SUPORTE DE TI</span><span>ABRIR CHAMADO</span><span>TROCAR SENHA</span></div>
+          <div class="notion-callout theme-green"><div class="callout-text"><strong>Decisão a validar:</strong> manter esses acessos explícitos em Vida funcional e também em um caminho de estudantes, sempre levando ao processo responsável.</div></div>
+        </div>
+      </div>
+    </section>
+    <section class="slide-card" data-slide="7">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">06 / o que precisamos mapear juntas</div>
+        <div class="slide-header"><h2 class="slide-title">A arquitetura só se sustenta quando o processo e a responsabilidade estão claros.</h2></div>
+        <div class="slide-content-body">
+          <div class="mapping-list">
+            <div><span>01</span><p><strong>Secretaria:</strong> o que é orientação no portal, formulário local ou funcionalidade do SUAP?</p></div>
+            <div><span>02</span><p><strong>Calendário, horários e monitoria:</strong> qual é a fonte oficial e quem atualiza?</p></div>
+            <div><span>03</span><p><strong>Documentos e estágio:</strong> o que precisa de organização própria e o que pode ser link contextual?</p></div>
+            <div><span>04</span><p><strong>Contatos:</strong> quais canais devem estar visíveis para estudantes, comunidade e setores?</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slide-card" data-slide="8">
+      <div class="slide-inner-content">
+        <div class="slide-section-tag">07 / próximo ciclo</div>
+        <div class="slide-header"><h2 class="slide-title">Ajustar, testar de novo e só então ampliar.</h2></div>
+        <div class="slide-content-body">
+          <div class="cycle">
+            <div><span>AGORA</span><strong>Definir os ajustes prioritários com Lorena</strong></div>
+            <div><span>SEXTA-FEIRA</span><strong>Realizar a sessão <code>S-OB-03</code></strong></div>
+            <div><span>DEPOIS</span><strong>Atualizar o protótipo e retestar tarefas críticas</strong></div>
+          </div>
+          <div class="notion-callout theme-blue"><div class="callout-text"><strong>Saída esperada desta conversa:</strong> uma lista curta de decisões, fontes de informação e responsáveis por validação — não apenas uma lista de novas páginas.</div></div>
+          <a class="report-download" href="02%20-%20relat%C3%B3rio%20testes%20Ouro%20Branco.pdf" download>Baixar relatório completo em PDF <span>↓</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <nav class="floating-dock" aria-label="Navegação da apresentação">
+    <button class="dock-btn" id="dock-prev-btn" aria-label="Slide anterior">←</button>
+    <div class="dock-indicator"><button class="dock-trigger" id="dock-trigger-btn" aria-label="Slide atual"><span class="current-num" id="dock-current-num">01</span><span class="total-num">/ 08</span></button></div>
+    <button class="dock-btn" id="dock-next-btn" aria-label="Próximo slide">→</button>
+  </nav>
+  <script src="../script.js"></script>
+</body>
+</html>
