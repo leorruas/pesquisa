@@ -25,7 +25,7 @@ body { background:var(--bg); color:var(--text); font-family:'Archivo',sans-serif
 .statement { color:var(--text); font-size:clamp(29px,3.4vw,48px); font-weight:500; letter-spacing:-.05em; line-height:1.05; margin:0; max-width:870px; }
 .statement strong { color:var(--accent); font-family:'Archivo',sans-serif; font-size:1em; }
 .statement code, code { color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78em; }
-.notion-callout { border-left:2px solid var(--accent); color:var(--muted); font-size:19px; line-height:1.45; margin-top:34px; max-width:790px; padding:4px 0 4px 20px; }
+.notion-callout { border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:10px; color:var(--muted); font-size:19px; line-height:1.45; margin-top:34px; max-width:790px; padding:12px 16px; }
 .notion-callout strong { color:var(--text); }
 .evidence-grid,.three-paths,.cycle { display:grid; gap:18px; grid-template-columns:repeat(3,1fr); }
 .evidence-item,.three-paths>div,.cycle>div { background:var(--surface); border:1px solid var(--line); min-height:210px; padding:20px; }
@@ -59,7 +59,7 @@ body { background:var(--bg); color:var(--text); font-family:'Archivo',sans-serif
 .theme-blue strong, .theme-green strong { color:var(--text) !important; }
 .slide-subtitle, .evidence-item p, .three-paths p, .flow-stage p { color:var(--muted); }
 .report-download span { font-size:20px; }
-.floating-dock { align-items:center; background:var(--surface-raised); border:1px solid var(--line); bottom:24px; display:flex; left:50%; padding:4px; position:fixed; transform:translateX(-50%); z-index:5; }
+.floating-dock { align-items:center; background:var(--surface-raised); border:1px solid var(--line); border-radius:12px; bottom:24px; display:flex; left:50%; padding:4px; position:fixed; transform:translateX(-50%); z-index:5; }
 .dock-btn,.dock-trigger { background:transparent; border:0; color:var(--accent); cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:14px; min-height:34px; padding:0 12px; }
 .dock-btn,.dock-trigger,.dock-indicator,.total-num { color:var(--accent) !important; }
 .current-num { color:var(--accent) !important; }
