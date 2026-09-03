@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap');
 
-:root { --accent:#78c981; --accent-hover:#a6e0ac; --accent-soft:rgba(120,201,129,.14); --bg:#050505; --surface:#111; --surface-raised:#1c1c1e; --text:#f5f5f7; --muted:#a1a1a6; --line:rgba(120,201,129,.32); }
+:root { --accent:#216b35; --accent-hover:#174b26; --accent-soft:rgba(33,107,53,.10); --bg:#f4f8f2; --surface:#fff; --surface-raised:#e9f2e8; --text:#142419; --muted:#536258; --line:rgba(33,107,53,.28); }
 * { box-sizing:border-box; }
 body { background:var(--bg); color:var(--text); font-family:'Archivo',sans-serif; height:100vh; margin:0; overflow:hidden; }
 .progress-container { background:rgba(120,201,129,.14); height:3px; left:0; position:fixed; top:0; width:100%; z-index:5; }
