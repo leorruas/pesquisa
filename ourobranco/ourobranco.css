@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap');
 
-:root { --accent:#216b35; --accent-hover:#174b26; --accent-soft:rgba(33,107,53,.10); --bg:#f4f8f2; --surface:#fff; --surface-raised:#e9f2e8; --text:#142419; --muted:#536258; --line:rgba(33,107,53,.28); }
+:root { --accent:#216b35; --accent-hover:#174b26; --accent-soft:rgba(33,107,53,.10); --bg:#f7faf6; --surface:#fff; --surface-raised:#e9f2e8; --text:#142419; --muted:#3f5145; --line:rgba(33,107,53,.32); }
 * { box-sizing:border-box; }
 body { background:var(--bg); color:var(--text); font-family:'Archivo',sans-serif; height:100vh; margin:0; overflow:hidden; }
 .progress-container { background:rgba(120,201,129,.14); height:3px; left:0; position:fixed; top:0; width:100%; z-index:5; }
@@ -50,6 +50,12 @@ body { background:var(--bg); color:var(--text); font-family:'Archivo',sans-serif
 .cycle strong { display:block; font-size:25px; letter-spacing:-.045em; line-height:1.03; margin-top:34px; }
 .report-download { border-bottom:1px solid var(--line); color:var(--accent); display:flex; font-family:'IBM Plex Mono',monospace; font-size:13px; justify-content:space-between; margin-top:28px; padding:14px 0; text-decoration:none; text-transform:uppercase; }
 .report-download:hover { color:var(--accent-hover); }
+
+/* Neutraliza temas herdados e mantém a paleta do Guia do Portal. */
+.theme-blue, .theme-green { background:var(--accent-soft) !important; border-color:var(--accent) !important; color:var(--text) !important; }
+.theme-blue .callout-text, .theme-green .callout-text { color:var(--text) !important; }
+.theme-blue strong, .theme-green strong { color:var(--text) !important; }
+.slide-subtitle, .evidence-item p, .three-paths p, .flow-stage p { color:var(--muted); }
 .report-download span { font-size:20px; }
 .floating-dock { align-items:center; background:var(--surface-raised); border:1px solid var(--line); bottom:24px; display:flex; left:50%; padding:4px; position:fixed; transform:translateX(-50%); z-index:5; }
 .dock-btn,.dock-trigger { background:transparent; border:0; color:var(--accent); cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:14px; min-height:34px; padding:0 12px; }
