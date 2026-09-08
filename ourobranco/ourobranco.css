@@ -74,3 +74,20 @@ blockquote cite { color:var(--muted); display:block; font:600 11px 'IBM Plex Mon
 .dock-indicator { border-left:1px solid var(--line); border-right:1px solid var(--line); }
 .total-num { color:var(--muted); margin-left:5px; }
 @media (max-width:760px) { .slide-card{padding:72px 24px 110px}.evidence-grid,.three-paths,.cycle,.mapping-list{grid-template-columns:1fr}.bridge-flow{grid-template-columns:1fr}.flow-arrow{display:none}.cover-meta{gap:14px;margin-top:50px}.slide-title{font-size:40px} }
+
+/* Handoff de setembro: listas editoriais e conteúdo em telas menores. */
+.handoff-list { display:grid; gap:16px; }
+.handoff-list>div { border-top:1px solid var(--line); padding-top:13px; display:grid; grid-template-columns:30% 1fr; gap:24px; }
+.handoff-list strong { font-size:21px; line-height:1.2; color:var(--text); }
+.handoff-list p,.handoff-intro { color:var(--muted); font-size:20px; line-height:1.35; margin:0; }
+.slide-title { line-height:1.02; letter-spacing:-.045em; }
+.slide-card.active { align-items:safe center; }
+.slide-inner-content { padding-bottom:8px; }
+@media(max-width:760px){ .slide-card.active{place-items:start center}.handoff-list>div{grid-template-columns:1fr;gap:7px}.quote-grid{grid-template-columns:1fr}.cover-title{font-size:clamp(48px,12vw,80px)}.cover-meta{flex-wrap:wrap}.slide-title{font-size:34px}.handoff-list p{font-size:18px} }
+@media(max-width:760px){
+ body{height:100dvh}
+ .presentation-viewport{height:calc(100dvh - 80px)}
+ .slide-card{padding:36px 24px}
+ .floating-dock{bottom:12px}
+ .dock-trigger{display:flex;align-items:center;white-space:nowrap}
+}
