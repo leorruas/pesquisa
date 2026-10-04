@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <title>Apuração 2026 MG</title>
+  <style>
+    :root{color-scheme:light;--bg:#f5f5f2;--paper:#fff;--ink:#121212;--muted:#6b6b66;--line:#deded8;--ok:#176b3a;--error:#a22}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+    main{width:min(860px,100%);margin:auto;padding:28px 18px 60px}
+    header{padding:12px 0 28px;border-bottom:1px solid var(--line);margin-bottom:18px}
+    h1{font-size:clamp(28px,5vw,46px);line-height:1;letter-spacing:-.04em;margin:0 0 10px}
+    header p,.meta{color:var(--muted);font-size:14px;line-height:1.45;margin:0}.statusline{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}.dot{width:8px;height:8px;border-radius:50%;background:#999}.dot.live{background:var(--ok)}
+    nav{display:flex;gap:8px;overflow:auto;padding:0 0 14px;scrollbar-width:none} nav::-webkit-scrollbar{display:none} nav a{white-space:nowrap;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:13px;background:var(--paper)}
+    section{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin:0 0 14px;overflow:hidden;scroll-margin-top:12px}
+    .section-head{padding:18px 18px 13px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:18px;align-items:flex-end}.section-head h2{font-size:21px;letter-spacing:-.025em;margin:0}.section-head .pct{font-size:18px;font-weight:700;white-space:nowrap}.section-sub{font-size:12px;color:var(--muted);font-weight:500;margin-top:3px}
+    .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line);align-items:center}.row:last-child{border-bottom:0}.name{font-weight:680;overflow:hidden;text-overflow:ellipsis}.number{color:var(--muted);font-weight:500;margin-right:6px}.right{text-align:right}.votes{font-variant-numeric:tabular-nums;font-weight:650}.share{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}.badge{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;border:1px solid #b9d6c5;color:var(--ok);border-radius:999px;padding:2px 6px;margin-left:7px;vertical-align:2px}
+    .loading,.error{padding:18px;color:var(--muted);font-size:14px}.error{color:var(--error)}.more{width:100%;border:0;border-top:1px solid var(--line);background:#fafaf7;padding:12px;font:inherit;font-size:13px;cursor:pointer;color:var(--ink)}
+    footer{padding:18px 2px;color:var(--muted);font-size:12px;line-height:1.5} footer a{color:inherit}
+    @media(max-width:520px){main{padding:20px 12px 44px}.section-head,.row{padding-left:14px;padding-right:14px}.votes{font-size:14px}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Apuração 2026 MG</h1>
+    <p>Presidente no Brasil e resultados de Minas Gerais. Dados oficiais do Tribunal Superior Eleitoral.</p>
+    <div class="statusline"><span class="dot" id="dot"></span><span class="meta" id="global-status">Carregando resultados…</span></div>
+  </header>
+
+  <nav aria-label="Cargos">
+    <a href="#presidente">Presidente</a><a href="#governador">Governador</a><a href="#senador">Senador</a><a href="#federal">Dep. federal</a><a href="#estadual">Dep. estadual</a>
+  </nav>
+
+  <div id="app"></div>
+
+  <footer>
+    Atualização automática a cada 30 segundos. Fonte: <a href="https://resultados.tse.jus.br" target="_blank" rel="noreferrer">TSE</a>. Página independente, sem vínculo com a Justiça Eleitoral.
+  </footer>
+</main>
+<script>
+const BASE='https://resultados.tse.jus.br/oficial/ele2026';
+const races=[
+  {id:'presidente', title:'Presidente', scope:'Brasil', url:`${BASE}/6257/dados/br/br-c0001-e006257-u.json`, limit:20},
+  {id:'governador', title:'Governador', scope:'Minas Gerais', url:`${BASE}/6259/dados/mg/mg-c0003-e006259-u.json`, limit:20},
+  {id:'senador', title:'Senador', scope:'Minas Gerais · 2 vagas', url:`${BASE}/6259/dados/mg/mg-c0005-e006259-u.json`, limit:30},
+  {id:'federal', title:'Deputado federal', scope:'Minas Gerais', url:`${BASE}/6259/dados/mg/mg-c0006-e006259-u.json`, limit:30},
+  {id:'estadual', title:'Deputado estadual', scope:'Minas Gerais', url:`${BASE}/6259/dados/mg/mg-c0007-e006259-u.json`, limit:30}
+];
+const state={};
+const app=document.querySelector('#app');
+const fmt=new Intl.NumberFormat('pt-BR');
+
+function esc(v=''){return String(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function num(v){const n=Number(String(v??'0').replace(/\./g,'').replace(',','.'));return Number.isFinite(n)?n:0}
+function pct(v){if(v===undefined||v===null||v==='')return '0,00%'; const s=String(v); return s.includes('%')?s:s+'%'}
+function candidateName(c){return c.nm||c.nmu||c.nome||'Candidato'}
+function isElected(c){const text=`${c.st||''} ${c.dvt||''}`.toLowerCase();return c.e==='s'||c.e==='S'||text.includes('eleit')}
+
+function shell(r){return `<section id="${r.id}"><div class="section-head"><div><h2>${r.title}</h2><div class="section-sub">${r.scope}</div></div><div class="pct" id="pct-${r.id}">0,00%</div></div><div id="body-${r.id}" class="loading">Carregando…</div></section>`}
+app.innerHTML=races.map(shell).join('');
+
+function renderRace(r,data,expanded=false){
+  const list=[...(data.cand||data.candidatos||[])].sort((a,b)=>num(b.vap)-num(a.vap));
+  const shown=expanded?list:list.slice(0,r.limit);
+  const body=document.querySelector(`#body-${r.id}`);
+  const progress=data.pst??data.psa??data.pesi??data.psi??'0,00';
+  document.querySelector(`#pct-${r.id}`).textContent=pct(progress);
+  if(!list.length){body.className='loading';body.innerHTML='Aguardando votos divulgados pelo TSE.';return}
+  body.className='';
+  body.innerHTML=shown.map(c=>`<div class="row"><div><div class="name"><span class="number">${esc(c.n||'')}</span>${esc(candidateName(c))}${isElected(c)?'<span class="badge">eleito</span>':''}</div></div><div class="right"><div class="votes">${fmt.format(num(c.vap))}</div><div class="share">${pct(c.pvap??'0,00')}</div></div></div>`).join('')+
+    (list.length>r.limit?`<button class="more" data-race="${r.id}">${expanded?'Mostrar menos':`Mostrar todos (${list.length})`}</button>`:'');
+  const btn=body.querySelector('.more'); if(btn)btn.onclick=()=>{state[r.id].expanded=!state[r.id].expanded;renderRace(r,state[r.id].data,state[r.id].expanded)};
+}
+
+async function loadRace(r){
+  try{
+    const res=await fetch(r.url,{cache:'no-store',headers:{'Accept':'application/json'}});
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    const data=await res.json();
+    state[r.id]={data,expanded:state[r.id]?.expanded||false};
+    renderRace(r,data,state[r.id].expanded);
+    return {ok:true,data};
+  }catch(err){
+    const body=document.querySelector(`#body-${r.id}`);body.className='error';body.textContent='Não foi possível carregar este resultado agora.';
+    return {ok:false,error:err};
+  }
+}
+
+async function refresh(){
+  const results=await Promise.all(races.map(loadRace));
+  const ok=results.filter(x=>x.ok).length;
+  const now=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  document.querySelector('#global-status').textContent=ok===races.length?`Atualizado às ${now}`:`${ok} de ${races.length} resultados carregados · ${now}`;
+  document.querySelector('#dot').className='dot '+(ok?'live':'');
+}
+refresh(); setInterval(refresh,30000);
+</script>
+</body>
+</html>
