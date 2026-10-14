@@ -399,9 +399,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--green); outline
 
 
 /*
- * Modo apresentação: o conteúdo todo usa uma mesma escala de zoom,
- * calculada a partir da área real de tela. Zoom participa do layout;
- * assim o texto, as imagens e os gráficos aumentam sem perder o scroll.
+ * Tela cheia: escala ajustada em cada slide a partir da largura e da altura
+ * reais do conteúdo, com espaço reservado para controles e rolagem residual.
  */
 .presentation.is-fullscreen {
   width:100%;
