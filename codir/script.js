@@ -21,23 +21,60 @@
   );
 
 
+  let fitFrame = 0;
+
   function updateFullscreenScale() {
     if (!root.classList.contains("is-fullscreen")) return;
-    // Layout base dos slides: 1152 px de largura. A escala respeita também
-    // a altura para reduzir o risco de cortes nas telas de projeção.
+    const activeSlide = slides[current];
+    const content = activeSlide?.querySelector(".slide-inner");
+    if (!content) return;
+
     const width = root.clientWidth || window.innerWidth;
     const height = root.clientHeight || window.innerHeight;
-    const byWidth = (width - 100) / 1152;
-    const byHeight = (height - 125) / 650;
-    const scale = width <= 700 ? 1 : Math.max(1, Math.min(2.35, byWidth, byHeight));
-    root.style.setProperty("--deck-zoom", scale.toFixed(3));
+
+    // No celular, o layout responsivo e a rolagem continuam naturais.
+    if (width <= 700) {
+      root.style.setProperty("--deck-zoom", "1");
+      return;
+    }
+
+    // Reservar espaço para o cabeçalho, as setas e a barra inferior.
+    // Medimos a dimensão real do slide, e não uma altura fixa estimada.
+    const availableWidth = Math.max(300, width - Math.max(60, width * 0.06));
+    const availableHeight = Math.max(250, height - Math.max(130, height * 0.17));
+
+    function fits(scale) {
+      root.style.setProperty("--deck-zoom", scale.toFixed(4));
+      const rect = content.getBoundingClientRect();
+      return rect.width <= availableWidth + 1 && rect.height <= availableHeight + 1;
+    }
+
+    // O tamanho é específico de cada slide. Em telas com pouco espaço,
+    // uma escala mínima evita texto ilegível e a rolagem fica disponível.
+    let lower = 0.76;
+    let upper = 1.8;
+    if (!fits(lower)) return;
+
+    // Busca pelo maior fator que cabe tanto em largura quanto em altura.
+    for (let attempt = 0; attempt < 10; attempt++) {
+      const middle = (lower + upper) / 2;
+      if (fits(middle)) lower = middle;
+      else upper = middle;
+    }
+    root.style.setProperty("--deck-zoom", (lower * 0.99).toFixed(4));
+  }
+
+  function scheduleFullscreenFit() {
+    if (!root.classList.contains("is-fullscreen")) return;
+    cancelAnimationFrame(fitFrame);
+    fitFrame = requestAnimationFrame(updateFullscreenScale);
   }
 
   function syncFullscreenButton() {
     if (!fullscreenButton) return;
     const active = (document.fullscreenElement || document.webkitFullscreenElement) === root;
     root.classList.toggle("is-fullscreen", active);
-    if (active) updateFullscreenScale();
+    if (active) scheduleFullscreenFit();
     else root.style.removeProperty("--deck-zoom");
     const label = active ? "Sair da tela cheia" : "Ativar tela cheia";
     fullscreenButton.setAttribute("aria-pressed", String(active));
@@ -70,8 +107,8 @@
       fullscreenButton.addEventListener("click", toggleFullscreen);
       document.addEventListener("fullscreenchange", syncFullscreenButton);
       document.addEventListener("webkitfullscreenchange", syncFullscreenButton);
-      window.addEventListener("resize", updateFullscreenScale);
-      window.visualViewport?.addEventListener("resize", updateFullscreenScale);
+      window.addEventListener("resize", scheduleFullscreenFit);
+      window.visualViewport?.addEventListener("resize", scheduleFullscreenFit);
       syncFullscreenButton();
     }
   }
@@ -114,6 +151,7 @@
     next.disabled = current === slides.length - 1;
     const title = slides[current].dataset.title || "Apresentação";
     document.title = `${title} | Portal IFMG · Colégio de Dirigentes`;
+    scheduleFullscreenFit();
     if (updateURL) {
       history.replaceState(null, "", `${window.location.pathname}${window.location.search}#slide-${current + 1}`);
     }
@@ -169,6 +207,13 @@
     if (Math.abs(dx) < 65 || Math.abs(dx) < Math.abs(dy) * 1.25) return;
     dx < 0 ? goNext() : goPrevious();
   }, {passive:true});
+
+  // Fontes e imagens podem modificar a altura depois da primeira pintura.
+  // Reajustar sem depender do slide seguinte ou de um resize manual.
+  document.fonts?.ready.then(scheduleFullscreenFit);
+  root.querySelectorAll(".slide img").forEach(img => {
+    if (!img.complete) img.addEventListener("load", scheduleFullscreenFit, { once: true });
+  });
 
   showSlide(current, false);
 })();
