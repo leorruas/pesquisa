@@ -396,3 +396,78 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--green); outline
  .pilot-cards article>p:last-child { font-size:12px; }
  .pilot-source { margin-top:11px; }
 }
+
+
+/*
+ * Modo apresentação: o conteúdo todo usa uma mesma escala de zoom,
+ * calculada a partir da área real de tela. Zoom participa do layout;
+ * assim o texto, as imagens e os gráficos aumentam sem perder o scroll.
+ */
+.presentation.is-fullscreen {
+  width:100%;
+  height:100%;
+  --deck-zoom:1;
+}
+.presentation.is-fullscreen .slide {
+  align-items:safe center;
+  scroll-padding-top:32px;
+  scroll-padding-bottom:32px;
+}
+.presentation.is-fullscreen .slide-inner {
+  max-width:1152px;
+  width:100%;
+  zoom:var(--deck-zoom);
+  padding:58px 44px 66px;
+}
+.presentation.is-fullscreen .cover-grid,
+.presentation.is-fullscreen .closing-grid {
+  min-height:min(45vh, 540px);
+}
+.presentation.is-fullscreen .deck-meta {
+  top:27px;
+  left:36px;
+  font-size:clamp(11px, .72vw, 16px);
+}
+.presentation.is-fullscreen .fullscreen-toggle {
+  top:22px;
+  right:35px;
+  min-height:42px;
+  font-size:clamp(11px, .7vw, 15px);
+}
+.presentation.is-fullscreen .deck-nav {
+  left:29px;
+  right:29px;
+  bottom:20px;
+}
+.presentation.is-fullscreen .nav-arrow {
+  width:clamp(44px,2.8vw,68px);
+  height:clamp(44px,2.8vw,68px);
+  font-size:clamp(21px,1.45vw,30px);
+}
+.presentation.is-fullscreen .nav-hint {
+  font-size:clamp(10px,.7vw,15px);
+}
+.presentation.is-fullscreen .progress-track { height:3px; }
+@media(max-width:700px) {
+  .presentation.is-fullscreen .slide-inner {
+    zoom:1;
+    padding:75px 20px 90px;
+  }
+  .presentation.is-fullscreen .deck-meta {
+    top:15px;
+    left:16px;
+    right:64px;
+    font-size:8px;
+  }
+  .presentation.is-fullscreen .fullscreen-toggle {
+    top:10px;
+    right:12px;
+    min-height:36px;
+    font-size:10px;
+  }
+  .presentation.is-fullscreen .deck-nav {
+    left:16px;
+    right:16px;
+    bottom:15px;
+  }
+}
