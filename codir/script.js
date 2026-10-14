@@ -20,9 +20,25 @@
       && (document.exitFullscreen || document.webkitExitFullscreen)
   );
 
+
+  function updateFullscreenScale() {
+    if (!root.classList.contains("is-fullscreen")) return;
+    // Layout base dos slides: 1152 px de largura. A escala respeita também
+    // a altura para reduzir o risco de cortes nas telas de projeção.
+    const width = root.clientWidth || window.innerWidth;
+    const height = root.clientHeight || window.innerHeight;
+    const byWidth = (width - 100) / 1152;
+    const byHeight = (height - 125) / 650;
+    const scale = width <= 700 ? 1 : Math.max(1, Math.min(2.35, byWidth, byHeight));
+    root.style.setProperty("--deck-zoom", scale.toFixed(3));
+  }
+
   function syncFullscreenButton() {
     if (!fullscreenButton) return;
     const active = (document.fullscreenElement || document.webkitFullscreenElement) === root;
+    root.classList.toggle("is-fullscreen", active);
+    if (active) updateFullscreenScale();
+    else root.style.removeProperty("--deck-zoom");
     const label = active ? "Sair da tela cheia" : "Ativar tela cheia";
     fullscreenButton.setAttribute("aria-pressed", String(active));
     fullscreenButton.setAttribute("aria-label", label);
@@ -54,6 +70,8 @@
       fullscreenButton.addEventListener("click", toggleFullscreen);
       document.addEventListener("fullscreenchange", syncFullscreenButton);
       document.addEventListener("webkitfullscreenchange", syncFullscreenButton);
+      window.addEventListener("resize", updateFullscreenScale);
+      window.visualViewport?.addEventListener("resize", updateFullscreenScale);
       syncFullscreenButton();
     }
   }
