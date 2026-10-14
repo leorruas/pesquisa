@@ -31,8 +31,8 @@
     progress.style.width = `${((current + 1) / slides.length) * 100}%`;
     prev.disabled = current === 0;
     next.disabled = current === slides.length - 1;
-    const title = slides[current].dataset.title || "Presentation";
-    document.title = `${title} | IFMG presentation`;
+    const title = slides[current].dataset.title || "Apresentação";
+    document.title = `${title} | Portal IFMG · Colégio de Dirigentes`;
     if (updateURL) {
       history.replaceState(null, "", `${window.location.pathname}${window.location.search}#slide-${current + 1}`);
     }
