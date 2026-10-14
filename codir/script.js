@@ -111,7 +111,8 @@
     if (event.altKey || event.ctrlKey || event.metaKey) return;
     const target = event.target;
     if (target instanceof HTMLElement &&
-        (["INPUT", "TEXTAREA", "SELECT", "BUTTON", "A"].includes(target.tagName) || target.isContentEditable)) return;
+        ((["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName)
+          || (["BUTTON", "A"].includes(target.tagName) && [" ", "Enter"].includes(event.key))) || target.isContentEditable)) return;
     if (event.key.toLowerCase() === "f" && supportsFullscreen) {
       event.preventDefault();
       toggleFullscreen();
