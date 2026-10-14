@@ -16,7 +16,7 @@
   <div class="presentation" id="presentation">
     <header class="deck-meta" aria-label="Informações da apresentação">
       <span>Colégio de Dirigentes <span class="accent">• IFMG</span></span>
-      <span aria-live="polite" id="slide-counter">01 / 17</span>
+      <span aria-live="polite" id="slide-counter">01 / 19</span>
     </header>
     <button id="fullscreen-toggle" class="fullscreen-toggle" type="button" aria-label="Ativar tela cheia" aria-pressed="false" title="Ativar tela cheia">
       <span class="fullscreen-icon" aria-hidden="true">⛶</span>
@@ -282,17 +282,100 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Validação em andamento" aria-label="Slide 16: Validação em andamento" hidden>
+
+      <section class="slide" data-title="Testes de Ouro Branco" aria-label="Slide 16: Testes de Ouro Branco" hidden>
         <div class="slide-inner">
-          <div class="slide-heading"><p class="overline green">Validação em andamento</p><h2>A proposta está sendo testada em um campus antes de sua ampliação para todo o IFMG</h2></div>
-          <div class="cols cols-7-5 align-center">
-            <figure class="screenshot"><figcaption><span>Campus Ouro Branco / projeto-piloto</span><span>Implementação atual</span></figcaption><div class="shot"><img src="https://leoruas.com/ge-vernova/ouro-branco-pilot.png" alt="Portal do Campus Ouro Branco do IFMG com navegação para a vida acadêmica" loading="lazy"></div></figure>
-            <div class="side-copy"><h3>Uma arquitetura comum precisa ser validada em contextos locais antes de ser ampliada.</h3><div class="notes"><div class="note"><strong>Etapa atual</strong><p>A implementação no Campus Ouro Branco adapta o modelo comum à realidade local. Os testes de usabilidade estão em andamento.</p></div><div class="note"><strong>O que os testes podem mostrar</strong><p>Os testes investigam se as pessoas encontram serviços da vida acadêmica e compreendem os nomes usados. Os resultados devem orientar o que manter, adaptar ou esclarecer antes de ampliar a proposta.</p></div><div class="note"><strong>Gestão da mudança</strong><p>As sessões aproximam dirigentes e equipes de serviço das evidências de uso, ajudam a interpretar as particularidades locais e apoiam decisões compartilhadas.</p></div></div><p class="source-line ruled">Resultados de impacto ainda não medidos · coleta de evidências em andamento</p></div>
+          <div class="slide-heading"><p class="overline green">Ouro Branco / testes de usabilidade</p><h2>As pessoas reconhecem a área de acesso, mas algumas tarefas continuam difíceis de encontrar</h2></div>
+          <div class="pilot-context">
+            <span class="pilot-context-main"><b>5</b> estudantes <span aria-hidden="true">·</span> 20 a 31 de agosto de 2026</span>
+            <span>Protótipo do Campus Ouro Branco <span aria-hidden="true">·</span> testes moderados</span>
           </div>
+          <div class="cols cols-8-4 align-center">
+            <div class="pilot-results" role="group" aria-label="Conclusão de tarefas entre estudantes">
+              <div class="pilot-results-head"><span>Tarefa</span><span>Conclusões observadas</span></div>
+              <div class="pilot-result">
+                <div class="pilot-result-top"><span>Calendário acadêmico</span><b>3 de 5</b></div>
+                <div class="pilot-track" role="img" aria-label="Calendário acadêmico: 3 conclusões em 5 tentativas"><i style="width:60%"></i></div>
+                <p>Dificuldade média registrada: 4,2 de 7</p>
+              </div>
+              <div class="pilot-result">
+                <div class="pilot-result-top"><span>Monitoria</span><b>2 de 5</b></div>
+                <div class="pilot-track" role="img" aria-label="Monitoria: 2 conclusões em 5 tentativas"><i style="width:40%"></i></div>
+                <p>Dificuldade média registrada: 4,2 de 7</p>
+              </div>
+              <div class="pilot-result">
+                <div class="pilot-result-top"><span>Secretaria acadêmica</span><b>4 de 4</b></div>
+                <div class="pilot-track pilot-track-positive" role="img" aria-label="Secretaria acadêmica: 4 conclusões em 4 tentativas"><i style="width:100%"></i></div>
+                <p>O serviço foi encontrado nas tarefas em que foi aplicado.</p>
+              </div>
+              <div class="pilot-result">
+                <div class="pilot-result-top"><span>Biblioteca e renovação</span><b>2 de 2</b></div>
+                <div class="pilot-track pilot-track-positive" role="img" aria-label="Biblioteca e renovação: 2 conclusões em 2 tentativas"><i style="width:100%"></i></div>
+                <p>Dificuldade média registrada: 2 de 7.</p>
+              </div>
+            </div>
+            <div class="pilot-reading">
+              <h3>O problema se concentra na passagem do menu para a tarefa.</h3>
+              <div class="notes">
+                <div class="note"><strong>O que funcionou</strong><p>“Vida acadêmica” fez sentido para estudantes, e os caminhos de secretaria e biblioteca foram encontrados nas tarefas aplicadas.</p></div>
+                <div class="note"><strong>O que precisa mudar</strong><p>Calendário, horários de aula e monitoria aparecem agrupados de uma forma que não comunica cada necessidade.</p></div>
+                <div class="note"><strong>Limite da leitura</strong><p>As tarefas não foram aplicadas igualmente a todas as pessoas. Estes números orientam melhorias no protótipo, sem representar todo o campus.</p></div>
+              </div>
+            </div>
+          </div>
+          <p class="pilot-source">Fonte: <a href="https://github.com/leorruas/novo-portal/blob/main/02%20-%20Pesquisa%20(UXR)/testes-de-usabilidade/relatorios/02%20-%20relat%C3%B3rio%20testes%20Ouro%20Branco.md" target="_blank" rel="noopener noreferrer">relatório dos testes de Ouro Branco ↗</a>. Contagens por tarefa aplicada; não equivalem a taxas populacionais.</p>
         </div>
       </section>
 
-      <section class="slide dark" data-title="Síntese" aria-label="Slide 17: Síntese" hidden>
+      <section class="slide" data-title="Aprendizados com servidores" aria-label="Slide 17: Aprendizados com servidores" hidden>
+        <div class="slide-inner">
+          <div class="slide-heading"><p class="overline green">Ouro Branco / testes com servidores</p><h2>As dificuldades revelam onde a organização do campus precisa dialogar com as tarefas de trabalho</h2></div>
+          <div class="pilot-context">
+            <span class="pilot-context-main"><b>3</b> sessões documentadas com servidores</span>
+            <span>Primeira consolidação: 2 sessões <span aria-hidden="true">·</span> complemento: 8 de setembro</span>
+          </div>
+          <div class="pilot-cards">
+            <article>
+              <p class="overline green">Suporte de TI</p>
+              <h3>O nome da ação importa mais do que o sistema utilizado.</h3>
+              <p>Na primeira consolidação, 1 de 2 servidores encontrou o caminho. Na terceira sessão, o acesso também exigiu dicas. “Abrir chamado”, “Suporte de TI” e “Trocar senha” precisam aparecer explicitamente.</p>
+            </article>
+            <article>
+              <p class="overline green">Documentos dos cursos</p>
+              <h3>O PPC precisa ser acessível a partir do contexto do curso.</h3>
+              <p>Na sessão de 8 de setembro, o PPC não foi encontrado sem intervenção: dificuldade de 7/7. O caminho por “Vida acadêmica” não era o esperado por quem buscava informações como servidora.</p>
+            </article>
+            <article>
+              <p class="overline green">Navegação e contexto</p>
+              <h3>É necessário explicar a relação entre portal geral e campus.</h3>
+              <p>A terceira sessão mostrou confusão entre os dois menus e preferência pelo site anterior. Ao mesmo tempo, a orientação sobre atestado foi localizada sem dica em Gestão de Pessoas.</p>
+            </article>
+          </div>
+          <p class="pilot-reading-bottom">As observações dos servidores complementam as dos estudantes, mas a amostra e as condições de teste ainda não sustentam uma medida geral de desempenho.</p>
+          <p class="pilot-source">Fontes: <a href="https://github.com/leorruas/novo-portal/blob/main/02%20-%20Pesquisa%20(UXR)/testes-de-usabilidade/relatorios/02%20-%20relat%C3%B3rio%20testes%20Ouro%20Branco.md" target="_blank" rel="noopener noreferrer">primeira consolidação ↗</a> e <a href="https://github.com/leorruas/novo-portal/blob/main/02%20-%20Pesquisa%20(UXR)/testes-de-usabilidade/ouro-branco/servidores/notas/S-OB-03.md" target="_blank" rel="noopener noreferrer">registro complementar S-OB-03 ↗</a>.</p>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Próxima iteração" aria-label="Slide 18: Próxima iteração" hidden>
+        <div class="slide-inner">
+          <div class="slide-heading"><p class="overline green">Ouro Branco / decisões a partir da pesquisa</p><h2>Os testes já indicam ajustes concretos antes de levar o modelo a outros campi</h2></div>
+          <div class="cols cols-7-5 align-center">
+            <figure class="screenshot"><figcaption><span>Campus Ouro Branco / protótipo</span><span>Arquitetura em validação</span></figcaption><div class="shot"><img src="https://leoruas.com/ge-vernova/ouro-branco-pilot.png" alt="Protótipo do portal de Ouro Branco, utilizado como referência para as melhorias da arquitetura acadêmica" loading="lazy"></div></figure>
+            <div class="side-copy">
+              <h3>A arquitetura evolui com base no comportamento observado.</h3>
+              <div class="notes">
+                <div class="note"><strong>Separar tarefas recorrentes</strong><p>Criar entradas claras para calendário acadêmico, horários de aula e monitoria, com destino direto para cada ação.</p></div>
+                <div class="note"><strong>Criar caminhos cruzados</strong><p>Disponibilizar PPC, estágio e documentos do curso também no contexto de Cursos, preservando uma fonte de conteúdo.</p></div>
+                <div class="note"><strong>Nomear ações de suporte</strong><p>Expor “Suporte de TI”, “Abrir chamado” e “Trocar senha”, explicando o encaminhamento pelo SUAP.</p></div>
+                <div class="note"><strong>Corrigir e testar novamente</strong><p>Reaplicar tarefas críticas com estudantes e servidores de perfis distintos, registrando conclusão sem ajuda, dificuldade, dispositivo e versão do protótipo.</p></div>
+              </div>
+            </div>
+          </div>
+          <p class="pilot-source">Propostas de ajuste, ainda sem implementação confirmada ou medição de impacto. <a href="https://github.com/leorruas/novo-portal/blob/main/02%20-%20Pesquisa%20(UXR)/testes-de-usabilidade/ouro-branco/01-resumo-dos-testes.md" target="_blank" rel="noopener noreferrer">Consultar síntese atualizada ↗</a>.</p>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Síntese" aria-label="Slide 19: Síntese" hidden>
         <div class="slide-inner cover-grid closing-grid">
           <div><p class="overline mint">O que permanece</p><h2>Facilitar o acesso à informação é uma capacidade institucional que depende de organização e gestão contínuas.</h2></div>
           <div class="cover-side closing-side"><div><p class="overline mint">01 / Problema redefinido</p><p>O redesenho do portal passou a ser tratado como um problema de acesso.</p></div><div><p class="overline mint">02 / Organização proposta</p><p>Necessidades dos públicos e serviços orientaram a arquitetura da informação.</p></div><div><p class="overline mint">03 / Continuidade</p><p>A gestão do conteúdo permite manter essa organização ao longo do tempo.</p></div></div>
