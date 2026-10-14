@@ -1,40 +1,39 @@
 # CODIR | Apresentação do Portal IFMG
 
-Apresentação para o Colégio de Dirigentes (CODIR) do IFMG, em português brasileiro. O conteúdo apresenta diagnóstico do portal institucional, critérios de pesquisa, proposta de arquitetura da informação, o Guia do Portal, governança de conteúdo e validação em curso.
+Apresentação para o Colégio de Dirigentes (CODIR) do IFMG, em português brasileiro. Inclui o diagnóstico do portal, os critérios de pesquisa, a proposta de arquitetura da informação, o Guia do Portal, o trabalho com as áreas e a validação em curso.
 
-A versão usa HTML, CSS e JavaScript, sem React, Next.js ou etapa de compilação. Contém **16 slides**.
+A apresentação é feita em HTML, CSS e JavaScript, sem React, Next.js ou processo de compilação. Tem **17 slides**.
 
 Arquivos:
-- `index.html`: conteúdo e marcação semântica.
-- `styles.css`: layout, gráficos, matrizes e adaptação a telas menores.
-- `script.js`: navegação por teclado e botões, tela cheia (atalho F), gestos no celular, link direto `#slide-N` e ampliação das imagens do guia.
-- `assets/`: imagens locais.
+- `index.html`: conteúdo, organização dos slides e descrição das capturas.
+- `styles.css`: apresentação, gráficos, matrizes e versões para telas menores.
+- `script.js`: navegação, tela cheia (`F`), links para slides (`#slide-N`) e ampliação das imagens.
+- `assets/`: capturas de tela locais.
+
+## Slides 10 a 14: Guia do Portal
+
+A seção foi refeita em 14 de outubro de 2026 a partir de quatro capturas adicionadas ao repositório:
+
+| Slide | Tema | Imagem em `assets` |
+| --- | --- | --- |
+| 10 | Apresentação do guia, busca, fundamentos e perfis | `Screenshot 2026-10-14 at 15.56.26.png` |
+| 11 | Tarefas por função, com exemplo do perfil editor | `Screenshot 2026-10-14 at 15.57.12.png` |
+| 12 | Mapa da estrutura do portal, em construção | `Screenshot 2026-10-14 at 15.56.38.png` |
+| 13 | Busca por intenção: situação atual e evolução proposta | Exemplo conceitual, sem captura de uma busca semântica funcionando |
+| 14 | Instruções do guia para usar IA, criar páginas e sugerir blocos do Wagtail | `Screenshot 2026-10-14 at 15.56.59.png` |
+
+As imagens podem ser ampliadas por clique. As duas capturas anteriores do Guia do Portal também permanecem na pasta `assets/` como arquivos de referência.
+
+Fonte do conteúdo: [repositório Guia do Portal IFMG](https://github.com/leorruas/guiaportalifmg). A orientação por função e as tarefas documentadas são recursos do guia atual. O mapa mostra somente páginas e relações já mapeadas e informa que está em construção.
+
+**Estado das funcionalidades:** a busca disponível hoje usa correspondência textual e ranqueamento por relevância, considerando títulos, aliases e tolerância limitada a erros de digitação. A interpretação **semântica** da intenção foi apresentada como evolução planejada. O guia já disponibiliza instruções e exemplos de prompts para usar assistentes externos na revisão de conteúdo, preparação de imagens e sugestão de blocos documentados no Wagtail. Isso não comprova que exista um gerador automático de páginas integrado ao Wagtail. A decisão editorial, as permissões e a publicação continuam com as equipes.
 
 ## Acesso
 
-Se o GitHub Pages estiver publicado na raiz da branch `main`, abra `https://leorruas.github.io/pesquisa/codir/`. Também é possível abrir `index.html` diretamente em um navegador.
+Se o GitHub Pages estiver publicado a partir da raiz da branch `main`, abra `https://leorruas.github.io/pesquisa/codir/`. Os arquivos do CSS e JavaScript e as imagens locais são carregados por caminhos relativos.
 
-## Atualização do Guia do Portal (slides 10 a 13)
+## Recursos externos e limites da apresentação
 
-A apresentação agora detalha: **(10)** entrada por função, **(11)** biblioteca de tarefas, **(12)** evolução da busca para interpretação semântica da intenção e **(13)** apoio da IA à criação de páginas e à escolha de blocos do Wagtail.
+Quatro capturas de outros slides continuam hospedadas publicamente no portfólio: o portal institucional atual, a proposta de portal, o Guia do Estudante e o piloto de Ouro Branco. Para a apresentação funcionar inteiramente sem depender do portfólio, essas capturas precisam ser copiadas para `codir/assets/` e os respectivos caminhos no HTML atualizados. As fontes DM Sans e Roboto Mono são carregadas do Google Fonts, com alternativas locais.
 
-Fonte de referência: [repositório do Guia do Portal IFMG](https://github.com/leorruas/guiaportalifmg). Os procedimentos existentes mostram organização por perfis, tarefas e passos, assim como prompts para revisão de conteúdo e escolha de blocos disponíveis no Wagtail.
-
-**Situação das funcionalidades:** a busca atual do guia utiliza ranqueamento por termos, título e aliases, com tolerância limitada a erros de escrita. A **busca semântica** foi apresentada como evolução planejada, não como recurso já implementado. O uso de **IA para sugerir estrutura e blocos** está documentado como fluxo de apoio: a apresentação ilustra esse processo, sem alegar integração automática ao Wagtail. Decisões de conteúdo, permissões e publicação continuam com as pessoas responsáveis.
-
-Os exemplos visuais nos slides de busca e IA são identificados como **ilustrativos**. As capturas dos slides 10 e 11 usam os arquivos reais `portal-guide-roles.png` e `portal-guide-tasks.png` disponíveis na pasta `codir/assets`. As duas imagens podem ser ampliadas por clique.
-
-## Imagens externas
-
-Quatro imagens de outros slides ainda dependem do portfólio público:
-- Portal institucional atual.
-- Proposta de portal.
-- Guia do Estudante.
-- Implementação em Ouro Branco.
-
-Para ter uma cópia independente, as quatro capturas utilizadas nos outros slides devem ser copiadas para `codir/assets/` e seus caminhos atualizados no HTML. A fonte DM Sans e a fonte Roboto Mono são carregadas do Google Fonts, com alternativas locais.
-
-## Cuidados com evidências
-
-O conteúdo preserva indicadores, períodos de coleta e limites das evidências descritos na apresentação anterior. A adaptação para o CODIR não constitui revalidação dos dados. Antes da reunião, confirme se o andamento dos testes no Campus Ouro Branco continua atual.
-
+Os dados, períodos e limites das evidências foram mantidos da versão anterior. A apresentação ainda precisa de confirmação do estado atual dos testes de usabilidade no Campus Ouro Branco antes da reunião.
