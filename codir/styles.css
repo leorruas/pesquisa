@@ -236,8 +236,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--green); outline
   padding:11px 16px; border-bottom:1px solid var(--line); color:#757575;
   font:500 9px/1.4 var(--font-mono); text-transform:uppercase; letter-spacing:.13em; }
 .guide-image-button { display:block; position:relative; width:100%; margin:0; padding:0; cursor:zoom-in;
-  background:#151515; border:0; overflow:hidden; }
-.guide-image-button img { width:100%; height:clamp(260px,31vw,400px); object-fit:contain; display:block; }
+  background:#fff; border:0; overflow:hidden; }
+.guide-image-button img { width:100%; height:clamp(265px,32vw,445px); object-fit:contain; display:block; }
 .guide-image-button:focus-visible { outline:3px solid var(--green); outline-offset:-3px; }
 .guide-zoom-hint { position:absolute; bottom:10px; right:10px; border-radius:3px;
   background:rgba(255,255,255,.94); color:#111; padding:9px 12px;
@@ -293,7 +293,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--green); outline
 .guide-lightbox img { width:100%; height:auto; max-height:calc(94vh - 64px); object-fit:contain; display:block; margin:auto; }
 @media(max-width:900px) {
  .guide-lead { font-size:19px; }
- .guide-image-button img { height:clamp(245px,31vw,330px); }
+ .guide-image-button img { height:clamp(235px,32vw,370px); }
  .semantic-demo { padding:17px; }
  .semantic-search-bar { font-size:14px; min-height:61px; }
  .semantic-result strong { font-size:14px; }
@@ -310,7 +310,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--green); outline
  .guide-lightbox { max-width:99vw; width:99vw; }
 }
 @media(max-height:720px) and (min-width:701px) {
- .guide-image-button img { height:clamp(225px,29vh,300px); }
+ .guide-image-button img { height:clamp(225px,37vh,330px); }
  .guide-lead { font-size:18px; margin-bottom:13px; }
  .guide-aside .notes { gap:8px; }
  .guide-aside .note p { font-size:12px; }
@@ -320,4 +320,12 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--green); outline
  .ai-question { margin:12px 17px; padding:12px; }
  .ai-suggestion { margin:0 17px 15px; }
  .block-list>div { padding:9px 0; }
+}
+
+/* Capturas reais do guia: priorizar legibilidade e proporção original da interface. */
+.guide-real-shot .guide-image-button img { object-position:center center; background:#fff; }
+.guide-real-shot .guide-figure-bar { color:#5b5b5b; }
+.guide-real-shot .guide-image-button:hover .guide-zoom-hint { background:var(--green); color:white; }
+@media(max-width:700px) {
+ .guide-real-shot .guide-image-button img { max-height:430px; object-fit:contain; }
 }
