@@ -58,6 +58,23 @@
     }
   }
 
+  // Capturas ampliáveis: as imagens pertencem ao próprio repositório da apresentação.
+  const zoomDialog = document.getElementById("guide-lightbox");
+  const zoomImage = document.getElementById("guide-lightbox-image");
+  const zoomClose = document.getElementById("guide-lightbox-close");
+  root.querySelectorAll("[data-zoom-src]").forEach(button => {
+    button.addEventListener("click", () => {
+      if (!zoomDialog || !zoomImage) return;
+      zoomImage.src = button.dataset.zoomSrc;
+      zoomImage.alt = button.dataset.zoomAlt || "Imagem ampliada do Guia do Portal";
+      if (typeof zoomDialog.showModal === "function") zoomDialog.showModal();
+    });
+  });
+  zoomClose?.addEventListener("click", () => zoomDialog?.close());
+  zoomDialog?.addEventListener("click", event => {
+    if (event.target === zoomDialog) zoomDialog.close();
+  });
+
   let current = readHash();
 
   function showSlide(index, updateURL = true) {
@@ -90,10 +107,11 @@
   next.addEventListener("click", goNext);
 
   document.addEventListener("keydown", event => {
+    if (zoomDialog?.open) return;
     if (event.altKey || event.ctrlKey || event.metaKey) return;
     const target = event.target;
     if (target instanceof HTMLElement &&
-        (["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName) || target.isContentEditable)) return;
+        (["INPUT", "TEXTAREA", "SELECT", "BUTTON", "A"].includes(target.tagName) || target.isContentEditable)) return;
     if (event.key.toLowerCase() === "f" && supportsFullscreen) {
       event.preventDefault();
       toggleFullscreen();
