@@ -42,9 +42,9 @@ Estes testes são **formativos** e ocorreram em um protótipo, não em uma vers�
 
 ## Tela cheia e projeção
 
-Ao entrar no modo de tela cheia pelo botão ou pela tecla `F`, o JavaScript calcula um fator de ampliação considerando a largura e a altura disponíveis. O CSS aplica esse fator à composição do slide como um todo: tipografia, imagens, gráficos e demais elementos. O fator é recalculado quando a janela ou o monitor muda de tamanho; ao sair do modo de tela cheia, a escala normal é restaurada.
+Ao entrar em tela cheia pelo botão ou pela tecla `F`, o código mede **a dimensão real do slide atual** e procura a maior escala que cabe na largura e na altura úteis do monitor, com espaço reservado para o cabeçalho e os controles. Esse cálculo acontece novamente ao mudar de slide, redimensionar a janela ou terminar de carregar fontes e imagens.
 
-A ampliação é limitada para reduzir cortes. Os slides com conteúdo mais extenso mantêm a rolagem vertical, em vez de encolher o texto para caber em uma única tela. Em telas pequenas, permanece o layout responsivo original.
+A escala máxima é limitada a 1,8 para evitar ampliação excessiva. O modo permite reduzir o conteúdo até 0,76 quando necessário; se ainda não couber, o slide mantém rolagem vertical, sem ocultar partes do conteúdo. A versão para celular mantém o layout responsivo normal.
 
 ## Acesso
 
