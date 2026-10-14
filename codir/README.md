@@ -7,7 +7,7 @@ A apresentação é feita em HTML, CSS e JavaScript, sem React, Next.js ou proce
 Arquivos:
 - `index.html`: conteúdo, organização dos slides e descrição das capturas.
 - `styles.css`: apresentação, gráficos, matrizes e versões para telas menores.
-- `script.js`: navegação, tela cheia (`F`), links para slides (`#slide-N`) e ampliação das imagens.
+- `script.js`: navegação, tela cheia (`F`) com escala adaptada à resolução do monitor, links para slides (`#slide-N`) e ampliação das imagens.
 - `assets/`: capturas de tela locais.
 
 ## Slides 10 a 14: Guia do Portal
@@ -39,6 +39,12 @@ A apresentação agora inclui resultados reais, retirados do repositório [`novo
 Fontes: [relatório dos testes de Ouro Branco](https://github.com/leorruas/novo-portal/tree/main/02%20-%20Pesquisa%20%28UXR%29/testes-de-usabilidade/relatorios), [resumo e log](https://github.com/leorruas/novo-portal/tree/main/02%20-%20Pesquisa%20%28UXR%29/testes-de-usabilidade/ouro-branco) e ficha `S-OB-03.md` no subdiretório de notas de servidores. O relatório principal apresenta inicialmente cinco estudantes e dois servidores; o registro posterior acrescenta a terceira sessão, sem atualizar retrospectivamente as contagens quantitativas do relatório inicial.
 
 Estes testes são **formativos** e ocorreram em um protótipo, não em uma versão de produção. Não sustentam estimativas populacionais, métricas gerais de eficiência ou afirmações de impacto do redesenho. Nem todas as tarefas foram aplicadas e registradas de forma uniforme.
+
+## Tela cheia e projeção
+
+Ao entrar no modo de tela cheia pelo botão ou pela tecla `F`, o JavaScript calcula um fator de ampliação considerando a largura e a altura disponíveis. O CSS aplica esse fator à composição do slide como um todo: tipografia, imagens, gráficos e demais elementos. O fator é recalculado quando a janela ou o monitor muda de tamanho; ao sair do modo de tela cheia, a escala normal é restaurada.
+
+A ampliação é limitada para reduzir cortes. Os slides com conteúdo mais extenso mantêm a rolagem vertical, em vez de encolher o texto para caber em uma única tela. Em telas pequenas, permanece o layout responsivo original.
 
 ## Acesso
 
