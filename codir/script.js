@@ -12,6 +12,52 @@
     const match = window.location.hash.match(/^#(?:slide-)?(\d+)$/i);
     return match ? Math.max(0, Math.min(slides.length - 1, Number(match[1]) - 1)) : 0;
   };
+  const fullscreenButton = document.getElementById("fullscreen-toggle");
+  const fullscreenLabel = fullscreenButton?.querySelector(".fullscreen-label");
+  const fullscreenIcon = fullscreenButton?.querySelector(".fullscreen-icon");
+  const supportsFullscreen = Boolean(
+    fullscreenButton && (root.requestFullscreen || root.webkitRequestFullscreen)
+      && (document.exitFullscreen || document.webkitExitFullscreen)
+  );
+
+  function syncFullscreenButton() {
+    if (!fullscreenButton) return;
+    const active = (document.fullscreenElement || document.webkitFullscreenElement) === root;
+    const label = active ? "Sair da tela cheia" : "Ativar tela cheia";
+    fullscreenButton.setAttribute("aria-pressed", String(active));
+    fullscreenButton.setAttribute("aria-label", label);
+    fullscreenButton.title = label;
+    if (fullscreenLabel) fullscreenLabel.textContent = active ? "Sair da tela cheia" : "Tela cheia";
+    if (fullscreenIcon) fullscreenIcon.textContent = active ? "⤢" : "⛶";
+  }
+
+  async function toggleFullscreen() {
+    if (!supportsFullscreen) return;
+    const active = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+    try {
+      if (active) {
+        const exit = document.exitFullscreen || document.webkitExitFullscreen;
+        await exit.call(document);
+      } else {
+        const enter = root.requestFullscreen || root.webkitRequestFullscreen;
+        await enter.call(root);
+      }
+    } catch (error) {
+      console.warn("Não foi possível alterar o modo de tela cheia:", error);
+    }
+    syncFullscreenButton();
+  }
+
+  if (fullscreenButton) {
+    fullscreenButton.hidden = !supportsFullscreen;
+    if (supportsFullscreen) {
+      fullscreenButton.addEventListener("click", toggleFullscreen);
+      document.addEventListener("fullscreenchange", syncFullscreenButton);
+      document.addEventListener("webkitfullscreenchange", syncFullscreenButton);
+      syncFullscreenButton();
+    }
+  }
+
   let current = readHash();
 
   function showSlide(index, updateURL = true) {
@@ -48,7 +94,10 @@
     const target = event.target;
     if (target instanceof HTMLElement &&
         (["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName) || target.isContentEditable)) return;
-    if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") {
+    if (event.key.toLowerCase() === "f" && supportsFullscreen) {
+      event.preventDefault();
+      toggleFullscreen();
+    } else if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") {
       event.preventDefault();
       goNext();
     } else if (event.key === "ArrowLeft" || event.key === "PageUp") {
