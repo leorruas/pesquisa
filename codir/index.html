@@ -16,7 +16,7 @@
   <div class="presentation" id="presentation">
     <header class="deck-meta" aria-label="Informações da apresentação">
       <span>Colégio de Dirigentes <span class="accent">• IFMG</span></span>
-      <span aria-live="polite" id="slide-counter">01 / 13</span>
+      <span aria-live="polite" id="slide-counter">01 / 16</span>
     </header>
     <button id="fullscreen-toggle" class="fullscreen-toggle" type="button" aria-label="Ativar tela cheia" aria-pressed="false" title="Ativar tela cheia">
       <span class="fullscreen-icon" aria-hidden="true">⛶</span>
@@ -139,23 +139,111 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Modelo de operação" aria-label="Slide 10: Modelo de operação" hidden>
+
+      <!-- GUIA DO PORTAL: organização por responsabilidades -->
+      <section class="slide" data-title="Guia por função" aria-label="Slide 10: Guia por função" hidden>
         <div class="slide-inner">
-          <div class="slide-heading"><p class="overline green">Modelo de operação</p><h2>O Guia do Portal transformou orientações de gestão em procedimentos por função e tarefa</h2></div>
-          <div class="cols cols-8-4 align-start">
-            <div class="mini-gallery">
-              <figure class="mini-shot"><img src="./assets/portal-guide-roles.png" alt="Guia do Portal com acessos organizados por função" loading="lazy"><figcaption>Acesso por função</figcaption></figure>
-              <figure class="mini-shot"><img src="./assets/portal-guide-tasks.png" alt="Guia do Portal com biblioteca de tarefas classificadas" loading="lazy"><figcaption>Biblioteca de tarefas</figcaption></figure>
-              <figure class="mini-shot"><img src="https://leoruas.com/ge-vernova/portal-guide-procedure.png" alt="Guia do Portal com orientações detalhadas para executar procedimentos" loading="lazy"><figcaption>Orientações de procedimentos</figcaption></figure>
-            </div>
-            <div><p class="operating-intro">O guia foi pensado para manter a organização do portal ao longo do tempo.</p>
-              <div class="notes"><div class="note"><strong>Orientação por função</strong><p>Editores, moderadores, administradores e gestores começam por suas responsabilidades, em vez de buscar funcionalidades no sistema de gestão de conteúdo.</p></div><div class="note"><strong>Classificação de tarefas</strong><p>As atividades são organizadas por finalidade, tipo de conteúdo e fluxo de trabalho, facilitando a localização de orientações.</p></div><div class="note"><strong>Procedimentos práticos</strong><p>Cada página apresenta objetivo, requisitos, etapas, resultado esperado, limites e encaminhamentos.</p></div></div>
+          <div class="slide-heading"><p class="overline green">Guia do Portal / organização por função</p><h2>O guia começa pelo papel de quem trabalha no portal e pelas responsabilidades de cada função</h2></div>
+          <div class="cols cols-8-4 align-center">
+            <figure class="guide-figure">
+              <div class="guide-figure-bar"><span>Guia do Portal IFMG / perfis</span><span>Interface do guia</span></div>
+              <button class="guide-image-button" type="button" data-zoom-src="./assets/portal-guide-roles.png" data-zoom-alt="Tela do Guia do Portal com entradas organizadas por perfis" aria-label="Ampliar imagem da navegação por função">
+                <img src="./assets/portal-guide-roles.png" alt="Tela do Guia do Portal com entradas para gestores, administradores, moderadores e editores" loading="lazy">
+                <span class="guide-zoom-hint" aria-hidden="true">Ampliar ↗</span>
+              </button>
+              <figcaption>O percurso começa por quem realiza a atividade.</figcaption>
+            </figure>
+            <div class="guide-aside">
+              <p class="guide-lead">Gestor, administrador, moderador e editor encontram orientações compatíveis com o que precisam decidir ou executar.</p>
+              <div class="notes">
+                <div class="note"><strong>Orientação por responsabilidade</strong><p>O ponto de entrada é a função desempenhada, não o nome de um recurso do Wagtail.</p></div>
+                <div class="note"><strong>Funções e permissões</strong><p>O guia diferencia as decisões de cada perfil e apresenta também as tarefas que podem ser compartilhadas.</p></div>
+                <div class="note"><strong>Referência permanente</strong><p>As orientações ficam disponíveis para consulta e atualização contínua pelas equipes.</p></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="slide" data-title="Articulação entre áreas" aria-label="Slide 11: Articulação entre áreas" hidden>
+      <!-- GUIA DO PORTAL: tarefas como unidade de navegação -->
+      <section class="slide" data-title="Biblioteca de tarefas" aria-label="Slide 11: Biblioteca de tarefas" hidden>
+        <div class="slide-inner">
+          <div class="slide-heading"><p class="overline green">Guia do Portal / organização por tarefa</p><h2>As orientações estão organizadas pelo que a pessoa precisa fazer, e não pelos menus do sistema</h2></div>
+          <div class="cols cols-8-4 align-center">
+            <figure class="guide-figure">
+              <div class="guide-figure-bar"><span>Guia do Portal IFMG / biblioteca de tarefas</span><span>Interface do guia</span></div>
+              <button class="guide-image-button" type="button" data-zoom-src="./assets/portal-guide-tasks.png" data-zoom-alt="Biblioteca de tarefas do Guia do Portal" aria-label="Ampliar imagem da biblioteca de tarefas">
+                <img src="./assets/portal-guide-tasks.png" alt="Tela do Guia do Portal com tarefas agrupadas para orientar o trabalho no Wagtail" loading="lazy">
+                <span class="guide-zoom-hint" aria-hidden="true">Ampliar ↗</span>
+              </button>
+              <figcaption>As ações são localizadas por intenção e por responsabilidade.</figcaption>
+            </figure>
+            <div class="guide-aside">
+              <p class="guide-lead">Criar uma página, revisar uma publicação ou organizar documentos são caminhos de trabalho, com instruções específicas.</p>
+              <div class="guide-steps" aria-label="Estrutura de cada procedimento">
+                <div><span>01</span><p>O que a tarefa resolve</p></div>
+                <div><span>02</span><p>O que preparar e quais permissões são necessárias</p></div>
+                <div><span>03</span><p>Como executar e verificar o resultado</p></div>
+              </div>
+              <p class="guide-aside-foot">O guia combina procedimentos, referências para decisões de conteúdo e orientações sobre o Wagtail.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GUIA DO PORTAL: evolução proposta da busca -->
+      <section class="slide" data-title="Busca por intenção" aria-label="Slide 12: Busca por intenção" hidden>
+        <div class="slide-inner">
+          <div class="slide-heading"><p class="overline green">Guia do Portal / evolução da busca</p><h2>O próximo passo é encontrar a tarefa pela intenção, mesmo sem conhecer os termos usados no guia</h2></div>
+          <div class="cols cols-8-4 align-center">
+            <div class="semantic-demo">
+              <p class="overline green">Exemplo ilustrativo / experiência proposta</p>
+              <div class="semantic-search-bar" aria-label="Exemplo de pergunta na busca semântica"><span class="search-symbol" aria-hidden="true">⌕</span><span>Preciso atualizar uma página do campus. Por onde começo?</span><span class="semantic-enter" aria-hidden="true">↵</span></div>
+              <div class="semantic-results">
+                <p class="overline muted">A busca deverá sugerir tarefas relacionadas</p>
+                <div class="semantic-result"><span class="semantic-result-number">01</span><div><strong>Sou editor e quero editar, verificar e acompanhar uma página</strong><p>Procedimento para quem prepara ou atualiza o conteúdo</p></div><span class="semantic-result-arrow" aria-hidden="true">↗</span></div>
+                <div class="semantic-result"><span class="semantic-result-number">02</span><div><strong>Sou moderador e quero revisar e decidir uma publicação</strong><p>Procedimento para a etapa de validação e publicação</p></div><span class="semantic-result-arrow" aria-hidden="true">↗</span></div>
+              </div>
+            </div>
+            <div class="guide-aside">
+              <div class="roadmap-status"><span class="roadmap-status-tag">Hoje</span><p>Busca por termos, títulos, sinônimos cadastrados e aproximações de escrita, com ordenação por relevância.</p></div>
+              <div class="roadmap-status upcoming"><span class="roadmap-status-tag">Evolução prevista</span><p>Busca semântica: interpretar a necessidade descrita em linguagem natural e apontar as tarefas mais pertinentes.</p></div>
+              <p class="guide-aside-foot">A navegação por perfil e a busca serão caminhos complementares para consultar a mesma base de orientações.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GUIA DO PORTAL: IA como apoio editorial -->
+      <section class="slide" data-title="IA e blocos do Wagtail" aria-label="Slide 13: IA e blocos do Wagtail" hidden>
+        <div class="slide-inner">
+          <div class="slide-heading"><p class="overline green">Guia do Portal / ferramentas de apoio</p><h2>A IA pode orientar a criação de páginas e sugerir os blocos do Wagtail mais adequados ao conteúdo</h2></div>
+          <div class="cols cols-8-4 align-center">
+            <div class="ai-panel">
+              <div class="ai-panel-head"><span>Exemplo ilustrativo / fluxo de criação assistida</span><span>Orientação, não publicação automática</span></div>
+              <div class="ai-question"><p class="overline muted">Necessidade da equipe</p><p>“Preciso criar uma página que explique os serviços de apoio ao estudante, reúna documentos e facilite o acesso ao formulário.”</p></div>
+              <div class="ai-suggestion">
+                <p class="overline green">Sugestão de estrutura para o Wagtail</p>
+                <div class="block-list">
+                  <div><span class="block-type">Introdução</span><p>Apresentar a finalidade do serviço</p></div>
+                  <div><span class="block-type">Texto</span><p>Explicar quem pode solicitar e como funciona</p></div>
+                  <div><span class="block-type">Coleção</span><p>Exibir documentos vigentes</p></div>
+                  <div><span class="block-type">Link único</span><p>Destacar o acesso ao formulário</p></div>
+                  <div><span class="block-type">FAQ</span><p>Responder às dúvidas recorrentes</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="guide-aside">
+              <p class="guide-lead">O guia já documenta como consultar uma IA para planejar conteúdos, revisar textos e escolher blocos existentes no portal.</p>
+              <div class="notes"><div class="note"><strong>Apoio à decisão editorial</strong><p>A sugestão parte da tarefa e do público, usando os tipos de bloco previstos no Wagtail.</p></div><div class="note"><strong>Responsabilidade humana</strong><p>As equipes conferem as fontes, revisam o conteúdo e seguem as permissões e etapas de moderação.</p></div></div>
+              <p class="guide-aside-foot">Os exemplos de IA são orientações documentadas e possibilidades de evolução. Não representam uma integração automática já ativa no Wagtail.</p>
+              <a class="guide-link" href="https://github.com/leorruas/guiaportalifmg" target="_blank" rel="noopener noreferrer">Consultar Guia do Portal ↗</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Articulação entre áreas" aria-label="Slide 14: Articulação entre áreas" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Articulação entre áreas</p><h2>O trabalho entre áreas buscou distribuir responsabilidades e tornar as decisões mais claras</h2></div>
           <div class="stakeholders">
@@ -166,7 +254,7 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Validação em andamento" aria-label="Slide 12: Validação em andamento" hidden>
+      <section class="slide" data-title="Validação em andamento" aria-label="Slide 15: Validação em andamento" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Validação em andamento</p><h2>A proposta está sendo testada em um campus antes de sua ampliação para todo o IFMG</h2></div>
           <div class="cols cols-7-5 align-center">
@@ -176,7 +264,7 @@
         </div>
       </section>
 
-      <section class="slide dark" data-title="Síntese" aria-label="Slide 13: Síntese" hidden>
+      <section class="slide dark" data-title="Síntese" aria-label="Slide 16: Síntese" hidden>
         <div class="slide-inner cover-grid closing-grid">
           <div><p class="overline mint">O que permanece</p><h2>Facilitar o acesso à informação é uma capacidade institucional que depende de organização e gestão contínuas.</h2></div>
           <div class="cover-side closing-side"><div><p class="overline mint">01 / Problema redefinido</p><p>O redesenho do portal passou a ser tratado como um problema de acesso.</p></div><div><p class="overline mint">02 / Organização proposta</p><p>Necessidades dos públicos e serviços orientaram a arquitetura da informação.</p></div><div><p class="overline mint">03 / Continuidade</p><p>A gestão do conteúdo permite manter essa organização ao longo do tempo.</p></div></div>
@@ -184,6 +272,10 @@
       </section>
 
     </main>
+    <dialog class="guide-lightbox" id="guide-lightbox" aria-label="Imagem do Guia do Portal ampliada">
+      <div class="guide-lightbox-bar"><span>Guia do Portal IFMG</span><button type="button" id="guide-lightbox-close" aria-label="Fechar imagem ampliada">Fechar ✕</button></div>
+      <img id="guide-lightbox-image" src="" alt="">
+    </dialog>
     <nav class="deck-nav" aria-label="Controles da apresentação">
       <button id="previous" class="nav-arrow" type="button" aria-label="Slide anterior" disabled>←</button>
       <span class="nav-hint" aria-hidden="true">← → / espaço para avançar</span>
