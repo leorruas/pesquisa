@@ -81,7 +81,8 @@
     root.classList.toggle("is-fullscreen", active);
     if (active) scheduleFullscreenFit();
     else root.style.removeProperty("--deck-zoom");
-    const activeGraph = slides[current];
+    // Na inicialização o contador de slides ainda não foi definido.
+    const activeGraph = root.querySelector("#deck .slide.is-active");
     if (activeGraph?.classList.contains("graph-intro-slide")) {
       activeGraph.querySelectorAll("iframe").forEach(frame => notifyGraphFrame(frame, 200));
     }
@@ -225,6 +226,9 @@
       else if (event.data.direction === -1) goPrevious();
     } else if (event.data?.type === "codir-graph-fullscreen" && supportsFullscreen) {
       toggleFullscreen();
+    } else if (event.data?.type === "codir-graph-collapse" &&
+        comparison?.classList.contains("has-expanded")) {
+      setCompareExpanded(null);
     }
   });
   prev.addEventListener("click", goPrevious);
