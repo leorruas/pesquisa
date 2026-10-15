@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Distância da Home | Guia do Portal IFMG</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./data.js"></script>
+  <script src="./portal-graph.js"></script>
+</head>
+<body>
+  <div data-portal-graph class="portal-graph-root" aria-label="Grafo interativo da estrutura do Portal IFMG, organizado por até três cliques a partir da Home."></div>
+  <script>
+  (function () {
+    window.GuiaGrafoPortal?.renderizarSePresente(document);
+    window.addEventListener("keydown", function(event) {
+      if (event.target instanceof HTMLElement && ["INPUT","TEXTAREA","SELECT"].includes(event.target.tagName)) return;
+      if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+        event.preventDefault();
+        window.parent.postMessage({type:"codir-graph-navigate",direction:event.key === "ArrowRight" ? 1 : -1},window.location.origin);
+      } else if (event.key.toLowerCase() === "f") {
+        event.preventDefault();
+        window.parent.postMessage({type:"codir-graph-fullscreen"},window.location.origin);
+      }
+    });
+  }());
+  </script>
+</body>
+</html>
