@@ -2,7 +2,7 @@
 
 Apresentação para o Colégio de Dirigentes (CODIR) do IFMG, em português brasileiro. Inclui o diagnóstico do portal, os critérios de pesquisa, a proposta de arquitetura da informação, o Guia do Portal, o trabalho com as áreas e os resultados formativos dos testes de Ouro Branco.
 
-A apresentação é feita em HTML, CSS e JavaScript, sem React, Next.js ou processo de compilação. Tem **20 slides**.
+A apresentação é feita em HTML, CSS e JavaScript, sem React, Next.js ou processo de compilação. Tem **21 slides**.
 
 Arquivos:
 - `index.html`: conteúdo, organização dos slides e descrição das capturas.
@@ -10,6 +10,7 @@ Arquivos:
 - `script.js`: navegação, tela cheia (`F`) com escala adaptada à resolução do monitor, links para slides (`#slide-N`) e ampliação das imagens.
 - `assets/`: capturas de tela locais.
 - `grafo/`: visualização interativa do mapeamento da Reitoria, com uma cópia versionada de `data.js` de [`sitedoifmggrafo`](https://github.com/leorruas/sitedoifmggrafo).
+- `grafo-guia/`: módulo do mapa do Guia do Portal, com as mesmas páginas, relações e cálculo da distância da Home usados em [`guiaportalifmg`](https://github.com/leorruas/guiaportalifmg).
 
 ## Slide 2: mapa de páginas e conexões da Reitoria
 
@@ -19,7 +20,7 @@ O grafo é carregado a partir de `codir/grafo/index.html`, `graph.js` e de uma c
 
 **Limite metodológico:** as linhas mostram vínculos documentados entre páginas, não os caminhos reais percorridos pelos usuários. A densidade do grafo serve de abertura visual para discutir organização e acesso, sem estabelecer por si só que uma tarefa seria difícil. As métricas de uso e os testes de usabilidade aparecem nos slides seguintes.
 
-## Slides 11 a 15: Guia do Portal
+## Slides 11 a 16: Guia do Portal
 
 A seção foi refeita em 14 de outubro de 2026 a partir de quatro capturas adicionadas ao repositório:
 
@@ -28,22 +29,25 @@ A seção foi refeita em 14 de outubro de 2026 a partir de quatro capturas adici
 | 11 | Apresentação do guia, busca, fundamentos e perfis | `Screenshot 2026-10-14 at 15.56.26.png` |
 | 12 | Tarefas por função, com exemplo do perfil editor | `Screenshot 2026-10-14 at 15.57.12.png` |
 | 13 | Mapa da estrutura do portal, em construção | `Screenshot 2026-10-14 at 15.56.38.png` |
-| 14 | Busca por intenção: situação atual e evolução proposta | Exemplo com os nomes reais das páginas de edição e moderação, sem simular um ranking real |
-| 15 | Instruções do guia para usar IA, criar páginas e sugerir blocos do Wagtail | `Screenshot 2026-10-14 at 15.56.59.png` |
+| 14 | Distância da Home em até três cliques (mapa interativo) | `grafo-guia/`, cópia do componente do Guia do Portal |
+| 15 | Busca por intenção: situação atual e evolução proposta | Exemplo com os nomes reais das páginas de edição e moderação, sem simular um ranking real |
+| 16 | Instruções do guia para usar IA, criar páginas e sugerir blocos do Wagtail | `Screenshot 2026-10-14 at 15.56.59.png` |
+
+O **slide 14** integra a visualização interativa acionada por **“Mostrar distância da Home”** no Guia do Portal. Foram reutilizados o dataset `data/portal-graph.js` e o módulo de visualização `portal-graph.js` de `leorruas/guiaportalifmg`, com o modo de distância aberto por padrão e estilos isolados na pasta `codir/grafo-guia/`. O grafo mapeia **82 páginas** e **101 relações**; o cálculo de menor distância registrada a partir da Home inclui 5 páginas a 1 clique, 49 a 2 e 27 a 3, além da própria Home. O mapa permanece **em construção**, portanto isso não estabelece que todo o portal esteja a três cliques nem demonstra que as tarefas foram concluídas pelos usuários. O Cytoscape, tal como no guia original, é carregado via CDN.
 
 As imagens podem ser ampliadas por clique. As duas capturas anteriores do Guia do Portal também permanecem na pasta `assets/` como arquivos de referência.
 
 Fonte do conteúdo: [repositório Guia do Portal IFMG](https://github.com/leorruas/guiaportalifmg). A orientação por função e as tarefas documentadas são recursos do guia atual. O mapa mostra somente páginas e relações já mapeadas e informa que está em construção.
 
-**Estado das funcionalidades:** a busca disponível hoje usa correspondência textual e ranqueamento por relevância, considerando títulos, aliases e tolerância limitada a erros de digitação. A próxima etapa é aprimorar a localização de tarefas com títulos, sinônimos, termos de uso comum e ajustes de relevância. **Não há compromisso de implementar busca semântica ou uma LLM no navegador.** O slide 14 mostra uma consulta ilustrativa e utiliza os títulos reais das páginas do guia, confirmados em seu conteúdo, sem representar a ordem de resultados de uma execução. O guia já disponibiliza instruções e exemplos de prompts para usar assistentes externos na revisão de conteúdo, preparação de imagens e sugestão de blocos documentados no Wagtail. Isso não comprova que exista um gerador automático de páginas integrado ao Wagtail. A decisão editorial, as permissões e a publicação continuam com as equipes.
+**Estado das funcionalidades:** a busca disponível hoje usa correspondência textual e ranqueamento por relevância, considerando títulos, aliases e tolerância limitada a erros de digitação. A próxima etapa é aprimorar a localização de tarefas com títulos, sinônimos, termos de uso comum e ajustes de relevância. **Não há compromisso de implementar busca semântica ou uma LLM no navegador.** O slide 15 mostra uma consulta ilustrativa e utiliza os títulos reais das páginas do guia, confirmados em seu conteúdo, sem representar a ordem de resultados de uma execução. O guia já disponibiliza instruções e exemplos de prompts para usar assistentes externos na revisão de conteúdo, preparação de imagens e sugestão de blocos documentados no Wagtail. Isso não comprova que exista um gerador automático de páginas integrado ao Wagtail. A decisão editorial, as permissões e a publicação continuam com as equipes.
 
-## Slides 17 a 19: resultados dos testes de Ouro Branco
+## Slides 18 a 20: resultados dos testes de Ouro Branco
 
 A apresentação agora inclui resultados reais, retirados do repositório [`novo-portal`](https://github.com/leorruas/novo-portal):
 
-- **Slide 17:** cinco sessões com estudantes, realizadas de 20 a 31 de agosto de 2026. Calendário acadêmico: 3 conclusões em 5 tentativas; monitoria: 2 em 5; secretaria acadêmica: 4 em 4; biblioteca/renovação: 2 em 2. Os denominadores correspondem às tarefas efetivamente aplicadas, e não a todos os participantes em todos os cenários.
-- **Slide 18:** achados de três sessões documentadas com servidores. O relatório da primeira consolidação contabiliza duas sessões; a nota e o resumo atualizados incluem a terceira, realizada em 8 de setembro. A dificuldade de localizar PPC nessa sessão (7/7) e a necessidade de ajuda para calendário e suporte de TI são exemplos qualitativos. Não agregamos os três participantes em uma taxa única.
-- **Slide 19:** mudanças propostas: separar calendário, horários e monitoria; criar caminhos cruzados para documentos de cursos e estágio; explicitar a ação de suporte de TI; corrigir e testar novamente. São recomendações ainda sem confirmação de implementação e impacto.
+- **Slide 18:** cinco sessões com estudantes, realizadas de 20 a 31 de agosto de 2026. Calendário acadêmico: 3 conclusões em 5 tentativas; monitoria: 2 em 5; secretaria acadêmica: 4 em 4; biblioteca/renovação: 2 em 2. Os denominadores correspondem às tarefas efetivamente aplicadas, e não a todos os participantes em todos os cenários.
+- **Slide 19:** achados de três sessões documentadas com servidores. O relatório da primeira consolidação contabiliza duas sessões; a nota e o resumo atualizados incluem a terceira, realizada em 8 de setembro. A dificuldade de localizar PPC nessa sessão (7/7) e a necessidade de ajuda para calendário e suporte de TI são exemplos qualitativos. Não agregamos os três participantes em uma taxa única.
+- **Slide 20:** mudanças propostas: separar calendário, horários e monitoria; criar caminhos cruzados para documentos de cursos e estágio; explicitar a ação de suporte de TI; corrigir e testar novamente. São recomendações ainda sem confirmação de implementação e impacto.
 
 Fontes: [relatório dos testes de Ouro Branco](https://github.com/leorruas/novo-portal/tree/main/02%20-%20Pesquisa%20%28UXR%29/testes-de-usabilidade/relatorios), [resumo e log](https://github.com/leorruas/novo-portal/tree/main/02%20-%20Pesquisa%20%28UXR%29/testes-de-usabilidade/ouro-branco) e ficha `S-OB-03.md` no subdiretório de notas de servidores. O relatório principal apresenta inicialmente cinco estudantes e dois servidores; o registro posterior acrescenta a terceira sessão, sem atualizar retrospectivamente as contagens quantitativas do relatório inicial.
 
