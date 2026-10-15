@@ -170,6 +170,17 @@
     }
   }
 
+  // Se o iframe carregar depois da navegação (loading=lazy), refazer o enquadramento.
+  root.querySelectorAll(".graph-intro-slide iframe").forEach(frame => {
+    frame.addEventListener("load", () => {
+      const type = frame.id === "guide-distance-graph"
+        ? "codir-guide-graph-resize" : "codir-graph-resize";
+      if (frame.closest(".slide")?.classList.contains("is-active")) {
+        window.setTimeout(() => frame.contentWindow?.postMessage({ type }, window.location.origin), 220);
+      }
+    });
+  });
+
   const goPrevious = () => showSlide(current - 1);
   const goNext = () => showSlide(current + 1);
   // Setas e tecla F também funcionam quando o foco está dentro do mapa.
