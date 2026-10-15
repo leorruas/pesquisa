@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mapa das páginas da Reitoria | IFMG</title>
+<script>if(new URLSearchParams(location.search).has('comparacao'))document.documentElement.classList.add('compare-compact')</script>
 <style>
 :root{--bg:#101613;--line:#ffffff18;--green:#b7e5ce;--ink:#edf6ee;--muted:#b0beb6}
 *{box-sizing:border-box}
@@ -23,6 +24,19 @@ button[aria-pressed="true"]{border-color:var(--green);background:#325b44}
 #loading{position:absolute;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:6;font:700 12px "Courier New",monospace;letter-spacing:.08em;text-align:center;color:#b7e5ce;padding:24px}
 #loading[hidden]{display:none}
 @media(max-width:740px){.topline{top:12px;left:12px;right:12px}.eyebrow{font-size:9px}.tools{top:auto;right:12px;bottom:12px;flex-wrap:wrap;justify-content:end;max-width:70%}button{font-size:10px;padding:8px}#status{left:12px;bottom:68px;max-width:calc(100% - 24px)}}
+/* Painel de comparação: retirar sobreposições e valorizar a rede. */
+html.compare-compact #status { display:none; }
+html.compare-compact .topline { top:9px; left:11px; right:11px; gap:6px; }
+html.compare-compact .eyebrow { padding:5px 7px; font-size:9px; }
+html.compare-compact .tools {
+  top:auto; bottom:9px; right:9px; left:auto; max-width:96%;
+  display:flex; flex-wrap:wrap; justify-content:flex-end; gap:5px;
+}
+html.compare-compact .tools button { min-height:28px; padding:6px 8px; font-size:9px; }
+@media(max-width:520px) {
+  html.compare-compact .topline { flex-direction:column; align-items:flex-start; }
+  html.compare-compact .tools button { padding:5px 7px; font-size:8px; }
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
 <script src="./data.js"></script>
