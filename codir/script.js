@@ -28,6 +28,11 @@
     const activeSlide = slides[current];
     const content = activeSlide?.querySelector(".slide-inner");
     if (!content) return;
+    // O grafo ocupa a tela inteira e ajusta o próprio viewport.
+    if (activeSlide.classList.contains("graph-intro-slide")) {
+      root.style.setProperty("--deck-zoom", "1");
+      return;
+    }
 
     const width = root.clientWidth || window.innerWidth;
     const height = root.clientHeight || window.innerHeight;
@@ -152,6 +157,11 @@
     const title = slides[current].dataset.title || "Apresentação";
     document.title = `${title} | Portal IFMG · Colégio de Dirigentes`;
     scheduleFullscreenFit();
+    // Cytoscape precisa recalcular seu viewport ao reexibir o iframe.
+    if (slides[current].classList.contains("graph-intro-slide")) {
+      window.setTimeout(() => document.getElementById("reitoria-graph")?.contentWindow
+        ?.postMessage({ type: "codir-graph-resize" }, window.location.origin), 100);
+    }
     if (updateURL) {
       history.replaceState(null, "", `${window.location.pathname}${window.location.search}#slide-${current + 1}`);
     }
@@ -159,6 +169,17 @@
 
   const goPrevious = () => showSlide(current - 1);
   const goNext = () => showSlide(current + 1);
+  // Setas e tecla F também funcionam quando o foco está dentro do mapa.
+  window.addEventListener("message", event => {
+    const frame = document.getElementById("reitoria-graph");
+    if (event.origin !== window.location.origin || !frame || event.source !== frame.contentWindow) return;
+    if (event.data?.type === "codir-graph-navigate") {
+      if (event.data.direction === 1) goNext();
+      else if (event.data.direction === -1) goPrevious();
+    } else if (event.data?.type === "codir-graph-fullscreen" && supportsFullscreen) {
+      toggleFullscreen();
+    }
+  });
   prev.addEventListener("click", goPrevious);
   next.addEventListener("click", goNext);
 
