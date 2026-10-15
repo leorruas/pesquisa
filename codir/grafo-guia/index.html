@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Distância da Home | Guia do Portal IFMG</title>
+  <script>if(new URLSearchParams(location.search).has('comparacao'))document.documentElement.classList.add('compare-compact')</script>
   <link rel="stylesheet" href="./styles.css">
   <script src="./data.js"></script>
   <script src="./portal-graph.js"></script>
@@ -21,6 +22,8 @@
       } else if (event.key.toLowerCase() === "f") {
         event.preventDefault();
         window.parent.postMessage({type:"codir-graph-fullscreen"},window.location.origin);
+      } else if (event.key === "Escape") {
+        window.parent.postMessage({type:"codir-graph-collapse"},window.location.origin);
       }
     });
   }());
