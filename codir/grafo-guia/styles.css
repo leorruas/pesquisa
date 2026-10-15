@@ -280,3 +280,20 @@ button:focus-visible,a:focus-visible {outline:2px solid var(--accent-blue);outli
   .portal-graph-details {height:auto;max-height:24vh;padding:10px 0;border-left:0;border-top:1px solid #ffffff28}
   .portal-graph-visual,.portal-graph-canvas {height:100%;min-height:0}
 }
+
+/* A comparação prioriza o desenho do grafo. A página completa mantém busca e detalhes. */
+html.compare-compact .portal-graph-root { padding:0 9px 7px; }
+html.compare-compact .portal-graph-toolbar {
+  display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding:8px 0;
+}
+html.compare-compact .portal-graph-search { display:none; }
+html.compare-compact .portal-graph-details { display:none; }
+html.compare-compact .portal-graph-stage {
+  display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,1fr);
+  min-height:0; height:0;
+}
+html.compare-compact .portal-graph-visual,
+html.compare-compact .portal-graph-canvas { min-height:0; height:100%; }
+html.compare-compact .portal-graph-stats { margin-left:auto; font-size:10px; }
+html.compare-compact .portal-graph-depth-toggle,
+html.compare-compact .portal-graph-recenter { font-size:11px; padding:5px 0; }
