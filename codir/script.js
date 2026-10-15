@@ -81,6 +81,10 @@
     root.classList.toggle("is-fullscreen", active);
     if (active) scheduleFullscreenFit();
     else root.style.removeProperty("--deck-zoom");
+    const activeGraph = slides[current];
+    if (activeGraph?.classList.contains("graph-intro-slide")) {
+      activeGraph.querySelectorAll("iframe").forEach(frame => notifyGraphFrame(frame, 200));
+    }
     const label = active ? "Sair da tela cheia" : "Ativar tela cheia";
     fullscreenButton.setAttribute("aria-pressed", String(active));
     fullscreenButton.setAttribute("aria-label", label);
@@ -148,6 +152,8 @@
       if (isCurrent) slide.scrollTop = 0;
     });
     current = destination;
+    if (!slides[current].classList.contains("graph-compare-slide") &&
+        comparison?.classList.contains("has-expanded")) setCompareExpanded(null);
     const dark = slides[current].classList.contains("dark");
     root.classList.toggle("has-dark", dark);
     counter.textContent = `${String(current + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
@@ -157,35 +163,60 @@
     const title = slides[current].dataset.title || "Apresentação";
     document.title = `${title} | Portal IFMG · Colégio de Dirigentes`;
     scheduleFullscreenFit();
-    // Os dois grafos reajustam o enquadramento quando o slide se torna visível.
+    // Enquadrar todos os mapas ativos: o último slide contém dois iframes.
     if (slides[current].classList.contains("graph-intro-slide")) {
-      const frame = slides[current].querySelector("iframe");
-      const type = frame?.id === "guide-distance-graph"
-        ? "codir-guide-graph-resize" : "codir-graph-resize";
-      window.setTimeout(() => frame?.contentWindow
-        ?.postMessage({ type }, window.location.origin), 140);
+      slides[current].querySelectorAll("iframe").forEach(frame => notifyGraphFrame(frame, 160));
     }
     if (updateURL) {
       history.replaceState(null, "", `${window.location.pathname}${window.location.search}#slide-${current + 1}`);
     }
   }
 
-  // Se o iframe carregar depois da navegação (loading=lazy), refazer o enquadramento.
+  function notifyGraphFrame(frame, delay = 120) {
+    if (!frame) return;
+    const type = frame.id === "guide-distance-graph"
+      ? "codir-guide-graph-resize" : "codir-graph-resize";
+    window.setTimeout(() => frame.contentWindow
+      ?.postMessage({ type }, window.location.origin), delay);
+  }
+
+  // Mesmo que um iframe carregue depois de abrir o slide, refazer o enquadramento.
   root.querySelectorAll(".graph-intro-slide iframe").forEach(frame => {
     frame.addEventListener("load", () => {
-      const type = frame.id === "guide-distance-graph"
-        ? "codir-guide-graph-resize" : "codir-graph-resize";
-      if (frame.closest(".slide")?.classList.contains("is-active")) {
-        window.setTimeout(() => frame.contentWindow?.postMessage({ type }, window.location.origin), 220);
-      }
+      if (frame.closest(".slide")?.classList.contains("is-active")) notifyGraphFrame(frame, 220);
     });
   });
+
+  // No encerramento, alternar entre os dois mapas lado a lado e ampliados.
+  const comparison = document.getElementById("graph-compare-panels");
+  const compareCards = comparison ? Array.from(comparison.querySelectorAll("[data-compare-card]")) : [];
+  function setCompareExpanded(card = null) {
+    comparison?.classList.toggle("has-expanded", Boolean(card));
+    compareCards.forEach(item => {
+      const expanded = item === card;
+      item.classList.toggle("is-expanded", expanded);
+      const button = item.querySelector(".graph-compare-expand");
+      if (!button) return;
+      button.setAttribute("aria-expanded", String(expanded));
+      button.textContent = expanded ? "Reduzir ↙" : "Ampliar ↗";
+      button.setAttribute("aria-label", expanded
+        ? "Voltar à comparação lado a lado"
+        : "Ampliar " + (item.querySelector("h3")?.textContent || "grafo"));
+      notifyGraphFrame(item.querySelector("iframe"), 130);
+    });
+  }
+  compareCards.forEach(card => {
+    card.querySelector(".graph-compare-expand")?.addEventListener("click", () => {
+      setCompareExpanded(card.classList.contains("is-expanded") ? null : card);
+    });
+  });
+
 
   const goPrevious = () => showSlide(current - 1);
   const goNext = () => showSlide(current + 1);
   // Setas e tecla F também funcionam quando o foco está dentro do mapa.
   window.addEventListener("message", event => {
-    const frames = ["reitoria-graph", "guide-distance-graph"]
+    const frames = ["reitoria-graph", "reitoria-graph-compare", "guide-distance-graph"]
       .map(id => document.getElementById(id)).filter(Boolean);
     if (event.origin !== window.location.origin ||
       !frames.some(frame => event.source === frame.contentWindow && frame.closest(".slide")?.classList.contains("is-active"))) return;
@@ -200,6 +231,11 @@
   next.addEventListener("click", goNext);
 
   document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && comparison?.classList.contains("has-expanded")) {
+      setCompareExpanded(null);
+      event.preventDefault();
+      return;
+    }
     if (zoomDialog?.open) return;
     if (event.altKey || event.ctrlKey || event.metaKey) return;
     const target = event.target;
