@@ -189,6 +189,8 @@
     } else if(event.key.toLowerCase()==="f"){
       event.preventDefault();
       window.parent.postMessage({type:"codir-graph-fullscreen"},location.origin);
+    } else if(event.key==="Escape"){
+      window.parent.postMessage({type:"codir-graph-collapse"},location.origin);
     }
   });
   loader.hidden=true;
