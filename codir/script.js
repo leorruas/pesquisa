@@ -157,10 +157,13 @@
     const title = slides[current].dataset.title || "Apresentação";
     document.title = `${title} | Portal IFMG · Colégio de Dirigentes`;
     scheduleFullscreenFit();
-    // Cytoscape precisa recalcular seu viewport ao reexibir o iframe.
+    // Os dois grafos reajustam o enquadramento quando o slide se torna visível.
     if (slides[current].classList.contains("graph-intro-slide")) {
-      window.setTimeout(() => document.getElementById("reitoria-graph")?.contentWindow
-        ?.postMessage({ type: "codir-graph-resize" }, window.location.origin), 100);
+      const frame = slides[current].querySelector("iframe");
+      const type = frame?.id === "guide-distance-graph"
+        ? "codir-guide-graph-resize" : "codir-graph-resize";
+      window.setTimeout(() => frame?.contentWindow
+        ?.postMessage({ type }, window.location.origin), 140);
     }
     if (updateURL) {
       history.replaceState(null, "", `${window.location.pathname}${window.location.search}#slide-${current + 1}`);
@@ -171,8 +174,10 @@
   const goNext = () => showSlide(current + 1);
   // Setas e tecla F também funcionam quando o foco está dentro do mapa.
   window.addEventListener("message", event => {
-    const frame = document.getElementById("reitoria-graph");
-    if (event.origin !== window.location.origin || !frame || event.source !== frame.contentWindow) return;
+    const frames = ["reitoria-graph", "guide-distance-graph"]
+      .map(id => document.getElementById(id)).filter(Boolean);
+    if (event.origin !== window.location.origin ||
+      !frames.some(frame => event.source === frame.contentWindow && frame.closest(".slide")?.classList.contains("is-active"))) return;
     if (event.data?.type === "codir-graph-navigate") {
       if (event.data.direction === 1) goNext();
       else if (event.data.direction === -1) goPrevious();
