@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mapa das páginas da Reitoria | IFMG</title>
+<style>
+:root{--bg:#101613;--line:#ffffff18;--green:#b7e5ce;--ink:#edf6ee;--muted:#b0beb6}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+#network{position:absolute;inset:0;background:radial-gradient(ellipse at 57% 47%,#25392c 0%,#15241b 33%,#0d1511 79%)}
+#network:after{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:38px 38px;pointer-events:none}
+.topline{position:absolute;top:17px;left:18px;display:flex;flex-wrap:wrap;gap:9px;align-items:center;z-index:4}
+.eyebrow{font:700 10px/1.5 "Courier New",monospace;letter-spacing:.09em;text-transform:uppercase;color:#bbd8c5;padding:8px 11px;background:#15271de0;border:1px solid #ffffff22}
+.eyebrow strong{color:#fff}
+.tools{position:absolute;top:17px;right:19px;z-index:4;display:flex;gap:7px}
+button{border:1px solid #ffffff36;background:#16261dde;color:#fff;padding:10px 12px;cursor:pointer;font:600 11px/1.15 Arial,sans-serif}
+button:hover,button:focus-visible{background:#244732;outline-color:var(--green)}
+button[aria-pressed="true"]{border-color:var(--green);background:#325b44}
+#status{position:absolute;left:18px;bottom:16px;max-width:min(560px,calc(100% - 36px));padding:13px 16px;z-index:5;background:#101d17e8;border-left:3px solid var(--green);font-size:12px;line-height:1.45;color:var(--muted)}
+#status strong{font-size:14px;line-height:1.4;display:block;color:#f5fff8;margin-bottom:3px}
+#status a{color:#c0ead4}
+#loading{position:absolute;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:6;font:700 12px "Courier New",monospace;letter-spacing:.08em;text-align:center;color:#b7e5ce;padding:24px}
+#loading[hidden]{display:none}
+@media(max-width:740px){.topline{top:12px;left:12px;right:12px}.eyebrow{font-size:9px}.tools{top:auto;right:12px;bottom:12px;flex-wrap:wrap;justify-content:end;max-width:70%}button{font-size:10px;padding:8px}#status{left:12px;bottom:68px;max-width:calc(100% - 24px)}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+<script src="./data.js"></script>
+<script src="./graph.js" defer></script>
+</head>
+<body>
+<div id="network" role="img" aria-label="Rede interativa de páginas e conexões do antigo portal da Reitoria do IFMG. Use os botões para explorar níveis e clique nos nós para visualizar detalhes."></div>
+<div class="topline"><span class="eyebrow"><strong id="total-nodes">…</strong> páginas mapeadas</span><span class="eyebrow"><strong id="total-edges">…</strong> conexões</span></div>
+<div class="tools" aria-label="Controles do grafo">
+  <button type="button" id="show-all" aria-pressed="true">Ver estrutura completa</button>
+  <button type="button" id="show-main" aria-pressed="false">Só áreas principais</button>
+  <button type="button" id="recenter">Recentrar</button>
+  <button type="button" id="zoom-in" aria-label="Aproximar o grafo">+</button>
+  <button type="button" id="zoom-out" aria-label="Afastar o grafo">−</button>
+</div>
+<div id="status" role="status" aria-live="polite">
+  <strong>Arraste e amplie para explorar</strong>
+  Cada ponto representa uma página mapeada. As linhas mostram vínculos entre páginas, não caminhos reais de visitantes.
+</div>
+<div id="loading" role="status">Carregando o mapa de páginas e conexões…</div>
+<noscript>Este grafo exige JavaScript. <a href="https://github.com/leorruas/sitedoifmggrafo">Ver fonte dos dados.</a></noscript>
+</body>
+</html>
