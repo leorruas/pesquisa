@@ -16,7 +16,7 @@
   <div class="presentation" id="presentation">
     <header class="deck-meta" aria-label="Informações da apresentação">
       <span>Colégio de Dirigentes <span class="accent">• IFMG</span></span>
-      <span aria-live="polite" id="slide-counter">01 / 19</span>
+      <span aria-live="polite" id="slide-counter">01 / 20</span>
     </header>
     <button id="fullscreen-toggle" class="fullscreen-toggle" type="button" aria-label="Ativar tela cheia" aria-pressed="false" title="Ativar tela cheia">
       <span class="fullscreen-icon" aria-hidden="true">⛶</span>
@@ -37,7 +37,23 @@
         </div>
       </section>
 
-      <section class="slide" data-title="O problema" aria-label="Slide 2: O problema" hidden>
+      <section class="slide dark graph-intro-slide" data-title="Mapa da Reitoria" aria-label="Slide 2: Mapa da Reitoria" hidden>
+        <div class="slide-inner graph-intro-inner">
+          <div class="graph-intro-heading">
+            <p class="overline mint">O ponto de partida / portal da Reitoria</p>
+            <h2>Centenas de páginas conectadas. Onde está o caminho para quem precisa de um serviço?</h2>
+          </div>
+          <div class="graph-intro-viewport">
+            <iframe id="reitoria-graph" title="Mapa interativo das páginas e conexões da estrutura anterior do portal da Reitoria do IFMG" src="./grafo/index.html" loading="lazy" allowfullscreen></iframe>
+          </div>
+          <div class="graph-intro-caption">
+            <span>Visualização exploratória das páginas e de seus vínculos. As linhas não representam trajetos reais dos visitantes.</span>
+            <a href="https://github.com/leorruas/sitedoifmggrafo" target="_blank" rel="noopener noreferrer">Fonte: grafo da Reitoria ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="O problema" aria-label="Slide 3: O problema" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">O problema</p><h2>O desafio é facilitar o acesso aos serviços sem exigir que o público conheça a estrutura do IFMG</h2></div>
           <div class="cols cols-8-4 align-center">
@@ -49,7 +65,7 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Evidências" aria-label="Slide 3: Evidências" hidden>
+      <section class="slide" data-title="Evidências" aria-label="Slide 4: Evidências" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Evidências</p><h2>As páginas mais acessadas indicavam onde as pessoas buscavam informações e serviços</h2></div>
           <div class="cols cols-8-4 align-bottom">
@@ -65,7 +81,7 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Diagnóstico da busca" aria-label="Slide 4: Diagnóstico da busca" hidden>
+      <section class="slide" data-title="Diagnóstico da busca" aria-label="Slide 5: Diagnóstico da busca" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Diagnóstico da busca</p><h2>A busca interna tinha um volume comparável ao dos processos seletivos, mas indicadores de uso muito piores</h2></div>
           <div class="cols cols-8-4 align-center">
@@ -78,7 +94,7 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Pesquisa com apoio de IA" aria-label="Slide 5: Pesquisa com apoio de IA" hidden>
+      <section class="slide" data-title="Pesquisa com apoio de IA" aria-label="Slide 6: Pesquisa com apoio de IA" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Pesquisa com apoio de IA</p><h2>A IA acelerou a síntese, enquanto os critérios de evidência definiram quais conclusões eram sustentáveis</h2></div>
           <div class="cols cols-8-4 align-center">
@@ -93,7 +109,7 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Modelo de conteúdo" aria-label="Slide 6: Modelo de conteúdo" hidden>
+      <section class="slide" data-title="Modelo de conteúdo" aria-label="Slide 7: Modelo de conteúdo" hidden>
         <div class="slide-inner"><div class="slide-heading"><p class="overline green">Modelo de conteúdo</p><h2>As notícias estavam sendo usadas como acesso a serviços, o que dificultava encontrar tarefas recorrentes</h2></div>
           <div class="cols cols-half">
             <article class="comparison"><p class="overline muted">Notícia em ordem cronológica</p><h3>Aviso, prazo e abertura de inscrições</h3><div class="timeline"><i></i></div><p>Útil no momento da publicação, mas cada vez mais difícil de localizar com o tempo.</p></article>
@@ -102,7 +118,7 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Proposta" aria-label="Slide 7: Proposta" hidden>
+      <section class="slide" data-title="Proposta" aria-label="Slide 8: Proposta" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Proposta</p><h2>A proposta combina acesso por necessidades do público com informações sobre a estrutura institucional</h2></div>
           <div class="cols cols-8-4 align-center">
@@ -112,7 +128,7 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Critérios de decisão" aria-label="Slide 8: Critérios de decisão" hidden>
+      <section class="slide" data-title="Critérios de decisão" aria-label="Slide 9: Critérios de decisão" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Critérios de decisão</p><h2>O volume de acessos foi um dos critérios, sem se sobrepor à importância dos serviços públicos</h2></div>
           <div class="cols cols-8-4 align-center">
@@ -129,7 +145,7 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Modelo de conteúdo" aria-label="Slide 9: Modelo de conteúdo" hidden>
+      <section class="slide" data-title="Modelo de conteúdo" aria-label="Slide 10: Modelo de conteúdo" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Modelo de conteúdo</p><h2>O Guia do Estudante organizou sistemas em torno das tarefas, em vez dos setores responsáveis</h2></div>
           <div class="cols cols-8-4 align-center">
@@ -142,7 +158,7 @@
 
 
       <!-- GUIA DO PORTAL: apresentação, navegação e consulta -->
-      <section class="slide" data-title="Apresentação do guia" aria-label="Slide 10: Apresentação do guia" hidden>
+      <section class="slide" data-title="Apresentação do guia" aria-label="Slide 11: Apresentação do guia" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Guia do Portal / apresentação</p><h2>Um ponto de referência para quem cria, revisa e administra conteúdo no portal</h2></div>
           <div class="cols cols-8-4 align-center">
@@ -168,7 +184,7 @@
       </section>
 
       <!-- GUIA DO PORTAL: perfis e tarefas -->
-      <section class="slide" data-title="Perfis e tarefas" aria-label="Slide 11: Perfis e tarefas" hidden>
+      <section class="slide" data-title="Perfis e tarefas" aria-label="Slide 12: Perfis e tarefas" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Guia do Portal / organização do trabalho</p><h2>A orientação começa pela função exercida e pela tarefa que precisa ser realizada</h2></div>
           <div class="cols cols-8-4 align-center">
@@ -194,7 +210,7 @@
       </section>
 
       <!-- GUIA DO PORTAL: mapa de relações -->
-      <section class="slide" data-title="Mapa da estrutura" aria-label="Slide 12: Mapa da estrutura" hidden>
+      <section class="slide" data-title="Mapa da estrutura" aria-label="Slide 13: Mapa da estrutura" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Guia do Portal / visualização da estrutura</p><h2>Um mapa permite explorar como as páginas do portal se organizam e se relacionam</h2></div>
           <div class="cols cols-8-4 align-center">
@@ -220,7 +236,7 @@
       </section>
 
       <!-- GUIA DO PORTAL: busca atual e evolução -->
-      <section class="slide" data-title="Busca por intenção" aria-label="Slide 13: Busca por intenção" hidden>
+      <section class="slide" data-title="Busca por intenção" aria-label="Slide 14: Busca por intenção" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Guia do Portal / evolução da busca</p><h2>Encontrar uma tarefa descrevendo o que se precisa fazer, mesmo sem conhecer o nome do procedimento</h2></div>
           <div class="cols cols-8-4 align-center">
@@ -244,7 +260,7 @@
       </section>
 
       <!-- GUIA DO PORTAL: IA e apoio à produção de conteúdo -->
-      <section class="slide" data-title="IA e blocos do Wagtail" aria-label="Slide 14: IA e blocos do Wagtail" hidden>
+      <section class="slide" data-title="IA e blocos do Wagtail" aria-label="Slide 15: IA e blocos do Wagtail" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Guia do Portal / ferramentas de apoio</p><h2>O guia já ensina a usar IA para preparar páginas e escolher os blocos adequados no Wagtail</h2></div>
           <div class="cols cols-8-4 align-center">
@@ -271,7 +287,7 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Articulação entre áreas" aria-label="Slide 15: Articulação entre áreas" hidden>
+      <section class="slide" data-title="Articulação entre áreas" aria-label="Slide 16: Articulação entre áreas" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Articulação entre áreas</p><h2>O trabalho entre áreas buscou distribuir responsabilidades e tornar as decisões mais claras</h2></div>
           <div class="stakeholders">
@@ -283,7 +299,7 @@
       </section>
 
 
-      <section class="slide" data-title="Testes de Ouro Branco" aria-label="Slide 16: Testes de Ouro Branco" hidden>
+      <section class="slide" data-title="Testes de Ouro Branco" aria-label="Slide 17: Testes de Ouro Branco" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Ouro Branco / testes de usabilidade</p><h2>As pessoas reconhecem a área de acesso, mas algumas tarefas continuam difíceis de encontrar</h2></div>
           <div class="pilot-context">
@@ -327,7 +343,7 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Aprendizados com servidores" aria-label="Slide 17: Aprendizados com servidores" hidden>
+      <section class="slide" data-title="Aprendizados com servidores" aria-label="Slide 18: Aprendizados com servidores" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Ouro Branco / testes com servidores</p><h2>As dificuldades revelam onde a organização do campus precisa dialogar com as tarefas de trabalho</h2></div>
           <div class="pilot-context">
@@ -354,7 +370,7 @@
         </div>
       </section>
 
-      <section class="slide" data-title="Próxima iteração" aria-label="Slide 18: Próxima iteração" hidden>
+      <section class="slide" data-title="Próxima iteração" aria-label="Slide 19: Próxima iteração" hidden>
         <div class="slide-inner">
           <div class="slide-heading"><p class="overline green">Ouro Branco / decisões a partir da pesquisa</p><h2>Os testes já indicam ajustes concretos antes de levar o modelo a outros campi</h2></div>
           <div class="cols cols-7-5 align-center">
@@ -372,7 +388,7 @@
         </div>
       </section>
 
-      <section class="slide dark" data-title="Síntese" aria-label="Slide 19: Síntese" hidden>
+      <section class="slide dark" data-title="Síntese" aria-label="Slide 20: Síntese" hidden>
         <div class="slide-inner cover-grid closing-grid">
           <div><p class="overline mint">O que permanece</p><h2>Facilitar o acesso à informação é uma capacidade institucional que depende de organização e gestão contínuas.</h2></div>
           <div class="cover-side closing-side"><div><p class="overline mint">01 / Problema redefinido</p><p>O redesenho do portal passou a ser tratado como um problema de acesso.</p></div><div><p class="overline mint">02 / Organização proposta</p><p>Necessidades dos públicos e serviços orientaram a arquitetura da informação.</p></div><div><p class="overline mint">03 / Continuidade</p><p>A gestão do conteúdo permite manter essa organização ao longo do tempo.</p></div></div>
