@@ -541,3 +541,77 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--green); outline
   }
   .graph-intro-heading h2 { font-size:25px; }
 }
+
+
+/* Encerramento comparativo: mapa da Reitoria e arquitetura proposta lado a lado. */
+.graph-compare-slide .graph-compare-inner {
+  width:100%; max-width:none; height:100%; min-height:650px; margin:0;
+  padding:76px clamp(20px,3vw,57px) 78px;
+  display:flex; flex-direction:column; gap:15px;
+}
+.graph-compare-heading { flex:0 0 auto; display:grid; grid-template-columns:minmax(170px,1fr) minmax(0,2.7fr);
+  align-items:end; column-gap:30px; row-gap:7px; }
+.graph-compare-heading .overline { align-self:center; }
+.graph-compare-heading h2 { margin:0; font-size:clamp(25px,2.1vw,37px); line-height:1.07;
+  font-weight:500; letter-spacing:-.043em; color:#f5f7f4; text-wrap:balance; }
+.graph-compare-heading > p:last-child { grid-column:2; margin:0; color:#bbc5be; font-size:12px; line-height:1.35; }
+.graph-compare-panels { flex:1 1 auto; min-height:310px; display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr)); gap:17px; position:relative; }
+.graph-compare-card { min-width:0; min-height:0; overflow:hidden; display:flex; flex-direction:column; margin:0;
+  border:1px solid rgba(183,229,206,.32); background:#111a14; }
+.graph-compare-card-header { flex:0 0 auto; display:flex; justify-content:space-between;
+  align-items:center; gap:13px; min-height:64px; padding:11px 14px;
+  border-bottom:1px solid rgba(183,229,206,.22); }
+.graph-compare-card-header .overline { font-size:8px; letter-spacing:.12em; }
+.graph-compare-card-header h3 { margin:5px 0 0; color:#fff;
+  font-size:19px; font-weight:500; line-height:1.1; letter-spacing:-.02em; }
+.graph-compare-expand { cursor:pointer; flex:0 0 auto; white-space:nowrap;
+  color:var(--mint); border:1px solid rgba(183,229,206,.48); background:transparent;
+  padding:10px 13px; font:700 10px/1.2 var(--font-mono); letter-spacing:.035em; }
+.graph-compare-expand:hover,.graph-compare-expand:focus-visible { color:#111; background:var(--mint); }
+.graph-compare-viewport { flex:1 1 auto; min-height:0; position:relative; overflow:hidden; background:#0e1712; }
+.graph-compare-viewport iframe { display:block; position:absolute; inset:0; width:100%; height:100%; border:0; }
+.graph-compare-card figcaption { flex:0 0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;
+  padding:10px 13px; color:#b1beb7; font:500 10px/1.5 var(--font-mono); }
+.graph-compare-card figcaption a { color:var(--mint); white-space:nowrap;
+  text-decoration:underline; text-underline-offset:3px; }
+.graph-compare-foot { flex:0 0 auto; margin:0; padding-top:11px;
+  border-top:1px solid rgba(183,229,206,.26); color:#b4c0b7;
+  font:500 10px/1.5 var(--font-mono); }
+.graph-compare-panels.has-expanded .graph-compare-card:not(.is-expanded) { visibility:hidden; }
+.graph-compare-card.is-expanded { position:absolute; inset:0; z-index:8; width:100%; height:100%;
+  border-color:var(--mint); box-shadow:0 18px 55px #0009; }
+.presentation.is-fullscreen .graph-compare-slide .graph-compare-inner {
+  zoom:1; max-width:none; padding:73px clamp(20px,3vw,57px) 76px;
+}
+@media(max-width:990px) {
+  .graph-compare-heading { grid-template-columns:1fr; }
+  .graph-compare-heading > p:last-child { grid-column:1; }
+  .graph-compare-card-header { padding:10px; }
+  .graph-compare-card-header h3 { font-size:16px; }
+  .graph-compare-expand { padding:9px; font-size:9px; }
+}
+@media(max-width:700px) {
+  .graph-compare-slide .graph-compare-inner {
+    height:auto; min-height:1060px; padding:79px 15px 92px; gap:15px;
+  }
+  .graph-compare-heading h2 { font-size:29px; }
+  .graph-compare-panels { flex:1 0 auto; min-height:840px; grid-template-columns:minmax(0,1fr);
+    grid-template-rows:repeat(2,minmax(370px,1fr)); gap:15px; }
+  .graph-compare-card { min-height:370px; }
+  .graph-compare-card-header h3 { font-size:17px; }
+  .graph-compare-card.is-expanded { position:fixed; inset:44px 8px 65px; z-index:30; width:auto; height:auto; }
+  .graph-compare-panels.has-expanded::after { content:""; position:fixed; inset:0; z-index:20; background:#000d; }
+  .presentation.is-fullscreen .graph-compare-slide .graph-compare-inner {
+    height:auto; min-height:1060px; padding:79px 15px 92px;
+  }
+}
+@media(max-height:730px) and (min-width:701px) {
+  .graph-compare-slide .graph-compare-inner,
+  .presentation.is-fullscreen .graph-compare-slide .graph-compare-inner {
+    min-height:590px; padding-top:63px; padding-bottom:64px; gap:10px;
+  }
+  .graph-compare-heading h2 { font-size:26px; }
+  .graph-compare-card-header { min-height:54px; padding:8px 12px; }
+  .graph-compare-card figcaption { padding:7px 12px; }
+}
