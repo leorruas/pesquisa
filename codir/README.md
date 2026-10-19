@@ -2,7 +2,7 @@
 
 Apresentação para o Colégio de Dirigentes (CODIR) do IFMG, em português brasileiro. Inclui o diagnóstico do portal, os critérios de pesquisa, a proposta de arquitetura da informação, o Guia do Portal, o trabalho com as áreas e os resultados formativos dos testes de Ouro Branco.
 
-A apresentação é feita em HTML, CSS e JavaScript, sem React, Next.js ou processo de compilação. Tem **22 slides**.
+A apresentação é feita em HTML, CSS e JavaScript, sem React, Next.js ou processo de compilação. Tem **25 slides**.
 
 Arquivos:
 - `index.html`: conteúdo, organização dos slides e descrição das capturas.
@@ -53,7 +53,7 @@ Fonte do conteúdo: [repositório Guia do Portal IFMG](https://github.com/leorru
 
 ## Slide 21: comparação dos dois grafos
 
-No penúltimo slide (21), imediatamente antes da **Síntese (22)**, os grafos aparecem **lado a lado**. À esquerda, **Organização de setores** mostra o mapeamento do portal da Reitoria usando novamente `codir/grafo/`. À direita, **Organização por segmentação de usuários** apresenta a arquitetura proposta documentada no Guia do Portal (`codir/grafo-guia/`), aberta no modo **distância da Home**. Cada mapa tem botão **Ampliar / Reduzir**, e as setas de navegação funcionam também quando o foco está dentro das visualizações.
+No slide 21, antes do cronograma de implantação (22 a 24) e da **Síntese (25)**, os grafos aparecem **lado a lado**. À esquerda, **Organização de setores** mostra o mapeamento do portal da Reitoria usando novamente `codir/grafo/`. À direita, **Organização por segmentação de usuários** apresenta a arquitetura proposta documentada no Guia do Portal (`codir/grafo-guia/`), aberta no modo **distância da Home**. Cada mapa tem botão **Ampliar / Reduzir**, e as setas de navegação funcionam também quando o foco está dentro das visualizações.
 
 A versão compacta `?comparacao=1` foi ajustada para projetar os mapas sem painéis laterais; abrir o slide 2 ou os módulos individualmente continua usando os controles completos. A comparação mostra **dois recortes de pesquisa com coberturas diferentes**: o conjunto da Reitoria não pode ser comparado quantitativamente ao grafo do Guia, que ainda está em construção. Os anéis de até três cliques aplicam-se apenas às páginas já mapeadas na proposta. Os gráficos não representam caminhos realmente percorridos por pessoas.
 
@@ -68,6 +68,10 @@ A apresentação agora inclui resultados reais, retirados do repositório [`novo
 Fontes: [relatório dos testes de Ouro Branco](https://github.com/leorruas/novo-portal/tree/main/02%20-%20Pesquisa%20%28UXR%29/testes-de-usabilidade/relatorios), [resumo e log](https://github.com/leorruas/novo-portal/tree/main/02%20-%20Pesquisa%20%28UXR%29/testes-de-usabilidade/ouro-branco) e ficha `S-OB-03.md` no subdiretório de notas de servidores. O relatório principal apresenta inicialmente cinco estudantes e dois servidores; o registro posterior acrescenta a terceira sessão, sem atualizar retrospectivamente as contagens quantitativas do relatório inicial.
 
 Estes testes são **formativos** e ocorreram em um protótipo, não em uma versão de produção. Não sustentam estimativas populacionais, métricas gerais de eficiência ou afirmações de impacto do redesenho. Nem todas as tarefas foram aplicadas e registradas de forma uniforme.
+
+## Slides 22 a 24: cronograma de implantação (outubro a dezembro de 2026)
+
+O cronograma do documento **Novo Portal | Cronograma Reitor e DGs** foi incluído imediatamente antes da síntese final. As datas, fases e entregas foram distribuídas em três slides: outubro (alinhamento, estruturação, treinamento, portaria e sensibilização), novembro (oficinas, tira-dúvidas, Central de Serviços no SUAP e alimentação de conteúdo até 10 de dezembro) e dezembro (migração, publicação nos dois ambientes e virada prevista para 18 de dezembro). O cronograma **não inclui nomes ou colunas de responsáveis**. O tira-dúvidas segue com data a definir, conforme a fonte.
 
 ## Tela cheia e projeção
 
