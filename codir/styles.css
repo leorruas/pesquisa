@@ -728,7 +728,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--green); outline
 .dti-statement .dti-statement-key { margin-top:auto; padding-top:28px; font-weight:700; color:#146040; }
 .dti-points { display:grid; grid-template-rows:repeat(3,auto) 1fr; align-content:start; gap:16px; }
 .dti-point { display:grid; grid-template-columns:34px minmax(0,1fr); gap:10px; border-top:1px solid var(--line); padding-top:13px; }
-.dti-point-index { font:700 11px/1.6 var(--font-mono); color:var(--green); }
+.dti-point-index { display:block; width:9px; height:9px; margin:6px 0 0 7px; border-radius:50%; background:var(--green); }
 .dti-point h3 { margin:0; font-size:20px; font-weight:600; line-height:1.2; letter-spacing:-.025em; }
 .dti-point p { margin:6px 0 0; color:#616161; font-size:15px; line-height:1.4; }
 .dti-quiet { align-self:end; margin:0; padding-top:14px; border-top:1px solid var(--line); font-size:15px; line-height:1.38; color:#616161; font-style:italic; }
