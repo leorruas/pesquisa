@@ -1,5 +1,7 @@
 # CODIR | Apresentação do Portal IFMG
 
+> **STATUS: APRESENTAÇÃO SUSPENSA (21/10/2026).** A página `codir/index.html` foi substituída por um aviso de indisponibilidade. A versão de 31 slides permanece recuperável no histórico Git. Os arquivos de estilos, scripts e recursos foram preservados. Este documento descreve a versão anterior à suspensão.
+
 Apresentação para o Colégio de Dirigentes (CODIR) do IFMG, em português brasileiro. Inclui o diagnóstico do portal, os critérios de pesquisa, a proposta de arquitetura da informação, o Guia do Portal, o trabalho com as áreas e os resultados formativos dos testes de Ouro Branco.
 
 A apresentação é feita em HTML, CSS e JavaScript, sem React, Next.js ou processo de compilação. Tem **31 slides**.
